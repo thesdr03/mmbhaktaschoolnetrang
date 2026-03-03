@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMT M.M.BHAKTA HIGH SCHOOL NETRANG</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--primary-action) 0%, var(--secondary-action) 100%);
+    }
+    
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    
+    .slide-in {
+      animation: slideIn 0.6s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto" style="background-color: #f8fafc;"><!-- Navigation -->
+   <nav id="navbar" class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: rgba(255,255,255,0.95); border-color: #e2e8f0;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16 sm:h-20">
+      <div class="flex items-center gap-3">
+       <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center" style="background-color: #1e3a5f;">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7" viewbox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M12 3L2 9l10 6 10-6-10-6z" /> <path d="M2 17l10 6 10-6" /> <path d="M2 13l10 6 10-6" />
+        </svg>
+       </div>
+       <div>
+        <h1 id="nav-school-name" class="text-lg sm:text-xl font-bold" style="font-family: 'Playfair Display', serif; color: #1e3a5f;">Westbrook High</h1>
+        <p id="nav-tagline" class="text-xs hidden sm:block" style="color: #64748b;">Excellence in Education</p>
+       </div>
+      </div>
+      <div class="hidden md:flex items-center gap-8"><a href="#about" class="nav-link font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">About</a> <a href="#academics" class="nav-link font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Academics</a> <a href="#athletics" class="nav-link font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Athletics</a> <a href="#events" class="nav-link font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Events</a> <a href="#contact" class="nav-link font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Contact</a>
+      </div><button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg" style="color: #1e3a5f;">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t" style="background-color: #ffffff; border-color: #e2e8f0;">
+     <div class="px-4 py-4 space-y-3"><a href="#about" class="block py-2 font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">About</a> <a href="#academics" class="block py-2 font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Academics</a> <a href="#athletics" class="block py-2 font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Athletics</a> <a href="#events" class="block py-2 font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Events</a> <a href="#contact" class="block py-2 font-medium" style="font-family: 'Outfit', sans-serif; color: #334155;">Contact</a>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="relative overflow-hidden" style="background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e3a5f 100%);">
+    <div class="absolute inset-0 opacity-10">
+     <svg class="w-full h-full" viewbox="0 0 100 100" preserveaspectratio="none"><defs>
+       <pattern id="grid" width="10" height="10" patternunits="userSpaceOnUse">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" />
+       </pattern>
+      </defs> <rect width="100%" height="100%" fill="url(#grid)" />
+     </svg>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 slide-in" style="background-color: rgba(245, 158, 11, 0.2);"><span class="w-2 h-2 rounded-full pulse-dot" style="background-color: #f59e0b;"></span> <span class="text-sm font-medium" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">Now Enrolling for 2024-2025</span>
+       </div>
+       <h2 id="hero-heading" class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 slide-in stagger-1" style="font-family: 'Playfair Display', serif; color: #ffffff; line-height: 1.1;">Where Futures<br>
+        Take Flight</h2>
+       <p id="hero-subheading" class="text-lg sm:text-xl mb-8 max-w-xl mx-auto lg:mx-0 slide-in stagger-2" style="font-family: 'Outfit', sans-serif; color: rgba(255,255,255,0.85);">Empowering students with knowledge, character, and the skills to succeed in an ever-changing world.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-in stagger-3"><button id="cta-button" class="px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-105 hover:shadow-lg" style="font-family: 'Outfit', sans-serif; background-color: #f59e0b; color: #1e3a5f;"> Schedule a Tour </button> <button class="px-8 py-4 rounded-xl font-semibold text-lg border-2 transition-all hover:bg-white hover:text-[#1e3a5f]" style="font-family: 'Outfit', sans-serif; border-color: rgba(255,255,255,0.3); color: #ffffff;"> Learn More </button>
+       </div>
+      </div>
+      <div class="hidden lg:block slide-in stagger-4">
+       <div class="relative">
+        <div class="absolute -top-4 -left-4 w-72 h-72 rounded-full opacity-20" style="background-color: #f59e0b;"></div>
+        <div class="relative rounded-2xl p-8 backdrop-blur-sm" style="background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+         <div class="grid grid-cols-2 gap-6">
+          <div class="text-center p-4 rounded-xl" style="background-color: rgba(255,255,255,0.1);">
+           <div class="text-4xl font-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">
+            98%
+           </div>
+           <div class="text-sm" style="color: rgba(255,255,255,0.8);">
+            Graduation Rate
+           </div>
+          </div>
+          <div class="text-center p-4 rounded-xl" style="background-color: rgba(255,255,255,0.1);">
+           <div class="text-4xl font-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">
+            25+
+           </div>
+           <div class="text-sm" style="color: rgba(255,255,255,0.8);">
+            AP Courses
+           </div>
+          </div>
+          <div class="text-center p-4 rounded-xl" style="background-color: rgba(255,255,255,0.1);">
+           <div class="text-4xl font-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">
+            50+
+           </div>
+           <div class="text-sm" style="color: rgba(255,255,255,0.8);">
+            Clubs &amp; Activities
+           </div>
+          </div>
+          <div class="text-center p-4 rounded-xl" style="background-color: rgba(255,255,255,0.1);">
+           <div class="text-4xl font-bold mb-1" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">
+            15:1
+           </div>
+           <div class="text-sm" style="color: rgba(255,255,255,0.8);">
+            Student-Teacher
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+     <svg viewbox="0 0 1440 120" fill="none" preserveaspectratio="none" class="w-full h-16 sm:h-24"><path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f8fafc" />
+     </svg>
+    </div>
+   </section><!-- Announcement Banner -->
+   <section class="py-4" style="background-color: #f59e0b;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-center gap-3 text-center">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" viewbox="0 0 24 24" stroke="#1e3a5f" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+      </svg>
+      <p id="announcement-text" class="font-semibold" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">📣 Spring Musical Auditions: March 15-17 in the Performing Arts Center!</p>
+     </div>
+    </div>
+   </section><!-- Quick Links -->
+   
+   </section><!-- Academics Section -->
+   <section id="academics" class="py-16 sm:py-20" style="background-color: #ffffff;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div><span class="inline-block px-4 py-1 rounded-full text-sm font-medium mb-4" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; font-family: 'Outfit', sans-serif;">Academic Excellence</span>
+       <h3 class="text-3xl sm:text-4xl font-bold mb-6" style="font-family: 'Playfair Display', serif; color: #1e3a5f;">Preparing Tomorrow's Leaders</h3>
+       <p class="text-lg mb-8" style="font-family: 'Outfit', sans-serif; color: #64748b; line-height: 1.8;">Our rigorous academic program combines traditional excellence with innovative approaches. From STEM to the arts, we offer pathways for every passion.</p>
+       <div class="space-y-4">
+        <div class="flex items-start gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #1e3a5f;">
+          <svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" stroke="#f59e0b" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+         </div>
+         <div>
+          <h5 class="font-semibold mb-1" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Advanced Placement Program</h5>
+          <p class="text-sm" style="color: #64748b;">25+ AP courses with 85% pass rate</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #1e3a5f;">
+          <svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" stroke="#f59e0b" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+         </div>
+         <div>
+          <h5 class="font-semibold mb-1" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">STEM Innovation Lab</h5>
+          <p class="text-sm" style="color: #64748b;">Cutting-edge technology &amp; research opportunities</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background-color: #1e3a5f;">
+          <svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" stroke="#f59e0b" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+         </div>
+         <div>
+          <h5 class="font-semibold mb-1" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Arts &amp; Humanities</h5>
+          <p class="text-sm" style="color: #64748b;">Award-winning music, theater &amp; visual arts</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+       <div class="rounded-2xl p-6" style="background-color: #1e3a5f;">
+        <div class="text-4xl mb-3">
+         🔬
+        </div>
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Sciences</h5>
+        <p class="text-sm" style="color: rgba(255,255,255,0.7);">Biology, Chemistry, Physics, Environmental Science</p>
+       </div>
+       <div class="rounded-2xl p-6" style="background-color: #f59e0b;">
+        <div class="text-4xl mb-3">
+         📐
+        </div>
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Mathematics</h5>
+        <p class="text-sm" style="color: rgba(30, 58, 95, 0.7);">From Algebra to AP Calculus BC</p>
+       </div>
+       <div class="rounded-2xl p-6" style="background-color: #f59e0b;">
+        <div class="text-4xl mb-3">
+         🌍
+        </div>
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Languages</h5>
+        <p class="text-sm" style="color: rgba(30, 58, 95, 0.7);">Spanish, French, Mandarin, Latin</p>
+       </div>
+       <div class="rounded-2xl p-6" style="background-color: #1e3a5f;">
+        <div class="text-4xl mb-3">
+         💻
+        </div>
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Technology</h5>
+        <p class="text-sm" style="color: rgba(255,255,255,0.7);">Coding, Robotics, Digital Media</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   </section><!-- Events Section -->
+   <section id="events" class="py-16 sm:py-20" style="background-color: #f8fafc;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="text-center mb-12">
+      <h3 class="text-3xl sm:text-4xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: #1e3a5f;">Upcoming Events</h3>
+      <p class="text-lg" style="font-family: 'Outfit', sans-serif; color: #64748b;">Stay connected with what's happening at Westbrook</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="rounded-2xl overflow-hidden card-hover" style="background-color: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+       <div class="p-4" style="background-color: #1e3a5f;">
+        <div class="flex items-center justify-between"><span class="text-3xl font-bold" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">26 </span> <span class="text-sm font-medium" style="color: rgba(255,255,255,0.8);">Feb 2026</span>
+        </div>
+       </div>
+       <div class="p-6">
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;"> Board Exams</h5>
+        <p class="text-sm mb-4" style="color: #64748b;"></p>
+        <div class="flex items-center gap-2 text-sm" style="color: #f59e0b;">
+         <svg class="w-4 h-4" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg><span>3:30 PM - 6:00 PM</span>
+        </div>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background-color: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+       <div class="p-4" style="background-color: #f59e0b;">
+        <div class="flex items-center justify-between"><span class="text-3xl font-bold" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">22</span> <span class="text-sm font-medium" style="color: rgba(30, 58, 95, 0.8);">MAR 2024</span>
+        </div>
+       </div>
+       <div class="p-6">
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Parent-Teacher Conference</h5>
+        <p class="text-sm mb-4" style="color: #64748b;">Meet with teachers to discuss student progress</p>
+        <div class="flex items-center gap-2 text-sm" style="color: #f59e0b;">
+         <svg class="w-4 h-4" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg><span>4:00 PM - 8:00 PM</span>
+        </div>
+       </div>
+      </div>
+      <div class="rounded-2xl overflow-hidden card-hover" style="background-color: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+       <div class="p-4" style="background-color: #1e3a5f;">
+        <div class="flex items-center justify-between"><span class="text-3xl font-bold" style="font-family: 'Outfit', sans-serif; color: #f59e0b;">05</span> <span class="text-sm font-medium" style="color: rgba(255,255,255,0.8);">APR 2024</span>
+        </div>
+       </div>
+       <div class="p-6">
+        <h5 class="font-bold text-lg mb-2" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">STEM Fair</h5>
+        <p class="text-sm mb-4" style="color: #64748b;">Student research projects &amp; demonstrations</p>
+        <div class="flex items-center gap-2 text-sm" style="color: #f59e0b;">
+         <svg class="w-4 h-4" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg><span>9:00 AM - 3:00 PM</span>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="text-center mt-10"><button class="px-8 py-3 rounded-xl font-semibold transition-all hover:scale-105" style="font-family: 'Outfit', sans-serif; background-color: #1e3a5f; color: #ffffff;"> View Full Calendar </button>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-16 sm:py-20" style="background-color: #ffffff;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="grid lg:grid-cols-2 gap-12">
+      <div>
+       <h3 class="text-3xl sm:text-4xl font-bold mb-6" style="font-family: 'Playfair Display', serif; color: #1e3a5f;">Get In Touch</h3>
+       <p class="text-lg mb-8" style="font-family: 'Outfit', sans-serif; color: #64748b;">Have questions? We're here to help. Reach out to our administration team.</p>
+       <div class="space-y-6">
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(30, 58, 95, 0.1);">
+          <svg class="w-6 h-6" fill="none" viewbox="0 0 24 24" stroke="#1e3a5f" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /> <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+         </div>
+         <div>
+          <h5 class="font-semibold mb-1" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Address</h5>
+          <p style="color: #64748b;">1234 Wildcat Way<br>
+           Westbrook, CA 90210</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(245, 158, 11, 0.1);">
+          <svg class="w-6 h-6" fill="none" viewbox="0 0 24 24" stroke="#f59e0b" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+         </div>
+         <div>
+          <h5 class="font-semibold mb-1" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Phone</h5>
+          <p style="color: #64748b;">(555) 123-4567</p>
+         </div>
+        </div>
+        <div class="flex items-start gap-4">
+         <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(30, 58, 95, 0.1);">
+          <svg class="w-6 h-6" fill="none" viewbox="0 0 24 24" stroke="#1e3a5f" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+         </div>
+         <div>
+          <h5 class="font-semibold mb-1" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Email</h5>
+          <p style="color: #64748b;">info@westbrookhigh.edu</p>
+         </div>
+        </div>
+       </div>
+       <div class="mt-8 p-6 rounded-2xl" style="background-color: rgba(30, 58, 95, 0.05);">
+        <h5 class="font-semibold mb-2" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">School Hours</h5>
+        <div class="grid grid-cols-2 gap-2 text-sm" style="color: #64748b;"><span>Monday - Friday</span> <span>7:30 AM - 3:30 PM</span> <span>Main Office</span> <span>7:00 AM - 4:30 PM</span>
+        </div>
+       </div>
+      </div>
+      <div class="rounded-2xl p-8" style="background-color: #f8fafc;">
+       <h4 class="text-xl font-bold mb-6" style="font-family: 'Outfit', sans-serif; color: #1e3a5f;">Send Us a Message</h4>
+       <form id="contact-form" class="space-y-5">
+        <div><label for="name" class="block text-sm font-medium mb-2" style="color: #1e3a5f;">Full Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl border transition-all focus:outline-none focus:ring-2" style="border-color: #e2e8f0; background-color: #ffffff; font-family: 'Outfit', sans-serif;" placeholder="John Smith">
+        </div>
+        <div><label for="email" class="block text-sm font-medium mb-2" style="color: #1e3a5f;">Email Address</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border transition-all focus:outline-none focus:ring-2" style="border-color: #e2e8f0; background-color: #ffffff; font-family: 'Outfit', sans-serif;" placeholder="john@email.com">
+        </div>
+        <div><label for="subject" class="block text-sm font-medium mb-2" style="color: #1e3a5f;">Subject</label> <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-xl border transition-all focus:outline-none focus:ring-2" style="border-color: #e2e8f0; background-color: #ffffff; font-family: 'Outfit', sans-serif;"> <option value="">Select a topic</option> <option value="admissions">Admissions Inquiry</option> <option value="academics">Academic Question</option> <option value="athletics">Athletics Information</option> <option value="general">General Question</option> </select>
+        </div>
+        <div><label for="message" class="block text-sm font-medium mb-2" style="color: #1e3a5f;">Message</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border transition-all focus:outline-none focus:ring-2 resize-none" style="border-color: #e2e8f0; background-color: #ffffff; font-family: 'Outfit', sans-serif;" placeholder="How can we help you?"></textarea>
+        </div><button type="submit" class="w-full py-4 rounded-xl font-semibold text-lg transition-all hover:scale-[1.02] hover:shadow-lg" style="font-family: 'Outfit', sans-serif; background-color: #f59e0b; color: #1e3a5f;"> Send Message </button>
+       </form>
+       <div id="form-success" class="hidden mt-4 p-4 rounded-xl text-center" style="background-color: rgba(34, 197, 94, 0.1); color: #16a34a;">
+        ✓ Message sent successfully! We'll get back to you soon.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer style="background-color: #1e3a5f;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div>
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background-color: rgba(255,255,255,0.1);">
+         <svg class="w-6 h-6" viewbox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M12 3L2 9l10 6 10-6-10-6z" /> <path d="M2 17l10 6 10-6" /> <path d="M2 13l10 6 10-6" />
+         </svg>
+        </div><span id="footer-school-name" class="font-bold text-lg" style="font-family: 'Playfair Display', serif; color: #ffffff;">Westbrook High</span>
+       </div>
+       <p class="text-sm" style="color: rgba(255,255,255,0.6);">Inspiring excellence since 1952</p>
+      </div>
+      <div>
+       <h5 class="font-semibold mb-4" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Quick Links</h5>
+       <ul class="space-y-2">
+        <li><a href="#about" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">About Us</a></li>
+        <li><a href="#academics" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Academics</a></li>
+        <li><a href="#athletics" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Athletics</a></li>
+        <li><a href="#events" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Events</a></li>
+       </ul>
+      </div>
+      <div>
+       <h5 class="font-semibold mb-4" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Resources</h5>
+       <ul class="space-y-2">
+        <li><a href="#" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Student Handbook</a></li>
+        <li><a href="#" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Staff Directory</a></li>
+        <li><a href="#" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Library</a></li>
+        <li><a href="#" class="text-sm hover:underline" style="color: rgba(255,255,255,0.7);">Lunch Menu</a></li>
+       </ul>
+      </div>
+      <div>
+       <h5 class="font-semibold mb-4" style="font-family: 'Outfit', sans-serif; color: #ffffff;">Connect</h5>
+       <div class="flex gap-3"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background-color: rgba(255,255,255,0.1);">
+         <svg class="w-5 h-5" fill="#ffffff" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background-color: rgba(255,255,255,0.1);">
+         <svg class="w-5 h-5" fill="#ffffff" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background-color: rgba(255,255,255,0.1);">
+         <svg class="w-5 h-5" fill="#ffffff" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background-color: rgba(255,255,255,0.1);">
+         <svg class="w-5 h-5" fill="#ffffff" viewbox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+     <div class="pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4" style="border-color: rgba(255,255,255,0.1);">
+      <p class="text-sm" style="color: rgba(255,255,255,0.5);">© 2024 Westbrook High School. All rights reserved.</p>
+      <div class="flex gap-6"><a href="#" class="text-sm hover:underline" style="color: rgba(255,255,255,0.5);">Privacy Policy</a> <a href="#" class="text-sm hover:underline" style="color: rgba(255,255,255,0.5);">Accessibility</a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      school_name: 'SMT M.M.BHAKTA HIGH SCHOOL NETRANG',
+      tagline: 'Excellence in Education',
+      hero_heading: 'Where Futures Take Flight',
+      hero_subheading: 'Empowering students with knowledge, character, and the skills to succeed in an ever-changing world.',
+      announcement_title: '📣 Spring Musical Auditions: March 15-17 in the Performing Arts Center!',
+      cta_button_text: 'Schedule a Tour',
+      background_color: '#f8fafc',
+      surface_color: '#ffffff',
+      text_color: '#1e3a5f',
+      primary_action_color: '#f59e0b',
+      secondary_action_color: '#2d5a87',
+      font_family: 'Outfit',
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = 'sans-serif';
+      const displayFontStack = 'serif';
+      
+      // Update text content
+      document.getElementById('nav-school-name').textContent = config.school_name || defaultConfig.school_name;
+      document.getElementById('nav-tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('hero-heading').innerHTML = (config.hero_heading || defaultConfig.hero_heading).replace(/\n/g, '<br>');
+      document.getElementById('hero-subheading').textContent = config.hero_subheading || defaultConfig.hero_subheading;
+      document.getElementById('announcement-text').textContent = config.announcement_title || defaultConfig.announcement_title;
+      document.getElementById('cta-button').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+      document.getElementById('footer-school-name').textContent = config.school_name || defaultConfig.school_name;
+      
+      // Update colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+      
+      document.getElementById('app-wrapper').style.backgroundColor = bgColor;
+      
+      // Apply font family to text elements
+      document.querySelectorAll('[style*="font-family: \'Outfit\'"]').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      });
+      
+      // Apply font size scaling
+      document.getElementById('hero-heading').style.fontSize = `${fontSize * 3.5}px`;
+      document.getElementById('hero-subheading').style.fontSize = `${fontSize * 1.25}px`;
+    }
+
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => {
+              cfg.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => cfg.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              cfg.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => {
+              cfg.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              cfg.primary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              cfg.secondary_action_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => {
+            cfg.font_family = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => {
+            cfg.font_size = value;
+            if (window.elementSdk) window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['school_name', cfg.school_name || defaultConfig.school_name],
+        ['tagline', cfg.tagline || defaultConfig.tagline],
+        ['hero_heading', cfg.hero_heading || defaultConfig.hero_heading],
+        ['hero_subheading', cfg.hero_subheading || defaultConfig.hero_subheading],
+        ['announcement_title', cfg.announcement_title || defaultConfig.announcement_title],
+        ['cta_button_text', cfg.cta_button_text || defaultConfig.cta_button_text]
+      ]);
+    }
+
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Form submission
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('contact-form').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('contact-form').reset();
+        document.getElementById('contact-form').classList.remove('hidden');
+        document.getElementById('form-success').classList.add('hidden');
+      }, 3000);
+    });
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    } else {
+      onConfigChange(config);
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cd66c40655c0803',t:'MTc3MTAwNzY5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
