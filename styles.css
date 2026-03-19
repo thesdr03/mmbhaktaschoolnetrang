@@ -89,16 +89,3 @@ body {
 .space {
   margin-bottom: 10px;
 }
-
-/* Gallery Container - Show 2 items at a time */
-#gallery-container {
-  width: 100%;
-  max-width: 100%;
-}
-
-@media (min-width: 768px) {
-  #gallery-container {
-    width: calc(288px * 2 + 16px + 32px); /* 2 items + gap + padding */
-    margin: 0 auto;
-  }
-}

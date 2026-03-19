@@ -64,12 +64,12 @@ function updateGalleryCounter() {
 }
 
 galleryPrevBtn.addEventListener('click', () => {
-  galleryContainer.scrollBy({ left: -304, behavior: 'smooth' });
+  galleryContainer.scrollBy({ left: -336, behavior: 'smooth' });
   setTimeout(updateGalleryCounter, 300);
 });
 
 galleryNextBtn.addEventListener('click', () => {
-  galleryContainer.scrollBy({ left: 304, behavior: 'smooth' });
+  galleryContainer.scrollBy({ left: 336, behavior: 'smooth' });
   setTimeout(updateGalleryCounter, 300);
 });
 
@@ -84,7 +84,7 @@ function startAutoScroll() {
   if (autoScrollInterval) return; // Already running
   autoScrollInterval = setInterval(() => {
     galleryContainer.scrollBy({
-      left: 304,
+      left: 336,
       behavior: 'smooth'
     });
     
