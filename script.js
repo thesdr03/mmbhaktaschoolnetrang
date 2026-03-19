@@ -237,7 +237,7 @@ const googleSheetsForm = document.getElementById('info-gateway-form');
 const formStatus = document.getElementById('form-status');
 
 // Replace this with your Google Apps Script deployment URL
-const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/usercallback';
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyrT0IUOUyrNtqWLjNtYy8GT5JO1oYecTyDC95clfuI_uF7eQrJpRKZjpZhXCkS06O7/exec';
 
 googleSheetsForm.addEventListener('submit', async (e) => {
   e.preventDefault();
