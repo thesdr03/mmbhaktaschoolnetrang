@@ -768,6 +768,53 @@
           galleryContainer.addEventListener('scroll', updateGalleryCounter);
           updateGalleryCounter();
 
+          // Auto-scroll gallery functionality
+          let autoScrollInterval = null;
+          let autoScrollDelay = 4000; // 4 seconds between auto-scrolls
+
+          function startAutoScroll() {
+            if (autoScrollInterval) return; // Already running
+            autoScrollInterval = setInterval(() => {
+              galleryContainer.scrollBy({
+                left: 308,
+                behavior: 'smooth'
+              });
+              
+              // Reset to beginning when reaching the end
+              const maxScroll = galleryContainer.scrollWidth - galleryContainer.clientWidth;
+              if (galleryContainer.scrollLeft >= maxScroll - 10) {
+                setTimeout(() => {
+                  galleryContainer.scrollTo({
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+                }, 500);
+              }
+            }, autoScrollDelay);
+          }
+
+          function stopAutoScroll() {
+            if (autoScrollInterval) {
+              clearInterval(autoScrollInterval);
+              autoScrollInterval = null;
+            }
+          }
+
+          // Pause auto-scroll on user interaction
+          galleryContainer.addEventListener('mouseenter', stopAutoScroll);
+          galleryContainer.addEventListener('mouseleave', startAutoScroll);
+          galleryPrevBtn.addEventListener('click', () => {
+            stopAutoScroll();
+            setTimeout(startAutoScroll, 2000); // Resume after 2 seconds of inactivity
+          });
+          galleryNextBtn.addEventListener('click', () => {
+            stopAutoScroll();
+            setTimeout(startAutoScroll, 2000); // Resume after 2 seconds of inactivity
+          });
+
+          // Start auto-scroll when page loads
+          startAutoScroll();
+
           // Element SDK initialization
           async function onConfigChange(config) {
             // Update school names
