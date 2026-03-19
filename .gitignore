@@ -1,0 +1,50 @@
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Python
+*.py
+__pycache__/
+*.pyc
+.Python
+env/
+venv/
+*.log
+
+# Node (if used in future)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist/
+build/
+*.min.js
+*.min.css
+
+# Local development
+.env
+.env.local
+config/local.js
+
+# OS specific
+.AppleDouble
+.LSOverride
+ehthumbs.db
+
+# Backup files
+*.bak
+*.backup
+~*
+
+# Dependencies cache
+.cache/

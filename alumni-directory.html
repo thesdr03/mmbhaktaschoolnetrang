@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alumni Directory - Smt. M.M. Bhakta High School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>body{font-family:Poppins, sans-serif}</style>
+</head>
+<body class="bg-gray-50">
+  <header class="bg-blue-800 text-white py-4">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Alumni Directory</h1>
+      <a href="index main.html" class="bg-white text-blue-800 px-3 py-1 rounded">← Back</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <p class="mb-4 text-gray-700">Browse alumni by batch. Add photos named like <code>alumni-<i>firstname</i>.jpg</code>.</p>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Example batch card -->
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="font-bold mb-2">Batch: 2015 - 2018</h2>
+        <div class="grid grid-cols-3 gap-3">
+          <div class="text-center">
+            <img src="alumni-priya.jpg" alt="Priya" class="w-20 h-20 object-cover rounded-full mx-auto">
+            <div class="mt-1 text-sm">Priya Sharma</div>
+          </div>
+          <div class="text-center">
+            <img src="alumni-raj.jpg" alt="Raj" class="w-20 h-20 object-cover rounded-full mx-auto">
+            <div class="mt-1 text-sm">Rajesh Patel</div>
+          </div>
+          <div class="text-center">
+            <img src="alumni-sona.jpg" alt="Sona" class="w-20 h-20 object-cover rounded-full mx-auto">
+            <div class="mt-1 text-sm">Sonal Kaur</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more batch cards below -->
+    </section>
+
+    <section class="mt-8 bg-white p-4 rounded shadow">
+      <h2 class="font-bold mb-2">How to add a batch</h2>
+      <ul class="list-disc pl-5 text-gray-700">
+        <li>Create a new batch card and list alumni in that batch.</li>
+        <li>Use consistent image file names and keep images in this folder.</li>
+        <li>Optional: add contact or graduation notes in each alumni tile.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
