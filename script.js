@@ -231,3 +231,57 @@ if (window.elementSdk) {
     mapToEditPanelValues
   });
 }
+
+// Google Sheets Form Handler
+const googleSheetsForm = document.getElementById('info-gateway-form');
+const formStatus = document.getElementById('form-status');
+
+// Replace this with your Google Apps Script deployment URL
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/d/YOUR_DEPLOYMENT_ID/usercallback';
+
+googleSheetsForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = {
+    name: document.getElementById('form-name').value,
+    email: document.getElementById('form-email').value,
+    phone: document.getElementById('form-phone').value,
+    message: document.getElementById('form-message').value,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    // Show loading state
+    formStatus.classList.remove('hidden');
+    formStatus.className = 'mb-4 p-3 rounded-lg bg-blue-100 text-blue-800';
+    formStatus.textContent = 'Sending your message...';
+
+    // Send data to Google Apps Script
+    const response = await fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    // Show success message
+    formStatus.className = 'mb-4 p-3 rounded-lg bg-green-100 text-green-800';
+    formStatus.textContent = '✅ Thank you! Your message has been sent successfully.';
+    
+    // Clear form
+    googleSheetsForm.reset();
+    
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      formStatus.classList.add('hidden');
+    }, 5000);
+
+  } catch (error) {
+    // Show error message
+    formStatus.className = 'mb-4 p-3 rounded-lg bg-red-100 text-red-800';
+    formStatus.textContent = '❌ Error sending message. Please try again.';
+    console.error('Form submission error:', error);
+  }
+});
