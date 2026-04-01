@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Calendar - Smt. M.M. Bhakta High School</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-white">
+    <header class="bg-gradient-to-br from-sky-100 to-emerald-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="w-20 h-20 bg-white border-4 border-blue-900 rounded-full flex items-center justify-center">
+                        <img src="photos/mmb school profile logo.png" alt="School Logo" class="rounded-full w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-blue-800">Smt. M.M. Bhakta High School</h1>
+                        <p class="text-gray-600">Exam Calendar 2026</p>
+                    </div>
+                </div>
+                <a href="index%20main.html" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2 rounded-full font-medium transition-all">← Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-600 mb-4">📋 Exam Calendar</h2>
+            <p class="text-gray-600 text-lg">Academic Year 2025-2026</p>
+        </div>
+
+        <!-- Download Section -->
+        <div class="bg-gradient-to-br from-blue-50 to-sky-50 rounded-3xl p-8 mb-8 shadow-lg border-2 border-blue-200">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">📥 Download Exam Calendar</h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="#" onclick="alert('PDF Download will be available soon')" class="bg-gradient-to-br from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white p-6 rounded-2xl text-center font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                    <p class="text-4xl mb-2">📄</p>
+                    <p>Download as PDF</p>
+                </a>
+                <a href="#" onclick="alert('JPEG Download will be available soon')" class="bg-gradient-to-br from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white p-6 rounded-2xl text-center font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                    <p class="text-4xl mb-2">🖼️</p>
+                    <p>Download as JPEG</p>
+                </a>
+                <a href="#" onclick="alert('Text Download will be available soon')" class="bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white p-6 rounded-2xl text-center font-bold shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                    <p class="text-4xl mb-2">📝</p>
+                    <p>Download as Text</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Content Preview -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border-2 border-blue-100">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">📅 Exam Schedule</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gradient-to-r from-blue-500 to-sky-500 text-white">
+                        <tr>
+                            <th class="px-4 py-3 text-left font-bold">Exam</th>
+                            <th class="px-4 py-3 text-left font-bold">Dates</th>
+                            <th class="px-4 py-3 text-left font-bold">Time</th>
+                            <th class="px-4 py-3 text-left font-bold">Classes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y-2 divide-blue-100">
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3 font-semibold">Half Yearly Exam</td>
+                            <td class="px-4 py-3">Sept 15 - Sept 28, 2025</td>
+                            <td class="px-4 py-3">10:00 AM - 1:00 PM</td>
+                            <td class="px-4 py-3">9-12</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3 font-semibold">Final Year Exam</td>
+                            <td class="px-4 py-3">March 10 - March 25, 2026</td>
+                            <td class="px-4 py-3">10:00 AM - 1:00 PM</td>
+                            <td class="px-4 py-3">9, 11-12</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3 font-semibold">Board Exam (SSC)</td>
+                            <td class="px-4 py-3">March 10 - April 5, 2026</td>
+                            <td class="px-4 py-3">10:00 AM - 1:00 PM</td>
+                            <td class="px-4 py-3">10</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50 transition-colors">
+                            <td class="px-4 py-3 font-semibold">Board Exam (HSC)</td>
+                            <td class="px-4 py-3">Feb 15 - March 10, 2026</td>
+                            <td class="px-4 py-3">10:00 AM - 1:00 PM</td>
+                            <td class="px-4 py-3">12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 bg-blue-50 rounded-2xl p-4 border-l-4 border-blue-500">
+                <p class="text-gray-700"><span class="font-bold">📌 Important Note:</span> Exam timings may change based on the official board notifications. Students are advised to check the notice board regularly for updates.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2026 Smt. M.M. Bhakta High School, Netrang. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
