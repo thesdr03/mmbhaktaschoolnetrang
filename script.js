@@ -526,3 +526,299 @@ googleSheetsForm.addEventListener('submit', async (e) => {
     console.error('Form submission error:', error);
   }
 });
+
+// ========================================
+// Announcement Carousel
+// ========================================
+let currentAnnouncement = 1;
+const totalAnnouncements = 4;
+
+function showAnnouncement(num) {
+  if (num > totalAnnouncements) currentAnnouncement = 1;
+  if (num < 1) currentAnnouncement = totalAnnouncements;
+  
+  document.querySelectorAll('.announcement-item').forEach(el => el.classList.add('hidden'));
+  document.getElementById('announcement-' + currentAnnouncement).classList.remove('hidden');
+  document.getElementById('announcement-counter').innerText = currentAnnouncement + ' / ' + totalAnnouncements;
+}
+
+function nextAnnouncement() {
+  currentAnnouncement++;
+  if (currentAnnouncement > totalAnnouncements) currentAnnouncement = 1;
+  showAnnouncement(currentAnnouncement);
+}
+
+function prevAnnouncement() {
+  currentAnnouncement--;
+  if (currentAnnouncement < 1) currentAnnouncement = totalAnnouncements;
+  showAnnouncement(currentAnnouncement);
+}
+
+// Auto-advance announcements
+if (document.querySelector('.announcement-item')) {
+  showAnnouncement(currentAnnouncement);
+  setInterval(nextAnnouncement, 3000);
+}
+
+// ========================================
+// Photo Slideshow with Motivational Quotes
+// ========================================
+let currentSlideIndex = 1;
+const totalSlidesCount = 7;
+let autoSlideInterval = null;
+let isAutoSlidePaused = false;
+
+const slideQuotes = [
+  { quote: "Learning, values, and growth under one roof", subquote: "A vibrant campus where academics, discipline, culture, and confidence grow together." },
+  { quote: "Education is the most powerful weapon", subquote: "Which you can use to change the world. Join us and make a difference." },
+  { quote: "Success is not final, failure is not fatal", subquote: "It is the courage to continue that counts. Keep moving forward!" },
+  { quote: "The future belongs to those who believe", subquote: "In the beauty of their dreams. Dream big and achieve bigger!" },
+  { quote: "Dream, Believe, Achieve", subquote: "Every expert was once a beginner. Start your journey with us today." },
+  { quote: "Excellence is not a destination", subquote: "But a continuous journey. Be part of our journey of excellence." },
+  { quote: "Your education is your superpower", subquote: "Empower yourself with knowledge, character, and confidence." }
+];
+
+function showSlide(n) {
+  if (n > totalSlidesCount) currentSlideIndex = 1;
+  if (n < 1) currentSlideIndex = totalSlidesCount;
+  
+  const quoteData = slideQuotes[currentSlideIndex - 1];
+  const quoteEl = document.querySelector('.slide-quote');
+  const subquoteEl = document.querySelector('.slide-subquote');
+  
+  for (let i = 1; i <= totalSlidesCount; i++) {
+    const slide = document.getElementById('slide-' + i);
+    if (slide) {
+      slide.style.opacity = i === currentSlideIndex ? '1' : '0';
+      slide.style.transform = i === currentSlideIndex ? 'scale(1)' : 'scale(1.05)';
+      slide.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    }
+  }
+  
+  if (quoteEl && subquoteEl && quoteData) {
+    quoteEl.style.opacity = '0';
+    quoteEl.style.transform = 'translateY(20px)';
+    subquoteEl.style.opacity = '0';
+    subquoteEl.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+      quoteEl.textContent = quoteData.quote;
+      subquoteEl.textContent = quoteData.subquote;
+      quoteEl.style.opacity = '1';
+      quoteEl.style.transform = 'translateY(0)';
+      subquoteEl.style.opacity = '1';
+      subquoteEl.style.transform = 'translateY(0)';
+      quoteEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      subquoteEl.style.transition = 'opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s';
+    }, 150);
+  }
+  
+  document.querySelectorAll('.slide-dot').forEach((dot, idx) => {
+    dot.classList.toggle('bg-blue-500', idx + 1 === currentSlideIndex);
+    dot.classList.toggle('bg-gray-400', idx + 1 !== currentSlideIndex);
+  });
+  
+  const counterEl = document.getElementById('slide-counter');
+  if (counterEl) counterEl.innerText = currentSlideIndex + ' / ' + totalSlidesCount;
+}
+
+function slideNext() {
+  currentSlideIndex++;
+  showSlide(currentSlideIndex);
+  resetAutoSlide();
+}
+
+function slidePrev() {
+  currentSlideIndex--;
+  showSlide(currentSlideIndex);
+  resetAutoSlide();
+}
+
+function goToSlide(n) {
+  currentSlideIndex = n;
+  showSlide(currentSlideIndex);
+  resetAutoSlide();
+}
+
+function toggleAutoSlide() {
+  isAutoSlidePaused = !isAutoSlidePaused;
+  const playIcon = document.getElementById('playIcon');
+  const pauseIcon = document.getElementById('pauseIcon');
+  
+  if (isAutoSlidePaused) {
+    if (autoSlideInterval) clearInterval(autoSlideInterval);
+    playIcon.classList.remove('hidden');
+    pauseIcon.classList.add('hidden');
+  } else {
+    startAutoSlide();
+    playIcon.classList.add('hidden');
+    pauseIcon.classList.remove('hidden');
+  }
+}
+
+function startAutoSlide() {
+  if (autoSlideInterval) clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(() => {
+    currentSlideIndex++;
+    if (currentSlideIndex > totalSlidesCount) currentSlideIndex = 1;
+    showSlide(currentSlideIndex);
+  }, 5000);
+}
+
+function resetAutoSlide() {
+  if (!isAutoSlidePaused) {
+    startAutoSlide();
+  }
+}
+
+// Initialize slideshow
+if (document.getElementById('slide-1')) {
+  showSlide(currentSlideIndex);
+  startAutoSlide();
+}
+
+// ========================================
+// Gallery Lightbox
+// ========================================
+let currentGallerySlide = 1;
+const totalGallerySlides = 2;
+
+function showGallerySlide(n) {
+  if (n > totalGallerySlides) currentGallerySlide = 1;
+  if (n < 1) currentGallerySlide = totalGallerySlides;
+  
+  document.querySelectorAll('.gallery-slide').forEach((el, idx) => { 
+    el.classList.toggle('hidden', idx + 1 !== currentGallerySlide); 
+  });
+  document.querySelectorAll('.gallery-dot').forEach((dot, idx) => { 
+    dot.classList.toggle('bg-purple-500', idx + 1 === currentGallerySlide); 
+    dot.classList.toggle('bg-gray-400', idx + 1 !== currentGallerySlide); 
+  });
+}
+
+function galleryNext() { 
+  currentGallerySlide++; 
+  showGallerySlide(currentGallerySlide); 
+}
+
+function galleryPrev() { 
+  currentGallerySlide--; 
+  showGallerySlide(currentGallerySlide); 
+}
+
+function openLightbox(el) { 
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightbox = document.getElementById('lightbox');
+  if (lightboxImg && el) {
+    lightboxImg.src = el.querySelector('img').src;
+  }
+  if (lightbox) {
+    lightbox.classList.remove('hidden');
+  }
+}
+
+function closeLightbox() { 
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.classList.add('hidden');
+  }
+}
+
+function openAchievementLightbox(el) {
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightbox = document.getElementById('lightbox');
+  if (lightboxImg && el) {
+    lightboxImg.src = el.querySelector('img').src;
+  }
+  if (lightbox) {
+    lightbox.classList.remove('hidden');
+  }
+}
+
+// Auto-advance gallery
+if (document.querySelector('.gallery-slide')) {
+  setInterval(() => { 
+    currentGallerySlide++; 
+    if (currentGallerySlide > totalGallerySlides) currentGallerySlide = 1;
+    showGallerySlide(currentGallerySlide); 
+  }, 6000);
+}
+
+// ========================================
+// Page Search Functionality
+// ========================================
+const pages = [
+  {name: "Home", url: "#home"},
+  {name: "About School", url: "about-school.html"},
+  {name: "Management", url: "management.html"},
+  {name: "Faculties / Staff", url: "staff.html"},
+  {name: "SSC Stream", url: "stream-ssc.html"},
+  {name: "Arts Stream", url: "stream-arts.html"},
+  {name: "Commerce Stream", url: "stream-commerce.html"},
+  {name: "Science Stream", url: "stream-science.html"},
+  {name: "Student Corner", url: "student-corner.html"},
+  {name: "News & Events", url: "news-events.html"},
+  {name: "Circulars", url: "circulars.html"},
+  {name: "Achievements", url: "achievements.html"},
+  {name: "Sports Gallery", url: "sports-gallery.html"},
+  {name: "Cultural Events", url: "cultural-events-gallery.html"},
+  {name: "Art Exhibition", url: "art-exhibition-gallery.html"},
+  {name: "Annual Day", url: "annual-day-gallery.html"},
+  {name: "Graduation", url: "graduation-gallery.html"},
+  {name: "Campus Tour", url: "360-campus-gallery.html"},
+  {name: "Alumni", url: "alumani/alumni-website.html"},
+  {name: "Contact", url: "#contact"},
+  {name: "School Building", url: "school-building-gallery.html"},
+  {name: "Playground", url: "playground.html"},
+  {name: "Auditorium", url: "auditorium.html"},
+  {name: "Science Lab", url: "science-lab.html"},
+  {name: "Computer Lab", url: "computer-lab.html"},
+  {name: "Library", url: "library.html"},
+  {name: "Class Rooms", url: "class-room.html"},
+  {name: "Staff Room", url: "staff-room.html"},
+  {name: "Main Building", url: "main-building.html"}
+];
+
+function searchPages(e) {
+  const input = e.target.value.toLowerCase();
+  const results = document.getElementById("search-results");
+  if (!results) return;
+  
+  if (input.length < 2) {
+    results.classList.add("hidden");
+    return;
+  }
+  
+  const matches = pages.filter(p => p.name.toLowerCase().includes(input));
+  if (matches.length === 0) {
+    results.innerHTML = '<div class="p-3 text-gray-500 text-sm">No results found</div>';
+  } else {
+    results.innerHTML = matches.map(p => '<a href="' + p.url + '" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700 text-sm border-b border-gray-100">' + p.name + '</a>').join('');
+  }
+  results.classList.remove("hidden");
+}
+
+// Close search results when clicking outside
+document.addEventListener("click", function(e) {
+  const searchInput = document.getElementById("nav-search-input");
+  const searchResults = document.getElementById("search-results");
+  if (searchInput && searchResults) {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+      searchResults.classList.add("hidden");
+    }
+  }
+});
+
+// ========================================
+// Scroll Up Button
+// ========================================
+window.onscroll = function() {
+  var btn = document.getElementById("scrollUpBtn");
+  if (btn) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      btn.style.display = "flex";
+    } else {
+      btn.style.display = "none";
+    }
+  }
+};
