@@ -74,6 +74,8 @@ function showSection(sectionId) {
     loadAchievements();
   } else if (sectionId === 'events-section') {
     loadEvents();
+  } else if (sectionId === 'gallery-section') {
+    loadGallery();
   }
 }
 
@@ -82,7 +84,8 @@ const DATA_KEYS = {
   announcements: 'mmb_announcements',
   news: 'mmb_news',
   achievements: 'mmb_achievements',
-  events: 'mmb_events'
+  events: 'mmb_events',
+  gallery: 'mmb_gallery'
 };
 
 // Sample initial data
@@ -107,6 +110,14 @@ const initialData = {
     { id: 1, title: 'Annual Day Celebration', date: '2026-03-25', time: '10:00 AM', venue: 'School Auditorium', active: true },
     { id: 2, title: 'Science Exhibition', date: '2026-02-20', time: '09:00 AM', venue: 'School Ground', active: false },
     { id: 3, title: 'Parent-Teacher Meeting', date: '2026-04-20', time: '02:00 PM', venue: 'School Auditorium', active: true }
+  ],
+  [DATA_KEYS.gallery]: [
+    { id: 1, title: 'Annual Day 2026', category: 'annual', image: 'photos/school gallary/Annual Day.jpg', date: '2026-03-25', active: true },
+    { id: 2, title: 'Sports Day', category: 'sports', image: 'photos/school gallary/Sports Day.jpg', date: '2026-01-15', active: true },
+    { id: 3, title: 'Cultural Events', category: 'cultural', image: 'photos/school gallary/Cultural Events.jpg', date: '2026-02-10', active: true },
+    { id: 4, title: 'Art Exhibition', category: 'art', image: 'photos/school gallary/Art Exhibition.jpg', date: '2026-01-20', active: true },
+    { id: 5, title: 'Building & Facilities', category: 'building', image: 'photos/school gallary/Building & Facilities.jpg', date: '2026-04-01', active: true },
+    { id: 6, title: 'Graduation Ceremony', category: 'graduation', image: 'photos/IMG-20230820-WA0000.jpg', date: '2026-03-30', active: true }
   ]
 };
 
@@ -228,6 +239,49 @@ function loadEvents() {
   `).join('');
 }
 
+function loadGallery() {
+  const data = getData(DATA_KEYS.gallery);
+  const grid = document.getElementById('gallery-grid');
+  if (!grid) return;
+  
+  grid.innerHTML = data.map(item => `
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <img src="${item.image}" alt="${item.title}" class="w-full h-32 object-cover" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+      <div class="p-3">
+        <h4 class="font-semibold text-sm truncate">${item.title}</h4>
+        <p class="text-xs text-gray-500">${item.category}</p>
+        <div class="flex gap-2 mt-2">
+          <button class="btn-edit text-xs py-1 px-2" onclick="editItem('gallery', ${item.id})">Edit</button>
+          <button class="btn-delete text-xs py-1 px-2" onclick="deleteItemConfirm('gallery', ${item.id})">Delete</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterGallery() {
+  const category = document.getElementById('gallery-filter').value;
+  const data = getData(DATA_KEYS.gallery);
+  const grid = document.getElementById('gallery-grid');
+  if (!grid) return;
+  
+  const filtered = category === 'all' ? data : data.filter(item => item.category === category);
+  
+  grid.innerHTML = filtered.map(item => `
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <img src="${item.image}" alt="${item.title}" class="w-full h-32 object-cover" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+      <div class="p-3">
+        <h4 class="font-semibold text-sm truncate">${item.title}</h4>
+        <p class="text-xs text-gray-500">${item.category}</p>
+        <div class="flex gap-2 mt-2">
+          <button class="btn-edit text-xs py-1 px-2" onclick="editItem('gallery', ${item.id})">Edit</button>
+          <button class="btn-delete text-xs py-1 px-2" onclick="deleteItemConfirm('gallery', ${item.id})">Delete</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
 // Show Add/Edit Modal
 let currentEditType = '';
 let currentEditId = null;
@@ -248,7 +302,8 @@ function showAddModal(type) {
     'announcements': ['title', 'date', 'active'],
     'news': ['title', 'category', 'date', 'active'],
     'achievements': ['title', 'student', 'event', 'date'],
-    'events': ['title', 'date', 'time', 'venue', 'active']
+    'events': ['title', 'date', 'time', 'venue', 'active'],
+    'gallery': ['title', 'category', 'image', 'description', 'date', 'active']
   };
   
   document.querySelectorAll('.form-field').forEach(field => {
@@ -289,8 +344,19 @@ function editItem(type, id) {
     'announcements': ['title', 'date', 'active'],
     'news': ['title', 'category', 'date', 'active'],
     'achievements': ['title', 'student', 'event', 'date'],
-    'events': ['title', 'date', 'time', 'venue', 'active']
+    'events': ['title', 'date', 'time', 'venue', 'active'],
+    'gallery': ['title', 'category', 'image', 'description', 'date', 'active']
   };
+  
+  // Fill gallery fields
+  if (type === 'gallery') {
+    if (document.getElementById('item-image')) {
+      document.getElementById('item-image').value = item.image || '';
+    }
+    if (document.getElementById('item-description')) {
+      document.getElementById('item-description').value = item.description || '';
+    }
+  }
   
   document.querySelectorAll('.form-field').forEach(field => {
     const fieldName = field.dataset.field;

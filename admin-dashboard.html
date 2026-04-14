@@ -257,16 +257,27 @@
       <section id="gallery-section" class="content-section">
         <div class="section-header">
           <h2>Manage Gallery</h2>
-          <button class="btn-primary">
+          <button class="btn-primary" onclick="showAddModal('gallery')">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            Upload Image
+            Add Image
           </button>
         </div>
-        <div class="p-8 bg-white rounded-2xl">
-          <p class="text-gray-600">Gallery management feature coming soon...</p>
+        <div class="mb-6">
+          <select id="gallery-filter" onchange="filterGallery()" class="p-2 border rounded-lg">
+            <option value="all">All Categories</option>
+            <option value="sports">Sports</option>
+            <option value="cultural">Cultural Events</option>
+            <option value="annual">Annual Day</option>
+            <option value="art">Art Exhibition</option>
+            <option value="graduation">Graduation</option>
+            <option value="building">Building & Facilities</option>
+          </select>
         </div>
+        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        </div>
+      </section>
       </section>
 
       <!-- Settings Section -->
@@ -309,7 +320,14 @@
         </div>
         <div class="form-field form-group" data-field="category">
           <label>Category</label>
-          <input type="text" id="item-category">
+          <select id="item-category" class="w-full p-3 border rounded-lg bg-white">
+            <option value="sports">Sports</option>
+            <option value="cultural">Cultural Events</option>
+            <option value="annual">Annual Day</option>
+            <option value="art">Art Exhibition</option>
+            <option value="graduation">Graduation</option>
+            <option value="building">Building & Facilities</option>
+          </select>
         </div>
         <div class="form-field form-group" data-field="student">
           <label>Student Name</label>
@@ -336,6 +354,15 @@
             <input type="checkbox" id="item-active" checked>
             <span>Active</span>
           </label>
+        </div>
+        <div class="form-field form-group" data-field="image">
+          <label>Image URL</label>
+          <input type="text" id="item-image" placeholder="Enter image URL or select file">
+          <p class="text-xs text-gray-500 mt-1">Paste image URL or use photos/ folder</p>
+        </div>
+        <div class="form-field form-group" data-field="description">
+          <label>Description</label>
+          <textarea id="item-description" rows="3" placeholder="Enter description"></textarea>
         </div>
         <div class="form-actions">
           <button type="submit" class="btn-primary">Save</button>
