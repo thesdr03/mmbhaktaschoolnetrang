@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Smt. M.M. Bhakta High School</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>
+          <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+          </svg>
+          Admin Panel
+        </h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a class="nav-item active" onclick="showSection('dashboard-section')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+          </svg>
+          Dashboard
+        </a>
+        <a class="nav-item" onclick="showSection('announcements-section')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+          </svg>
+          Announcements
+        </a>
+        <a class="nav-item" onclick="showSection('news-section')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+          </svg>
+          News & Events
+        </a>
+        <a class="nav-item" onclick="showSection('achievements-section')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+          </svg>
+          Achievements
+        </a>
+        <a class="nav-item" onclick="showSection('gallery-section')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          Gallery
+        </a>
+        <a class="nav-item" onclick="showSection('settings-section')">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          Settings
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-info">
+          <span>Welcome, Admin</span>
+          <a href="#" onclick="logoutAdmin()" class="logout-btn">Logout</a>
+        </div>
+      </header>
+
+      <!-- Alert Message -->
+      <div id="alert-message" class="alert"></div>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard-section" class="content-section active">
+        <div class="dashboard-grid">
+          <div class="stat-card" style="border-left: 4px solid #8b5cf6;">
+            <div class="icon" style="background: rgba(139, 92, 246, 0.1);">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
+              </svg>
+            </div>
+            <h3 class="stat-number">4</h3>
+            <p>Announcements</p>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #10b981;">
+            <div class="icon" style="background: rgba(16, 185, 129, 0.1);">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+              </svg>
+            </div>
+            <h3 class="stat-number">3</h3>
+            <p>News Articles</p>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #f59e0b;">
+            <div class="icon" style="background: rgba(245, 158, 11, 0.1);">
+              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+              </svg>
+            </div>
+            <h3 class="stat-number">3</h3>
+            <p>Achievements</p>
+          </div>
+          <div class="stat-card" style="border-left: 4px solid #ef4444;">
+            <div class="icon" style="background: rgba(239, 68, 68, 0.1);">
+              <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="stat-number">3</h3>
+            <p>Events</p>
+          </div>
+        </div>
+
+        <div class="p-8">
+          <h2 class="text-xl font-semibold mb-4 text-gray-800">Quick Actions</h2>
+          <div class="flex flex-wrap gap-4">
+            <button onclick="showSection('announcements-section'); document.querySelector('#announcements-section .btn-primary').click();" class="btn-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              Add Announcement
+            </button>
+            <button onclick="showSection('news-section'); document.querySelector('#news-section .btn-primary').click();" class="btn-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              Add News
+            </button>
+            <button onclick="showSection('achievements-section'); document.querySelector('#achievements-section .btn-primary').click();" class="btn-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              Add Achievement
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Announcements Section -->
+      <section id="announcements-section" class="content-section">
+        <div class="section-header">
+          <h2>Manage Announcements</h2>
+          <button class="btn-primary" onclick="showAddModal('announcements')">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add Announcement
+          </button>
+        </div>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="announcements-table-body">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- News Section -->
+      <section id="news-section" class="content-section">
+        <div class="section-header">
+          <h2>Manage News</h2>
+          <button class="btn-primary" onclick="showAddModal('news')">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add News
+          </button>
+        </div>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="news-table-body">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Achievements Section -->
+      <section id="achievements-section" class="content-section">
+        <div class="section-header">
+          <h2>Manage Achievements</h2>
+          <button class="btn-primary" onclick="showAddModal('achievements')">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add Achievement
+          </button>
+        </div>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Student</th>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="achievements-table-body">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Events Section -->
+      <section id="events-section" class="content-section">
+        <div class="section-header">
+          <h2>Manage Events</h2>
+          <button class="btn-primary" onclick="showAddModal('events')">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add Event
+          </button>
+        </div>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="events-table-body">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Gallery Section -->
+      <section id="gallery-section" class="content-section">
+        <div class="section-header">
+          <h2>Manage Gallery</h2>
+          <button class="btn-primary">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Upload Image
+          </button>
+        </div>
+        <div class="p-8 bg-white rounded-2xl">
+          <p class="text-gray-600">Gallery management feature coming soon...</p>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings-section" class="content-section">
+        <div class="section-header">
+          <h2>Settings</h2>
+        </div>
+        <div class="form-container">
+          <div class="form-group">
+            <label>Admin Username</label>
+            <input type="text" value="admin" disabled>
+          </div>
+          <div class="form-group">
+            <label>Change Password</label>
+            <input type="password" placeholder="Enter new password">
+          </div>
+          <div class="form-group">
+            <label>School Name</label>
+            <input type="text" value="Smt. M.M. Bhakta High School, Netrang">
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="item-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Add New Item</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="item-form" onsubmit="saveItem(event)">
+        <div class="form-field form-group" data-field="title">
+          <label>Title</label>
+          <input type="text" id="item-title" required>
+        </div>
+        <div class="form-field form-group" data-field="category">
+          <label>Category</label>
+          <input type="text" id="item-category">
+        </div>
+        <div class="form-field form-group" data-field="student">
+          <label>Student Name</label>
+          <input type="text" id="item-student">
+        </div>
+        <div class="form-field form-group" data-field="event">
+          <label>Event Name</label>
+          <input type="text" id="item-event">
+        </div>
+        <div class="form-field form-group" data-field="date">
+          <label>Date</label>
+          <input type="date" id="item-date">
+        </div>
+        <div class="form-field form-group" data-field="time">
+          <label>Time</label>
+          <input type="text" id="item-time">
+        </div>
+        <div class="form-field form-group" data-field="venue">
+          <label>Venue</label>
+          <input type="text" id="item-venue">
+        </div>
+        <div class="form-field form-group" data-field="active">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" id="item-active" checked>
+            <span>Active</span>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Save</button>
+          <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin-script.js"></script>
+</body>
+</html>

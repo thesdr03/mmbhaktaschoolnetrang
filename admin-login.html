@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Smt. M.M. Bhakta High School</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
+  <div class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-full mb-4">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white">Admin Panel</h1>
+        <p class="text-purple-300 mt-2">Smt. M.M. Bhakta High School, Netrang</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/20">
+        <form id="admin-login-form" class="space-y-6">
+          <div>
+            <label class="block text-white text-sm font-medium mb-2">Username</label>
+            <input type="text" id="admin-username" required
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/50 transition"
+              placeholder="Enter username">
+          </div>
+          <div>
+            <label class="block text-white text-sm font-medium mb-2">Password</label>
+            <div class="relative">
+              <input type="password" id="admin-password" required
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-300 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/50 transition"
+                placeholder="Enter password">
+              <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-purple-300 hover:text-white">
+                <svg id="eye-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div id="login-error" class="hidden bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-3 rounded-xl text-sm"></div>
+          <button type="submit" 
+            class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition-all transform hover:scale-[1.02] shadow-lg">
+            Login
+          </button>
+        </form>
+        <div class="mt-6 text-center">
+          <a href="index main.html" class="text-purple-300 hover:text-white text-sm transition">← Back to Website</a>
+        </div>
+      </div>
+      
+      <p class="text-center text-purple-400/60 text-xs mt-8">
+        © 2026 Smt. M.M. Bhakta High School, Netrang
+      </p>
+    </div>
+  </div>
+  <script src="admin-script.js"></script>
+</body>
+</html>
