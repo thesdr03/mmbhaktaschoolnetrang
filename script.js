@@ -12,11 +12,15 @@ const defaultConfig = {
   secondary_color: '#d97706'
 };
 
+// Run after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+
 // Tab functionality
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabPanels = document.querySelectorAll('.tab-panel');
 
-tabBtns.forEach(btn => {
+if (tabBtns.length > 0) {
+  tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const tabId = btn.dataset.tab;
     
@@ -810,15 +814,16 @@ document.addEventListener("click", function(e) {
 });
 
 // ========================================
-// Scroll Up Button
-// ========================================
-window.onscroll = function() {
-  var btn = document.getElementById("scrollUpBtn");
-  if (btn) {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      btn.style.display = "flex";
-    } else {
-      btn.style.display = "none";
+  // Scroll Up Button
+  // ========================================
+  window.onscroll = function() {
+    var btn = document.getElementById("scrollUpBtn");
+    if (btn) {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "flex";
+      } else {
+        btn.style.display = "none";
+      }
     }
-  }
-};
+  };
+});
