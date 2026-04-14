@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shristi English Medium School, Lambhvel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1a3a6e;
+    --mid-blue: #1e5bb5;
+    --accent: #2980e8;
+    --light-blue: #d6e8ff;
+    --sky: #e8f2ff;
+    --white: #ffffff;
+    --gray: #6b7a8d;
+    --light-gray: #f4f7fb;
+    --gold: #f5c842;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-logo .emblem {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 18px; color: var(--navy);
+    flex-shrink: 0;
+  }
+  .nav-logo span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: white; transition: 0.3s; }
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: var(--navy); z-index: 999; padding: 20px 5%;
+    flex-direction: column; gap: 16px;
+    border-top: 1px solid var(--accent);
+  }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    font-size: 1rem; font-weight: 500; padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .mobile-menu.open { display: flex; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--blue) 55%, var(--mid-blue) 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(41,128,232,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(245,200,66,0.08) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--white) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--white) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,200,66,0.15);
+    border: 1px solid rgba(245,200,66,0.4);
+    color: var(--gold);
+    padding: 6px 20px; border-radius: 30px;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 28px;
+    animation: fadeDown 0.8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900; color: var(--white);
+    line-height: 1.08; margin-bottom: 12px;
+    animation: fadeDown 0.9s 0.1s ease both;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem; color: var(--light-blue);
+    margin-bottom: 20px; font-weight: 300; letter-spacing: 0.02em;
+    animation: fadeDown 1s 0.2s ease both;
+  }
+  .hero-location {
+    font-size: 0.9rem; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 44px;
+    animation: fadeDown 1s 0.25s ease both;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+    animation: fadeDown 1s 0.35s ease both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 900; color: var(--gold); display: block;
+  }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.3); font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; animation: bounce 2s infinite;
+  }
+  .scroll-hint::after {
+    content: '↓'; font-size: 1.2rem;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 5%; }
+
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900; color: var(--navy);
+    line-height: 1.1; margin-bottom: 18px;
+  }
+  .section-desc { font-size: 1rem; color: var(--gray); max-width: 560px; line-height: 1.7; }
+
+  .section-header { margin-bottom: 60px; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-desc { margin: 0 auto; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--light-gray); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-visual {
+    background: linear-gradient(135deg, var(--blue), var(--mid-blue));
+    border-radius: 24px; padding: 50px 40px; color: white; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .about-visual::before {
+    content: '🎓';
+    position: absolute; top: -20px; right: -20px;
+    font-size: 120px; opacity: 0.06;
+  }
+  .about-visual h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; margin-bottom: 16px; color: var(--gold);
+  }
+  .about-visual p { font-size: 0.95rem; line-height: 1.8; opacity: 0.9; }
+  .about-list { margin-top: 28px; text-align: left; }
+  .about-list li {
+    list-style: none; padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem; display: flex; align-items: center; gap: 10px;
+  }
+  .about-list li::before { content: '✦'; color: var(--gold); font-size: 0.7rem; }
+  .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .value-card {
+    background: white; border-radius: 12px; padding: 20px;
+    border-left: 4px solid var(--accent);
+    box-shadow: 0 2px 12px rgba(10,22,40,0.06);
+  }
+  .value-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--navy); }
+  .value-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── NOTICES ── */
+  #notices { background: white; }
+  .notices-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+  .notice-card {
+    background: var(--light-gray); border-radius: 16px; padding: 28px;
+    border-top: 4px solid var(--accent);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .notice-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(10,22,40,0.1); }
+  .notice-date { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+  .notice-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .notice-body { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+  .notice-tag {
+    display: inline-block; margin-top: 14px;
+    background: var(--light-blue); color: var(--blue);
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+    padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+  }
+
+  /* ── TEACHERS ── */
+  #teachers { background: var(--sky); }
+  .teachers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px; }
+  .teacher-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(10,22,40,0.07);
+    transition: transform 0.25s, box-shadow 0.25s; text-align: center;
+  }
+  .teacher-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10,22,40,0.13); }
+  .teacher-avatar {
+    width: 100%; aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--mid-blue) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: white;
+    position: relative;
+  }
+  .teacher-avatar .initials {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; color: rgba(255,255,255,0.9);
+  }
+  .teacher-info { padding: 20px 16px 24px; }
+  .teacher-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .teacher-sub { font-size: 0.82rem; color: var(--accent); font-weight: 600; margin-bottom: 6px; }
+  .teacher-exp { font-size: 0.78rem; color: var(--gray); }
+
+  /* ── RESULTS ── */
+  #results { background: linear-gradient(160deg, var(--navy), var(--blue)); color: white; }
+  #results .section-title { color: white; }
+  #results .section-label { color: var(--gold); }
+  #results .section-desc { color: rgba(255,255,255,0.6); }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+  .result-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 32px 24px; text-align: center;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .result-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+  .result-icon { font-size: 2.4rem; margin-bottom: 12px; }
+  .result-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900; color: var(--gold);
+    line-height: 1;
+  }
+  .result-year { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin: 6px 0 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .result-label { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.4; }
+  .achievements-list { margin-top: 52px; }
+  .achievements-list h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--gold); margin-bottom: 24px; text-align: center;
+  }
+  .achievement-item {
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,0.05); border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 12px;
+    border-left: 3px solid var(--gold);
+  }
+  .achievement-item span { font-size: 1.4rem; }
+  .achievement-item p { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.4; }
+
+  /* ── GALLERY ── */
+  #gallery { background: var(--light-gray); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+  .gallery-item {
+    border-radius: 14px; overflow: hidden;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, var(--blue), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    position: relative; cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(10,22,40,0.2); }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  .gallery-item .gallery-emoji { font-size: 3rem; opacity: 0.6; }
+  .gallery-item:nth-child(1) .gallery-emoji { font-size: 5rem; }
+  .gallery-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px; font-size: 0.82rem; font-weight: 600;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    color: white;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-info-list { display: flex; flex-direction: column; gap: 20px; margin-top: 32px; }
+  .contact-item {
+    display: flex; gap: 18px; align-items: flex-start;
+    background: var(--sky); border-radius: 14px; padding: 20px;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--mid-blue); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; color: white;
+  }
+  .contact-item h4 { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+  .contact-item p { font-size: 0.92rem; font-weight: 500; color: var(--navy); }
+  .contact-form { background: var(--light-gray); border-radius: 20px; padding: 36px; }
+  .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 24px; color: var(--navy); }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--navy); margin-bottom: 6px; letter-spacing: 0.04em; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px 16px;
+    border: 1.5px solid rgba(10,22,40,0.1);
+    border-radius: 10px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--navy); background: white;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--accent);
+  }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .btn {
+    display: inline-block; padding: 14px 32px;
+    background: linear-gradient(135deg, var(--mid-blue), var(--accent));
+    color: white; border: none; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,91,181,0.35); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.6);
+    text-align: center; padding: 36px 5%;
+    border-top: 2px solid var(--accent);
+  }
+  footer strong { color: white; }
+  footer p { font-size: 0.85rem; line-height: 1.8; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item:nth-child(1) { grid-column: span 2; }
+  }
+  @media (max-width: 560px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="emblem">S</div>
+    <span>Shristi English<br>Medium School</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#notices">Notices</a>
+    <a href="#teachers">Teachers</a>
+    <a href="#results">Results</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()" id="ham">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#notices" onclick="closeMenu()">Notices</a>
+  <a href="#teachers" onclick="closeMenu()">Teachers</a>
+  <a href="#results" onclick="closeMenu()">Results</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Estd. 2005 · Lambhvel, Gujarat ✦</div>
+    <h1 class="hero-title">Shristi English<br>Medium School</h1>
+    <p class="hero-subtitle">Nurturing Minds · Shaping Futures · Building Character</p>
+    <p class="hero-location">📍 Lambhvel, Anand District, Gujarat</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Years of Excellence</span></div>
+      <div class="stat"><span class="stat-num">800+</span><span class="stat-label">Students</span></div>
+      <div class="stat"><span class="stat-num">40+</span><span class="stat-label">Faculty Members</span></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Pass Rate</span></div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">A Legacy of Quality Education</h2>
+      <p class="section-desc">Shristi English Medium School, Lambhvel has been a beacon of academic excellence, moral values, and holistic development for over two decades. We are committed to empowering every child with knowledge, skills, and confidence.</p>
+      <div class="values-grid">
+        <div class="value-card">
+          <h4>🎯 Our Mission</h4>
+          <p>To provide quality education that develops intellectual curiosity and character.</p>
+        </div>
+        <div class="value-card">
+          <h4>🌟 Our Vision</h4>
+          <p>To be a leading school nurturing responsible, innovative global citizens.</p>
+        </div>
+        <div class="value-card">
+          <h4>📚 Curriculum</h4>
+          <p>GSEB & CBSE-aligned curriculum with modern, activity-based learning methods.</p>
+        </div>
+        <div class="value-card">
+          <h4>🏅 Co-curricular</h4>
+          <p>Sports, arts, science fairs, cultural events and community programs.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <h3>Our Core Pillars</h3>
+      <p>We believe education is not just about academics — it is about shaping confident, compassionate, and curious human beings ready for tomorrow's challenges.</p>
+      <ul class="about-list">
+        <li>English Medium instruction from Nursery to 10th</li>
+        <li>Smart classrooms with modern technology</li>
+        <li>Library, Science & Computer Labs</li>
+        <li>Safe and child-friendly campus</li>
+        <li>Regular Parent–Teacher interactions</li>
+        <li>Annual Sports Day, Cultural Programs</li>
+        <li>Scholarship opportunities for meritorious students</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICE BOARD -->
+<section id="notices">
+  <div class="section-header center">
+    <p class="section-label">Stay Updated</p>
+    <h2 class="section-title">Notice Board</h2>
+    <p class="section-desc">Important announcements, events and circulars from the school administration.</p>
+  </div>
+  <div class="notices-grid">
+    <div class="notice-card">
+      <div class="notice-date">April 1, 2025</div>
+      <div class="notice-title">New Academic Year 2025–26 Begins</div>
+      <div class="notice-body">The new academic year commences from April 1st. All students are requested to report on time with complete stationery and new books.</div>
+      <span class="notice-tag">📢 General</span>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date">March 25, 2025</div>
+      <div class="notice-title">Admission Open for 2025–26</div>
+      <div class="notice-body">Admissions are now open for Nursery to Std. 9. Visit the school office between 9 AM – 1 PM with required documents. Limited seats available.</div>
+      <span class="notice-tag">🎒 Admission</span>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date">March 20, 2025</div>
+      <div class="notice-title">Annual Day Celebration — April 15</div>
+      <div class="notice-body">Shristi Annual Day will be held on 15th April, 2025. Parents are cordially invited. Students participating in programs to report by 4:00 PM.</div>
+      <span class="notice-tag">🎉 Event</span>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date">March 15, 2025</div>
+      <div class="notice-title">Std. 10 Board Exam Results</div>
+      <div class="notice-body">Congratulations to all Std. 10 students on their outstanding Board Exam performance! School achieved 98% pass rate with 15 distinctions.</div>
+      <span class="notice-tag">🏆 Results</span>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date">March 10, 2025</div>
+      <div class="notice-title">Summer Vacation Schedule</div>
+      <div class="notice-body">Summer vacation will begin from April 20 to June 10, 2025. Office will remain open on weekdays during vacation for admission inquiries.</div>
+      <span class="notice-tag">🌞 Holiday</span>
+    </div>
+    <div class="notice-card">
+      <div class="notice-date">March 5, 2025</div>
+      <div class="notice-title">Science Exhibition — Winners Announced</div>
+      <div class="notice-body">The Annual Science Exhibition was a grand success. Std. 8 students won the district-level competition. Congratulations to all participants!</div>
+      <span class="notice-tag">🔬 Achievement</span>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers">
+  <div class="section-header center">
+    <p class="section-label">Our Educators</p>
+    <h2 class="section-title">Meet Our Faculty</h2>
+    <p class="section-desc">Dedicated, qualified and passionate educators committed to bringing out the best in every student.</p>
+  </div>
+  <div class="teachers-grid">
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a3a6e,#1e5bb5)">
+        <span class="initials">RD</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Rajesh Desai</div>
+        <div class="teacher-sub">Principal</div>
+        <div class="teacher-exp">M.Ed · 22 yrs experience</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#2980e8,#1a3a6e)">
+        <span class="initials">MP</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Meena Patel</div>
+        <div class="teacher-sub">English & EVS</div>
+        <div class="teacher-exp">M.A., B.Ed · 15 yrs</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#1e5bb5,#2980e8)">
+        <span class="initials">AS</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Amit Shah</div>
+        <div class="teacher-sub">Mathematics</div>
+        <div class="teacher-exp">M.Sc., B.Ed · 18 yrs</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#0a1628,#1e5bb5)">
+        <span class="initials">PJ</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Priya Joshi</div>
+        <div class="teacher-sub">Science</div>
+        <div class="teacher-exp">M.Sc., B.Ed · 12 yrs</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#1a3a6e,#0a1628)">
+        <span class="initials">KR</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Kavita Rana</div>
+        <div class="teacher-sub">Gujarati & Hindi</div>
+        <div class="teacher-exp">M.A., B.Ed · 10 yrs</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#2980e8,#1a3a6e)">
+        <span class="initials">DM</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Dinesh Modi</div>
+        <div class="teacher-sub">Computer Science</div>
+        <div class="teacher-exp">MCA, B.Ed · 8 yrs</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#1e5bb5,#0a1628)">
+        <span class="initials">SB</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Sunita Bhatt</div>
+        <div class="teacher-sub">Social Science</div>
+        <div class="teacher-exp">M.A., B.Ed · 14 yrs</div>
+      </div>
+    </div>
+    <div class="teacher-card">
+      <div class="teacher-avatar" style="background:linear-gradient(135deg,#0a1628,#2980e8)">
+        <span class="initials">VP</span>
+      </div>
+      <div class="teacher-info">
+        <div class="teacher-name">Vijay Parmar</div>
+        <div class="teacher-sub">Sports & PT</div>
+        <div class="teacher-exp">B.P.Ed · 11 yrs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-header center">
+    <p class="section-label">Academic Excellence</p>
+    <h2 class="section-title">Results & Achievements</h2>
+    <p class="section-desc">Our students consistently achieve outstanding results, making the school and community proud.</p>
+  </div>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-icon">📊</div>
+      <div class="result-pct">98%</div>
+      <div class="result-year">2024–25</div>
+      <div class="result-label">Std. 10 Board Pass Rate</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">⭐</div>
+      <div class="result-pct">15</div>
+      <div class="result-year">2024–25</div>
+      <div class="result-label">Students with Distinction</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">🏆</div>
+      <div class="result-pct">95%</div>
+      <div class="result-year">2023–24</div>
+      <div class="result-label">Std. 10 Board Pass Rate</div>
+    </div>
+    <div class="result-card">
+      <div class="result-icon">🥇</div>
+      <div class="result-pct">92%</div>
+      <div class="result-year">2022–23</div>
+      <div class="result-label">Std. 10 Board Pass Rate</div>
+    </div>
+  </div>
+  <div class="achievements-list">
+    <h3>✦ School Achievements ✦</h3>
+    <div class="achievement-item"><span>🔬</span><p><strong>District Science Champion 2024</strong> — Our Std. 8 team won 1st place at the District Science Exhibition held at Anand.</p></div>
+    <div class="achievement-item"><span>🎨</span><p><strong>State Level Art Competition</strong> — 3 students selected at State Level Painting Competition organized by Gujarat Government.</p></div>
+    <div class="achievement-item"><span>⚽</span><p><strong>Taluka Sports Winner</strong> — Boys Football team won the Taluka-level championship for 2 consecutive years.</p></div>
+    <div class="achievement-item"><span>📖</span><p><strong>Best School Award</strong> — Recognized as Best English Medium School in Lambhvel region by District Education Office.</p></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header center">
+    <p class="section-label">Campus Life</p>
+    <h2 class="section-title">Photo Gallery</h2>
+    <p class="section-desc">A glimpse into the vibrant and enriching school life at Shristi.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1a3a6e,#2980e8)">
+      <div class="gallery-emoji">🏫</div>
+      <div class="gallery-label">School Campus</div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1e5bb5,#0a1628)">
+      <div class="gallery-emoji">🎭</div>
+      <div class="gallery-label">Annual Day</div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#2980e8,#1a3a6e)">
+      <div class="gallery-emoji">⚽</div>
+      <div class="gallery-label">Sports Day</div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#0a1628,#1e5bb5)">
+      <div class="gallery-emoji">🔬</div>
+      <div class="gallery-label">Science Lab</div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1e5bb5,#2980e8)">
+      <div class="gallery-emoji">📚</div>
+      <div class="gallery-label">Library</div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#0a1628,#2980e8)">
+      <div class="gallery-emoji">🎨</div>
+      <div class="gallery-label">Art Room</div>
+    </div>
+    <div class="gallery-item" style="background:linear-gradient(135deg,#1a3a6e,#1e5bb5)">
+      <div class="gallery-emoji">💻</div>
+      <div class="gallery-label">Computer Lab</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-desc">We'd love to hear from you. Reach out for admissions, inquiries, or any other information.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-info-list">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>Shristi English Medium School,<br>Lambhvel, Anand District, Gujarat — 388325</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 98765 XXXXX<br>+91 02692 XXXXXX</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <p>info@sristischool.edu.in<br>principal@sristischool.edu.in</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Office Hours</h4>
+            <p>Monday – Saturday<br>8:00 AM – 1:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Full Name">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+91 XXXXX XXXXX">
+      </div>
+      <div class="form-group">
+        <label>Inquiry About</label>
+        <select>
+          <option>Admission Inquiry</option>
+          <option>Fee Structure</option>
+          <option>General Query</option>
+          <option>Transport</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Type your message here..."></textarea>
+      </div>
+      <button class="btn" onclick="alert('Thank you! We will contact you soon. 🙏')">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Shristi English Medium School, Lambhvel</strong></p>
+  <p>Lambhvel, Anand District, Gujarat · © 2025 All Rights Reserved</p>
+  <p style="margin-top:8px;font-size:0.78rem;opacity:0.5;">Nurturing Minds · Shaping Futures · Building Character</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.notice-card, .teacher-card, .result-card, .gallery-item, .value-card, .contact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

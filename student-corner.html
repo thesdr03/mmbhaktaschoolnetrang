@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Corner - Smt. M.M. Bhakta High School, Netrang</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tab-active { border-bottom: 3px solid #2563eb; color: #2563eb; }
+    .timetable-cell:hover { background: #eff6ff; }
+    .ebook-card:hover { transform: translateY(-5px); }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-sky-50 to-white min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-sky-100 to-emerald-100 shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-20 h-20 bg-white border-4 border-blue-900 rounded-full overflow-hidden">
+            <img src="photos/mmb new logo.jpg" alt="School Logo" class="w-full h-full object-cover rounded-full">
+          </div>
+          <div>
+            <h1 class="text-xl md:text-2xl font-bold text-blue-800">Smt. M.M. Bhakta High School, Netrang</h1>
+            <p class="text-sm font-bold text-purple-700">Ta. Netrang, Bharuch, Gujarat | Since 1961</p>
+          </div>
+        </div>
+        <a href="index main.html" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2 rounded-full font-medium transition">← Back to Home</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Page Title -->
+    <div class="text-center mb-8">
+      <h2 class="text-4xl font-bold text-blue-800 mb-2">🎓 Student Corner</h2>
+      <p class="text-gray-600">Resources, Information & Updates for Students</p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-6">
+      <div class="flex flex-wrap overflow-x-auto">
+        <button onclick="showTab('timetable')" class="tab-btn px-6 py-4 font-semibold text-gray-700 hover:text-blue-600 border-b-3 border-transparent transition" data-tab="timetable">
+          📅 Daily Timetable
+        </button>
+        <button onclick="showTab('exam')" class="tab-btn px-6 py-4 font-semibold text-gray-700 hover:text-blue-600 border-b-3 border-transparent transition" data-tab="exam">
+          📝 Exam Timetable
+        </button>
+        <button onclick="showTab('holidays')" class="tab-btn px-6 py-4 font-semibold text-gray-700 hover:text-blue-600 border-b-3 border-transparent transition" data-tab="holidays">
+          🌴 Holidays List
+        </button>
+        <button onclick="showTab('yearly')" class="tab-btn px-6 py-4 font-semibold text-gray-700 hover:text-blue-600 border-b-3 border-transparent transition" data-tab="yearly">
+          📆 Yearly Plan
+        </button>
+        <button onclick="showTab('notices')" class="tab-btn px-6 py-4 font-semibold text-gray-700 hover:text-blue-600 border-b-3 border-transparent transition" data-tab="notices">
+          📢 Notices
+        </button>
+        <button onclick="showTab('ebooks')" class="tab-btn px-6 py-4 font-semibold text-gray-700 hover:text-blue-600 border-b-3 border-transparent transition" data-tab="ebooks">
+          📚 E-Books Corner
+        </button>
+      </div>
+    </div>
+
+    <!-- Daily Timetable Tab -->
+    <div id="timetable" class="tab-content bg-white rounded-2xl shadow-lg p-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">📅 Daily Class Timetable (Std. 9-12)</h3>
+      
+      <!-- Class Selection -->
+      <div class="flex flex-wrap gap-4 mb-6">
+        <select id="timetable-class" onchange="filterTimetable()" class="px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-600 focus:outline-none">
+          <option value="9">Std. 9</option>
+          <option value="10">Std. 10</option>
+          <option value="11-arts">Std. 11 Arts</option>
+          <option value="11-commerce">Std. 11 Commerce</option>
+          <option value="12-arts">Std. 12 Arts</option>
+          <option value="12-commerce">Std. 12 Commerce</option>
+        </select>
+      </div>
+
+      <!-- Timetable Grid -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-blue-600 text-white">
+              <th class="p-3 rounded-tl-lg">Period</th>
+              <th class="p-3">Monday</th>
+              <th class="p-3">Tuesday</th>
+              <th class="p-3">Wednesday</th>
+              <th class="p-3">Thursday</th>
+              <th class="p-3">Friday</th>
+              <th class="p-3 rounded-tr-lg">Saturday</th>
+            </tr>
+          </thead>
+          <tbody id="timetable-body">
+            <!-- Std 9-10 Timetable -->
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-gray-50">1<br><span class="text-xs text-gray-500">8:30-9:15</span></td>
+              <td class="p-3 border timetable-cell">Gujarati</td>
+              <td class="p-3 border timetable-cell">English</td>
+              <td class="p-3 border timetable-cell">Hindi</td>
+              <td class="p-3 border timetable-cell">Sanskrit</td>
+              <td class="p-3 border timetable-cell">Math</td>
+              <td class="p-3 border timetable-cell">Science</td>
+            </tr>
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-gray-50">2<br><span class="text-xs text-gray-500">9:15-10:00</span></td>
+              <td class="p-3 border timetable-cell">English</td>
+              <td class="p-3 border timetable-cell">Math</td>
+              <td class="p-3 border timetable-cell">Science</td>
+              <td class="p-3 border timetable-cell">Gujarati</td>
+              <td class="p-3 border timetable-cell">Social Science</td>
+              <td class="p-3 border timetable-cell">Math</td>
+            </tr>
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-gray-50">3<br><span class="text-xs text-gray-500">10:00-10:45</span></td>
+              <td class="p-3 border timetable-cell">Science</td>
+              <td class="p-3 border timetable-cell">Social Science</td>
+              <td class="p-3 border timetable-cell">Math</td>
+              <td class="p-3 border timetable-cell">English</td>
+              <td class="p-3 border timetable-cell">Gujarati</td>
+              <td class="p-3 border timetable-cell">English</td>
+            </tr>
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-amber-50" colspan="7">🍽️ Lunch Break (10:45-11:15)</td>
+            </tr>
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-gray-50">4<br><span class="text-xs text-gray-500">11:15-12:00</span></td>
+              <td class="p-3 border timetable-cell">Social Science</td>
+              <td class="p-3 border timetable-cell">Science</td>
+              <td class="p-3 border timetable-cell">English</td>
+              <td class="p-3 border timetable-cell">Math</td>
+              <td class="p-3 border timetable-cell">Science</td>
+              <td class="p-3 border timetable-cell">Gujarati</td>
+            </tr>
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-gray-50">5<br><span class="text-xs text-gray-500">12:00-12:45</span></td>
+              <td class="p-3 border timetable-cell">Math</td>
+              <td class="p-3 border timetable-cell">Gujarati</td>
+              <td class="p-3 border timetable-cell">Social Science</td>
+              <td class="p-3 border timetable-cell">Science</td>
+              <td class="p-3 border timetable-cell">Hindi</td>
+              <td class="p-3 border timetable-cell">Social Science</td>
+            </tr>
+            <tr class="timetable-row" data-class="9,10">
+              <td class="p-3 border font-semibold bg-gray-50">6<br><span class="text-xs text-gray-500">12:45-1:30</span></td>
+              <td class="p-3 border timetable-cell">Hindi</td>
+              <td class="p-3 border timetable-cell">Sanskrit</td>
+              <td class="p-3 border timetable-cell">Gujarati</td>
+              <td class="p-3 border timetable-cell">PE/Art</td>
+              <td class="p-3 border timetable-cell">Computer</td>
+              <td class="p-3 border timetable-cell">Library</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-500 text-sm mt-4">* Timetable may change during exams and special events. Check notices regularly.</p>
+    </div>
+
+    <!-- Exam Timetable Tab -->
+    <div id="exam" class="tab-content hidden bg-white rounded-2xl shadow-lg p-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">📝 Exam Timetable 2025-26</h3>
+      
+      <div class="mb-6">
+        <select onchange="filterExamTimetable()" class="px-4 py-2 border-2 border-purple-300 rounded-lg">
+          <option value="all">All Classes</option>
+          <option value="9">Std. 9</option>
+          <option value="10">Std. 10</option>
+          <option value="11">Std. 11</option>
+          <option value="12">Std. 12</option>
+        </select>
+      </div>
+
+      <!-- Mid-Term Exam -->
+      <div class="mb-8">
+        <h4 class="text-xl font-bold text-purple-700 mb-4">🗓️ Mid-Term Examination (15-20 April 2026)</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-purple-600 text-white">
+                <th class="p-3">Date</th>
+                <th class="p-3">Std. 9</th>
+                <th class="p-3">Std. 10</th>
+                <th class="p-3">Std. 11</th>
+                <th class="p-3">Std. 12</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="p-3 font-medium">15 April 2026</td>
+                <td class="p-3">Gujarati</td>
+                <td class="p-3">Math</td>
+                <td class="p-3">Compulsory Hindi</td>
+                <td class="p-3">Accountancy</td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <td class="p-3 font-medium">16 April 2026</td>
+                <td class="p-3">English</td>
+                <td class="p-3">English</td>
+                <td class="p-3">Economics</td>
+                <td class="p-3">Economics</td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-3 font-medium">17 April 2026</td>
+                <td class="p-3">Hindi</td>
+                <td class="p-3">Science</td>
+                <td class="p-3">English</td>
+                <td class="p-3">Commerce</td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <td class="p-3 font-medium">18 April 2026</td>
+                <td class="p-3">Math</td>
+                <td class="p-3">Social Science</td>
+                <td class="p-3">Gujarati</td>
+                <td class="p-3">English</td>
+              </tr>
+              <tr class="border-b">
+                <td class="p-3 font-medium">19 April 2026</td>
+                <td class="p-3">Science</td>
+                <td class="p-3">Gujarati</td>
+                <td class="p-3">History/Physics</td>
+                <td class="p-3">History/Physics</td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <td class="p-3 font-medium">20 April 2026</td>
+                <td class="p-3">Social Science</td>
+                <td class="p-3">Hindi</td>
+                <td class="p-3">Geography/Biology</td>
+                <td class="p-3">Geography/Biology</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Annual Exam -->
+      <div class="mb-8">
+        <h4 class="text-xl font-bold text-blue-700 mb-4">🗓️ Annual Examination (June 2026)</h4>
+        <div class="bg-blue-50 rounded-xl p-4 text-center">
+          <p class="text-gray-700">Annual examinations will be conducted after summer vacation.</p>
+          <p class="text-sm text-gray-500 mt-2">Detailed timetable will be published in May 2026.</p>
+        </div>
+      </div>
+
+      <!-- Board Exam -->
+      <div class="mb-4">
+        <h4 class="text-xl font-bold text-amber-700 mb-4">🗓️ Board Examinations (Std. 10 & 12)</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-amber-600 text-white">
+                <th class="p-3 rounded-tl-lg">Exam</th>
+                <th class="p-3">Date</th>
+                <th class="p-3">Important Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="p-3 font-medium">Std. 10 GSEB Board</td>
+                <td class="p-3">March 2026 (Expected)</td>
+                <td class="p-3">Check GSEB official website for exact dates</td>
+              </tr>
+              <tr class="border-b bg-gray-50">
+                <td class="p-3 font-medium">Std. 12 GSEB Board</td>
+                <td class="p-3">March 2026 (Expected)</td>
+                <td class="p-3">Check GSEB official website for exact dates</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Holidays List Tab -->
+    <div id="holidays" class="tab-content hidden bg-white rounded-2xl shadow-lg p-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">🌴 Holidays List 2026</h3>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-green-600 text-white">
+              <th class="p-3 rounded-tl-lg">Date</th>
+              <th class="p-3">Day</th>
+              <th class="p-3">Holiday</th>
+              <th class="p-3 rounded-tr-lg">Occasion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td class="p-3 font-medium">26 January 2026</td>
+              <td class="p-3">Monday</td>
+              <td class="p-3">Republic Day</td>
+              <td class="p-3">🇮🇳 National Celebration</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">17 February 2026</td>
+              <td class="p-3">Tuesday</td>
+              <td class="p-3">Mahashivratri</td>
+              <td class="p-3">🕉️ Religious</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">26 February 2026</td>
+              <td class="p-3">Thursday</td>
+              <td class="p-3">Maha Shivaratri Holiday</td>
+              <td class="p-3">🕉️ Religious</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">14 March 2026</td>
+              <td class="p-3">Saturday</td>
+              <td class="p-3">Uttrayan</td>
+              <td class="p-3">🪁 Festival</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">18 March 2026</td>
+              <td class="p-3">Wednesday</td>
+              <td class="p-3">Holi</td>
+              <td class="p-3">🎨 Festival</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">19 March 2026</td>
+              <td class="p-3">Thursday</td>
+              <td class="p-3">Holika Dahen</td>
+              <td class="p-3">🎨 Festival</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">2 April 2026</td>
+              <td class="p-3">Thursday</td>
+              <td class="p-3">Mahavir Jayanti</td>
+              <td class="p-3">🪔 Religious</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">3 April 2026</td>
+              <td class="p-3">Friday</td>
+              <td class="p-3">Good Friday</td>
+              <td class="p-3">✝️ Religious</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">10 April 2026</td>
+              <td class="p-3">Friday</td>
+              <td class="p-3">Easter</td>
+              <td class="p-3">✝️ Religious</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">14 April 2026</td>
+              <td class="p-3">Tuesday</td>
+              <td class="p-3">Dr. Ambedkar Jayanti</td>
+              <td class="p-3">🇮🇳 National</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">1 May 2026</td>
+              <td class="p-3">Friday</td>
+              <td class="p-3">Labour Day</td>
+              <td class="p-3">🇮🇳 National</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">14 August 2026</td>
+              <td class="p-3">Friday</td>
+              <td class="p-3">Independence Day</td>
+              <td class="p-3">🇮🇳 National</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">15 August 2026</td>
+              <td class="p-3">Saturday</td>
+              <td class="p-3">Independence Day</td>
+              <td class="p-3">🇮🇳 National</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">23 August 2026</td>
+              <td class="p-3">Sunday</td>
+              <td class="p-3">Janmashtami</td>
+              <td class="p-3">🕉️ Religious</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">15 October 2026</td>
+              <td class="p-3">Thursday</td>
+              <td class="p-3">Ganesh Chaturthi</td>
+              <td class="p-3">🐘 Festival</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">2 October 2026</td>
+              <td class="p-3">Friday</td>
+              <td class="p-3">Gandhi Jayanti</td>
+              <td class="p-3">🇮🇳 National</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">20 October 2026</td>
+              <td class="p-3">Tuesday</td>
+              <td class="p-3">Dussehra</td>
+              <td class="p-3">🪷 Festival</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">31 October 2026</td>
+              <td class="p-3">Saturday</td>
+              <td class="p-3">Diwali</td>
+              <td class="p-3">🪔 Festival</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">1 November 2026</td>
+              <td class="p-3">Sunday</td>
+              <td class="p-3">Bhai Dooj</td>
+              <td class="p-3">🪔 Festival</td>
+            </tr>
+            <tr class="border-b bg-gray-50">
+              <td class="p-3 font-medium">14 November 2026</td>
+              <td class="p-3">Saturday</td>
+              <td class="p-3">Children's Day</td>
+              <td class="p-3">👧 Special</td>
+            </tr>
+            <tr class="border-b">
+              <td class="p-3 font-medium">25 December 2026</td>
+              <td class="p-3">Friday</td>
+              <td class="p-3">Christmas</td>
+              <td class="p-3">✝️ Religious</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-gray-500 text-sm mt-4">* Holidays are subject to change. Check school notices for updates.</p>
+    </div>
+
+    <!-- Yearly Plan Tab -->
+    <div id="yearly" class="tab-content hidden bg-white rounded-2xl shadow-lg p-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">📆 Yearly Academic Plan 2025-26</h3>
+      
+      <div class="space-y-6">
+        <!-- Term 1 -->
+        <div class="border-l-4 border-blue-500 pl-4">
+          <h4 class="text-xl font-bold text-blue-700 mb-3">📗 Term 1 (April - September 2026)</h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-blue-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">April 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• School reopening after summer vacation</li>
+                <li>• Admission process for new students</li>
+                <li>• Unit Test 1 (Last week of April)</li>
+              </ul>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">May 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Second Unit Test</li>
+                <li>• Science Stream orientation</li>
+                <li>• Parent-Teacher Meeting</li>
+              </ul>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">June 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Summer Vacation (1-30 June)</li>
+                <li>• Annual Examinations</li>
+                <li>• Science Stream Launching</li>
+              </ul>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">July 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Third Unit Test</li>
+                <li>• Subject choices for Class 11</li>
+                <li>• CCA activities begin</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Term 2 -->
+        <div class="border-l-4 border-purple-500 pl-4">
+          <h4 class="text-xl font-bold text-purple-700 mb-3">📘 Term 2 (October - March 2027)</h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-purple-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">October 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Half-Yearly Examinations</li>
+                <li>• Annual Sports Day preparation</li>
+                <li>• Subject PT-1</li>
+              </ul>
+            </div>
+            <div class="bg-purple-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">November 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Annual Sports Day</li>
+                <li>• Diwali Celebration</li>
+                <li>• Fourth Unit Test</li>
+              </ul>
+            </div>
+            <div class="bg-purple-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">December 2026</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Annual Day rehearsal</li>
+                <li>• Pre-board examinations (Class 10, 12)</li>
+                <li>• Christmas Celebration</li>
+              </ul>
+            </div>
+            <div class="bg-purple-50 rounded-lg p-4">
+              <h5 class="font-bold text-gray-800 mb-2">January 2027</h5>
+              <ul class="text-gray-600 text-sm space-y-1">
+                <li>• Annual Day Celebration</li>
+                <li>• Board Practical Exams</li>
+                <li>• Republic Day Celebration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Important Dates -->
+        <div class="border-l-4 border-amber-500 pl-4">
+          <h4 class="text-xl font-bold text-amber-700 mb-3">⭐ Important Dates to Remember</h4>
+          <div class="bg-amber-50 rounded-xl p-6">
+            <div class="grid md:grid-cols-3 gap-4 text-center">
+              <div>
+                <p class="text-3xl font-bold text-amber-600">15-20 April</p>
+                <p class="text-gray-600">Mid-Term Exams</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-amber-600">25 March</p>
+                <p class="text-gray-600">Annual Day</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-amber-600">June 2026</p>
+                <p class="text-gray-600">Science Stream Launch</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notices Tab -->
+    <div id="notices" class="tab-content hidden bg-white rounded-2xl shadow-lg p-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">📢 Notices & Circulars</h3>
+      
+      <!-- Search & Filter -->
+      <div class="flex flex-wrap gap-4 mb-6">
+        <input type="text" placeholder="Search notices..." class="flex-1 px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none">
+        <select class="px-4 py-2 border-2 border-gray-300 rounded-lg">
+          <option value="all">All Notices</option>
+          <option value="exam">Exam Related</option>
+          <option value="admission">Admission</option>
+          <option value="event">Events</option>
+          <option value="urgent">Urgent</option>
+        </select>
+      </div>
+
+      <!-- Notice Items -->
+      <div class="space-y-4">
+        <!-- Notice 1 -->
+        <div class="border-l-4 border-red-500 bg-red-50 rounded-r-xl p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">URGENT</span>
+              <h4 class="font-bold text-gray-800 mt-2">Mid-Term Examination Schedule</h4>
+              <p class="text-gray-600 text-sm mt-1">Mid-term examinations are scheduled from 15-20 April 2026. All students must carry their hall tickets.</p>
+              <p class="text-gray-500 text-xs mt-2">📅 Posted: 10 April 2026</p>
+            </div>
+            <button class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg text-sm">Download</button>
+          </div>
+        </div>
+
+        <!-- Notice 2 -->
+        <div class="border-l-4 border-purple-500 bg-purple-50 rounded-r-xl p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-bold">ADMISSION</span>
+              <h4 class="font-bold text-gray-800 mt-2">Science Stream Admission 2026</h4>
+              <p class="text-gray-600 text-sm mt-1">Admissions are now open for Class 11 Science stream starting June 2026. Limited seats available.</p>
+              <p class="text-gray-500 text-xs mt-2">📅 Posted: 5 April 2026</p>
+            </div>
+            <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm">Apply Now</button>
+          </div>
+        </div>
+
+        <!-- Notice 3 -->
+        <div class="border-l-4 border-blue-500 bg-blue-50 rounded-r-xl p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-bold">EVENT</span>
+              <h4 class="font-bold text-gray-800 mt-2">Annual Day Celebration</h4>
+              <p class="text-gray-600 text-sm mt-1">Annual Day celebration will be held on 25 March 2026. All parents are invited to attend.</p>
+              <p class="text-gray-500 text-xs mt-2">📅 Posted: 1 April 2026</p>
+            </div>
+            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">View Details</button>
+          </div>
+        </div>
+
+        <!-- Notice 4 -->
+        <div class="border-l-4 border-green-500 bg-green-50 rounded-r-xl p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-bold">EXAM</span>
+              <h4 class="font-bold text-gray-800 mt-2">Board Exam Center Verification</h4>
+              <p class="text-gray-600 text-sm mt-1">Students of Std. 10 & 12 can verify their board exam center details from the school office.</p>
+              <p class="text-gray-500 text-xs mt-2">📅 Posted: 28 March 2026</p>
+            </div>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Download</button>
+          </div>
+        </div>
+
+        <!-- Notice 5 -->
+        <div class="border-l-4 border-amber-500 bg-amber-50 rounded-r-xl p-4">
+          <div class="flex items-start justify-between">
+            <div>
+              <span class="bg-amber-500 text-white text-xs px-2 py-1 rounded-full font-bold">NOTICE</span>
+              <h4 class="font-bold text-gray-800 mt-2">Summer Vacation Guidelines</h4>
+              <p class="text-gray-600 text-sm mt-1">Summer vacation from 1-30 June 2026. School office will remain closed.</p>
+              <p class="text-gray-500 text-xs mt-2">📅 Posted: 25 March 2026</p>
+            </div>
+            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg text-sm">View</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Archive Button -->
+      <div class="text-center mt-8">
+        <button class="bg-gray-600 hover:bg-gray-700 text-white px-8 py-3 rounded-full font-medium transition">View All Past Notices</button>
+      </div>
+    </div>
+
+    <!-- E-Books Tab -->
+    <div id="ebooks" class="tab-content hidden bg-white rounded-2xl shadow-lg p-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">📚 E-Books Corner</h3>
+      
+      <!-- Standard Selection -->
+      <div class="flex flex-wrap gap-3 mb-8">
+        <button onclick="filterEbooks('all')" class="ebook-filter-btn px-4 py-2 rounded-full bg-blue-600 text-white">All</button>
+        <button onclick="filterEbooks('9')" class="ebook-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300">Std. 9</button>
+        <button onclick="filterEbooks('10')" class="ebook-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300">Std. 10</button>
+        <button onclick="filterEbooks('11')" class="ebook-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300">Std. 11</button>
+        <button onclick="filterEbooks('12')" class="ebook-filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300">Std. 12</button>
+      </div>
+
+      <!-- E-Books Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="ebooks-grid">
+        <!-- Std 9 Books -->
+        <div class="ebook-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-lg transition-all" data-std="9">
+          <div class="bg-blue-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 9</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Gujarati</h4>
+          <p class="text-gray-600 text-sm mb-3">Gujarati textbook for Std. 9</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <div class="ebook-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-lg transition-all" data-std="9">
+          <div class="bg-blue-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 9</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">English</h4>
+          <p class="text-gray-600 text-sm mb-3">English textbook for Std. 9</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <div class="ebook-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 shadow-lg transition-all" data-std="9">
+          <div class="bg-blue-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 9</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Mathematics</h4>
+          <p class="text-gray-600 text-sm mb-3">Mathematics textbook for Std. 9</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <!-- Std 10 Books -->
+        <div class="ebook-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 shadow-lg transition-all" data-std="10">
+          <div class="bg-purple-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 10</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Gujarati</h4>
+          <p class="text-gray-600 text-sm mb-3">Gujarati textbook for Std. 10</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <div class="ebook-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 shadow-lg transition-all" data-std="10">
+          <div class="bg-purple-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 10</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Science</h4>
+          <p class="text-gray-600 text-sm mb-3">Science textbook for Std. 10</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <div class="ebook-card bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 shadow-lg transition-all" data-std="10">
+          <div class="bg-purple-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 10</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Mathematics</h4>
+          <p class="text-gray-600 text-sm mb-3">Mathematics textbook for Std. 10</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <!-- Std 11 Arts Books -->
+        <div class="ebook-card bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 shadow-lg transition-all" data-std="11">
+          <div class="bg-green-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 11 Arts</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">History</h4>
+          <p class="text-gray-600 text-sm mb-3">History textbook for Std. 11 Arts</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <div class="ebook-card bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 shadow-lg transition-all" data-std="11">
+          <div class="bg-green-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 11 Arts</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Geography</h4>
+          <p class="text-gray-600 text-sm mb-3">Geography textbook for Std. 11 Arts</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <!-- Std 11 Commerce Books -->
+        <div class="ebook-card bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-4 shadow-lg transition-all" data-std="11">
+          <div class="bg-amber-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 11 Commerce</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Accountancy</h4>
+          <p class="text-gray-600 text-sm mb-3">Accountancy textbook for Std. 11 Commerce</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <!-- Std 12 Books -->
+        <div class="ebook-card bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-4 shadow-lg transition-all" data-std="12">
+          <div class="bg-red-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 12</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Economics</h4>
+          <p class="text-gray-600 text-sm mb-3">Economics textbook for Std. 12</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+
+        <div class="ebook-card bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-4 shadow-lg transition-all" data-std="12">
+          <div class="bg-red-600 text-white rounded-lg p-3 text-center mb-3">
+            <p class="font-bold">Std. 12 Commerce</p>
+            <p class="text-xs">Gujarati Medium</p>
+          </div>
+          <h4 class="font-bold text-gray-800 mb-2">Business Studies</h4>
+          <p class="text-gray-600 text-sm mb-3">Business Studies textbook for Std. 12</p>
+          <div class="flex gap-2">
+            <button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg text-sm">📖 Read</button>
+            <button class="bg-green-600 hover:bg-green-700 text-white py-2 px-3 rounded-lg text-sm">⬇️</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-gray-500 text-sm mt-6 text-center">* E-books will be available for download soon. Contact school for hard copies.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p>© 2026 Smt. M.M. Bhakta High School, Netrang. All Rights Reserved.</p>
+      <p class="text-gray-400 text-sm mt-2">GSEB Affiliated | Since 1961 | Contact: +91 63517 38499</p>
+    </div>
+  </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(tabId).classList.remove('hidden');
+      
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        if (btn.dataset.tab === tabId) btn.classList.add('tab-active');
+      });
+    }
+
+    function filterTimetable() {
+      const selectedClass = document.getElementById('timetable-class').value;
+      document.querySelectorAll('.timetable-row').forEach(row => {
+        if (selectedClass === '9' || selectedClass === '10') {
+          row.style.display = row.dataset.class.includes(selectedClass) ? '' : 'none';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function filterExamTimetable() {
+      // Filter functionality for exam timetable
+    }
+
+    function filterEbooks(std) {
+      document.querySelectorAll('.ebook-card').forEach(card => {
+        if (std === 'all' || card.dataset.std === std) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      document.querySelectorAll('.ebook-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-gray-200');
+        if (btn.textContent.includes(std)) {
+          btn.classList.add('bg-blue-600', 'text-white');
+          btn.classList.remove('bg-gray-200');
+        }
+      });
+    }
+
+    // Initialize first tab
+    showTab('timetable');
+  </script>
+
+</body>
+</html>

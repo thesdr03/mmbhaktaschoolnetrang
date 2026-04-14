@@ -89,3 +89,55 @@ body {
 .space {
   margin-bottom: 10px;
 }
+
+/* Custom Scrollbar for Achievement Gallery */
+#achievement-gallery::-webkit-scrollbar {
+  height: 8px;
+}
+
+#achievement-gallery::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#achievement-gallery::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+  border-radius: 4px;
+}
+
+#achievement-gallery::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #7c3aed, #db2777);
+}
+
+/* Firefox Scrollbar */
+#achievement-gallery {
+  scrollbar-width: thin;
+  scrollbar-color: #8b5cf6 #f1f1f1;
+}
+
+/* Custom Scrollbar for All Horizontal Galleries */
+.gallery-scroll::-webkit-scrollbar,
+.gallery-container::-webkit-scrollbar,
+.overflow-x-auto::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track,
+.gallery-container::-webkit-scrollbar-track,
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 3px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb,
+.gallery-container::-webkit-scrollbar-thumb,
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  border-radius: 3px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb:hover,
+.gallery-container::-webkit-scrollbar-thumb:hover,
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #4f46e5, #7c3aed);
+}

@@ -37,15 +37,256 @@ tabBtns.forEach(btn => {
 // Mobile menu toggle
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
+const aboutDropdownBtn = document.getElementById('about-dropdown-btn');
+const aboutDropdownMenu = document.getElementById('about-dropdown-menu');
+const aboutDropdownIcon = document.getElementById('about-dropdown-icon');
+const mobileAboutToggle = document.getElementById('mobile-about-toggle');
+const mobileAboutSubmenu = document.getElementById('mobile-about-submenu');
+const mobileAboutIcon = document.getElementById('mobile-about-icon');
+const studentDropdownBtn = document.getElementById('student-dropdown-btn');
+const studentDropdownMenu = document.getElementById('student-dropdown-menu');
+const studentDropdownIcon = document.getElementById('student-dropdown-icon');
+const galleryDropdownBtn = document.getElementById('gallery-dropdown-btn');
+const galleryDropdownMenu = document.getElementById('gallery-dropdown-menu');
+const galleryDropdownIcon = document.getElementById('gallery-dropdown-icon');
+const newsDropdownBtn = document.getElementById('news-dropdown-btn');
+const newsDropdownMenu = document.getElementById('news-dropdown-menu');
+const newsDropdownIcon = document.getElementById('news-dropdown-icon');
+const facilityDropdownBtn = document.getElementById('facility-dropdown-btn');
+const facilityDropdownMenu = document.getElementById('facility-dropdown-menu');
+const facilityDropdownIcon = document.getElementById('facility-dropdown-icon');
+const streamsDropdownBtn = document.getElementById('streams-dropdown-btn');
+const streamsDropdownMenu = document.getElementById('streams-dropdown-menu');
+const streamsDropdownIcon = document.getElementById('streams-dropdown-icon');
 
 mobileMenuBtn.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
 });
 
+const mobileStudentToggle = document.getElementById('mobile-student-toggle');
+const mobileStudentSubmenu = document.getElementById('mobile-student-submenu');
+const mobileStudentIcon = document.getElementById('mobile-student-icon');
+const mobileGalleryToggle = document.getElementById('mobile-gallery-toggle');
+const mobileGallerySubmenu = document.getElementById('mobile-gallery-submenu');
+const mobileGalleryIcon = document.getElementById('mobile-gallery-icon');
+const mobileNewsToggle = document.getElementById('mobile-news-toggle');
+const mobileNewsSubmenu = document.getElementById('mobile-news-submenu');
+const mobileNewsIcon = document.getElementById('mobile-news-icon');
+const mobileFacilityToggle = document.getElementById('mobile-facility-toggle');
+const mobileFacilitySubmenu = document.getElementById('mobile-facility-submenu');
+const mobileFacilityIcon = document.getElementById('mobile-facility-icon');
+const mobileStreamsToggle = document.getElementById('mobile-streams-toggle');
+const mobileStreamsSubmenu = document.getElementById('mobile-streams-submenu');
+const mobileStreamsIcon = document.getElementById('mobile-streams-icon');
+
+if (aboutDropdownBtn && aboutDropdownMenu) {
+  aboutDropdownBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isHidden = aboutDropdownMenu.classList.contains('hidden');
+    aboutDropdownMenu.classList.toggle('hidden');
+    if (aboutDropdownIcon) {
+      aboutDropdownIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!aboutDropdownBtn.parentElement.contains(event.target)) {
+      aboutDropdownMenu.classList.add('hidden');
+      if (aboutDropdownIcon) {
+        aboutDropdownIcon.classList.remove('rotate-180');
+      }
+    }
+  });
+}
+
+if (mobileAboutToggle && mobileAboutSubmenu) {
+  mobileAboutToggle.addEventListener('click', () => {
+    const isHidden = mobileAboutSubmenu.classList.contains('hidden');
+    mobileAboutSubmenu.classList.toggle('hidden');
+    if (mobileAboutIcon) {
+      mobileAboutIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+}
+
+if (mobileStudentToggle && mobileStudentSubmenu) {
+  mobileStudentToggle.addEventListener('click', () => {
+    const isHidden = mobileStudentSubmenu.classList.contains('hidden');
+    mobileStudentSubmenu.classList.toggle('hidden');
+    if (mobileStudentIcon) {
+      mobileStudentIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+}
+
+if (mobileGalleryToggle && mobileGallerySubmenu) {
+  mobileGalleryToggle.addEventListener('click', () => {
+    const isHidden = mobileGallerySubmenu.classList.contains('hidden');
+    mobileGallerySubmenu.classList.toggle('hidden');
+    if (mobileGalleryIcon) {
+      mobileGalleryIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+}
+
+if (mobileNewsToggle && mobileNewsSubmenu) {
+  mobileNewsToggle.addEventListener('click', () => {
+    const isHidden = mobileNewsSubmenu.classList.contains('hidden');
+    mobileNewsSubmenu.classList.toggle('hidden');
+    if (mobileNewsIcon) {
+      mobileNewsIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+}
+
+if (mobileFacilityToggle && mobileFacilitySubmenu) {
+  mobileFacilityToggle.addEventListener('click', () => {
+    const isHidden = mobileFacilitySubmenu.classList.contains('hidden');
+    mobileFacilitySubmenu.classList.toggle('hidden');
+    if (mobileFacilityIcon) {
+      mobileFacilityIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+}
+
+if (mobileStreamsToggle && mobileStreamsSubmenu) {
+  mobileStreamsToggle.addEventListener('click', () => {
+    const isHidden = mobileStreamsSubmenu.classList.contains('hidden');
+    mobileStreamsSubmenu.classList.toggle('hidden');
+    if (mobileStreamsIcon) {
+      mobileStreamsIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+}
+
+if (studentDropdownBtn && studentDropdownMenu) {
+  studentDropdownBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isHidden = studentDropdownMenu.classList.contains('hidden');
+    studentDropdownMenu.classList.toggle('hidden');
+    if (studentDropdownIcon) {
+      studentDropdownIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+
+document.addEventListener('click', (event) => {
+    if (!studentDropdownBtn.parentElement.contains(event.target)) {
+      studentDropdownMenu.classList.add('hidden');
+      if (studentDropdownIcon) {
+        studentDropdownIcon.classList.remove('rotate-180');
+      }
+    }
+  });
+}
+
+if (galleryDropdownBtn && galleryDropdownMenu) {
+  galleryDropdownBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isHidden = galleryDropdownMenu.classList.contains('hidden');
+    galleryDropdownMenu.classList.toggle('hidden');
+    if (galleryDropdownIcon) {
+      galleryDropdownIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!galleryDropdownBtn.parentElement.contains(event.target)) {
+      galleryDropdownMenu.classList.add('hidden');
+      if (galleryDropdownIcon) {
+        galleryDropdownIcon.classList.remove('rotate-180');
+      }
+    }
+  });
+}
+
+if (newsDropdownBtn && newsDropdownMenu) {
+  newsDropdownBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isHidden = newsDropdownMenu.classList.contains('hidden');
+    newsDropdownMenu.classList.toggle('hidden');
+    if (newsDropdownIcon) {
+      newsDropdownIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!newsDropdownBtn.parentElement.contains(event.target)) {
+      newsDropdownMenu.classList.add('hidden');
+      if (newsDropdownIcon) {
+        newsDropdownIcon.classList.remove('rotate-180');
+      }
+    }
+  });
+}
+
+if (facilityDropdownBtn && facilityDropdownMenu) {
+  facilityDropdownBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isHidden = facilityDropdownMenu.classList.contains('hidden');
+    facilityDropdownMenu.classList.toggle('hidden');
+    if (facilityDropdownIcon) {
+      facilityDropdownIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!facilityDropdownBtn.parentElement.contains(event.target)) {
+      facilityDropdownMenu.classList.add('hidden');
+      if (facilityDropdownIcon) {
+        facilityDropdownIcon.classList.remove('rotate-180');
+      }
+    }
+  });
+}
+
+if (streamsDropdownBtn && streamsDropdownMenu) {
+  streamsDropdownBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isHidden = streamsDropdownMenu.classList.contains('hidden');
+    streamsDropdownMenu.classList.toggle('hidden');
+    if (streamsDropdownIcon) {
+      streamsDropdownIcon.classList.toggle('rotate-180', isHidden);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!streamsDropdownBtn.parentElement.contains(event.target)) {
+      streamsDropdownMenu.classList.add('hidden');
+      if (streamsDropdownIcon) {
+        streamsDropdownIcon.classList.remove('rotate-180');
+      }
+    }
+  });
+}
+
 // Close mobile menu when clicking a link
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     mobileMenu.classList.add('hidden');
+    if (mobileAboutSubmenu) mobileAboutSubmenu.classList.add('hidden');
+    if (mobileAboutIcon) mobileAboutIcon.classList.remove('rotate-180');
+    if (aboutDropdownMenu) aboutDropdownMenu.classList.add('hidden');
+    if (aboutDropdownIcon) aboutDropdownIcon.classList.remove('rotate-180');
+    if (mobileStudentSubmenu) mobileStudentSubmenu.classList.add('hidden');
+    if (mobileStudentIcon) mobileStudentIcon.classList.remove('rotate-180');
+    if (studentDropdownMenu) studentDropdownMenu.classList.add('hidden');
+    if (studentDropdownIcon) studentDropdownIcon.classList.remove('rotate-180');
+    if (mobileGallerySubmenu) mobileGallerySubmenu.classList.add('hidden');
+    if (mobileGalleryIcon) mobileGalleryIcon.classList.remove('rotate-180');
+    if (galleryDropdownMenu) galleryDropdownMenu.classList.add('hidden');
+    if (galleryDropdownIcon) galleryDropdownIcon.classList.remove('rotate-180');
+    if (mobileNewsSubmenu) mobileNewsSubmenu.classList.add('hidden');
+    if (mobileNewsIcon) mobileNewsIcon.classList.remove('rotate-180');
+    if (newsDropdownMenu) newsDropdownMenu.classList.add('hidden');
+    if (newsDropdownIcon) newsDropdownIcon.classList.remove('rotate-180');
+    if (mobileFacilitySubmenu) mobileFacilitySubmenu.classList.add('hidden');
+    if (mobileFacilityIcon) mobileFacilityIcon.classList.remove('rotate-180');
+    if (facilityDropdownMenu) facilityDropdownMenu.classList.add('hidden');
+    if (facilityDropdownIcon) facilityDropdownIcon.classList.remove('rotate-180');
+    if (mobileStreamsSubmenu) mobileStreamsSubmenu.classList.add('hidden');
+    if (mobileStreamsIcon) mobileStreamsIcon.classList.remove('rotate-180');
+    if (streamsDropdownMenu) streamsDropdownMenu.classList.add('hidden');
+    if (streamsDropdownIcon) streamsDropdownIcon.classList.remove('rotate-180');
   });
 });
 

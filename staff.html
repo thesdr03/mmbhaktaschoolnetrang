@@ -1,59 +1,371 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Staff Directory - Smt. M.M. Bhakta High School</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>body{font-family:Poppins, sans-serif}</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculties - Smt. M.M. Bhakta High School</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * { font-family: cambria, georgia, serif; }
+    .row { cursor: pointer; transition: all 0.3s; }
+    .row:hover { transform: scale(1.01); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .color-1 { background: linear-gradient(135deg, #fee2e2, #fecaca); border-left: 4px solid #ef4444; }
+    .color-2 { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #f59e0b; }
+    .color-3 { background: linear-gradient(135deg, #d1fae5, #a7f3d0); border-left: 4px solid #10b981; }
+    .color-4 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-left: 4pxsolid #3b82f6; }
+    .color-5 { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); border-left: 4px solid #6366f1; }
+    .color-6 { background: linear-gradient(135deg, #fce7f3, #fbcfe8); border-left: 4px solid #ec4899; }
+    .color-7 { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #8b5cf6; }
+    .color-8 { background: linear-gradient(135deg, #ccfbf1, #99f6e4); border-left: 4px solid #14b8a6; }
+    .btn-add { background: linear-gradient(135deg, #10b981, #059669); }
+    .btn-del { background: linear-gradient(135deg, #ef4444, #dc2626); }
+    .modal-gradient-1 { background: linear-gradient(135deg, #fee2e2, #fecaca); }
+    .modal-gradient-2 { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+    .modal-gradient-3 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+    .modal-gradient-4 { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+    .modal-gradient-5 { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+    .modal-gradient-6 { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+  </style>
 </head>
-<body class="bg-gray-50">
-  <header class="bg-blue-800 text-white py-4">
-    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">Staff Directory</h1>
-      <a href="index main.html" class="bg-white text-blue-800 px-3 py-1 rounded">← Back</a>
+<body class="bg-gradient-to-br from-sky-100 via-purple-50 to-pink-100 p-4 min-h-screen">
+  
+  <!-- Header -->
+  <header class="bg-white sticky top-0 rounded-2xl mb-6 p-4 shadow-lg flex justify-between items-center z-10">
+    <div class="flex items-center gap-4">
+      <img src="photos/mmb new logo.jpg" class="w-16 h-16 rounded-full border-4 border-blue-900">
+      <div>
+        <h1 class="font-bold text-blue-900 text-2xl">Smt. M.M. Bhakta High School</h1>
+        <p class="text-purple-700 text-lg">Staff Management System</p>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="openAddModal()" class="btn-add text-white px-4 py-2 rounded-xl font-bold shadow-lg">+ Add Staff</button>
+      <a href="index main.html" class="bg-blue-600 text-white px-4 py-2 rounded-xl">← Back</a>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto p-6">
-    <p class="mb-4 text-gray-700">Current and former teaching & non-teaching staff. Replace placeholder images and dates with real data.</p>
+  <!-- Title -->
+  <h1 class="text-4xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-red-500">👨‍🏫 Our Faculties</h1>
+  
+  <!-- Search Bar -->
+  <div class="max-w-md mx-auto mb-4">
+    <input type="text" id="staffSearch" onkeyup="searchStaff()" placeholder="Search by name, position, subject..." class="w-full p-3 border-2 border-purple-300 rounded-xl focus:border-purple-600 focus:outline-none shadow">
+  </div>
+   
+  <!-- Staff Count -->
+  <div class="text-center mb-4">
+    <span id="staffCount" class="bg-white px-4 py-2 rounded-full shadow font-bold text-blue-600">Total Staff: 31</span>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- Example current staff -->
-      <div class="bg-white p-4 rounded shadow flex items-center gap-4">
-        <img src="staff/principal.jpeg" alt="Ratanbhai" class="w-24 h-24 object-cover rounded-full">
-        <div>
-          <div class="font-semibold">Shri Ratanbhai L.Vasava</div>
-          <div class="text-sm text-gray-600">Math Teacher</div>
-          <div class="text-sm text-gray-700 mt-2">Joining: 2023-08-05 (In the Principal Post.)</div>
-          <div class="text-sm text-gray-700">Retired: 2028-10-31</div>
-          <div class="text-sm text-gray-700">Years served:26</div>
+  <!-- Table -->
+  <div class="overflow-x-auto">
+    <table class="w-full bg-white rounded-2xl shadow-2xl border border-gray-200">
+      <thead class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white">
+        <tr>
+          <th class="p-3 text-left">Sr.No.</th>
+          <th class="p-3 text-left">Photo</th>
+          <th class="p-3 text-left">Name</th>
+          <th class="p-3 text-left">Position</th>
+          <th class="p-3 text-left">Faculty</th>
+          <th class="p-3 text-left">Subject</th>
+          <th class="p-3 text-left">Qualification</th>
+          <th class="p-3 text-left">Joining</th>
+          <th class="p-3 text-left">Experience</th>
+          <th class="p-3 text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody id="staffTable">
+        <!-- Staff rows will be rendered here -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- View Details Modal -->
+  <div id="viewModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
+      <div id="modalHeader" class="p-6 text-white">
+        <div class="flex justify-between items-center">
+          <h3 id="modalName" class="text-2xl font-bold"></h3>
+          <button onclick="closeViewModal()" class="text-3xl">&times;</button>
         </div>
       </div>
-
-      <!-- Example former staff -->
-      <div class="bg-white p-4 rounded shadow flex items-center gap-4">
-        <img src="staff/SDR .jpeg" alt="Kantilal" class="w-24 h-24 object-cover rounded-full">
-        <div>
-          <div class="font-semibold">Shri S.D.Rajput </div>
-          <div class="text-sm text-gray-600">Computer Teacher </div>
-          <div class="text-sm text-gray-700 mt-2">Joining: 2022-12-05</div>
-          <div class="text-sm text-gray-700">--</div>
-          <div class="text-sm text-gray-700">Years served: 3</div>
+      <div class="p-6">
+        <div class="flex justify-center mb-4">
+          <img id="modalPhoto" class="w-28 h-28 rounded-full border-4 border-white shadow-lg hidden">
+          <div id="modalPhotoPlaceholder" class="w-28 h-28 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-5xl hidden">👤</div>
         </div>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Position:</b><br><span id="modalPosition" class="font-bold"></span></div>
+          <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Faculty:</b><br><span id="modalFaculty"></span></div>
+          <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Subject:</b><br><span id="modalSubject"></span></div>
+          <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Qualification:</b><br><span id="modalQualification"></span></div>
+          <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Joining Date:</b><br><span id="modalJoining"></span></div>
+          <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Experience:</b><br><span id="modalExperience" class="font-bold text-green-600"></span></div>
+        </div>
+        <button onclick="closeViewModal()" class="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-bold">Close</button>
       </div>
-
-      <!-- Add more staff cards below -->
     </div>
+  </div>
 
-    <section class="mt-8 bg-white p-4 rounded shadow">
-      <h2 class="font-bold mb-2">Notes for editing</h2>
-      <ul class="list-disc pl-5 text-gray-700">
-        <li>Use portrait images named like <code>staff-name.jpg</code>.</li>
-        <li>For current staff, set Retired to <code>—</code>.</li>
-        <li>Keep dates in YYYY-MM-DD for consistency.</li>
-      </ul>
-    </section>
-  </main>
+  <!-- Add/Edit Staff Modal -->
+  <div id="addModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+      <div class="bg-gradient-to-r from-green-500 to-teal-500 p-4 text-white rounded-t-2xl">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-bold" id="addModalTitle">Add New Staff</h3>
+          <button onclick="closeAddModal()" class="text-2xl">&times;</button>
+        </div>
+      </div>
+      <div class="p-6 space-y-4">
+        <div>
+          <label class="block font-bold mb-1">Full Name *</label>
+          <input type="text" id="newName" class="w-full p-3 border rounded-xl" placeholder="Enter full name">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-bold mb-1">Position *</label>
+            <select id="newPosition" class="w-full p-3 border rounded-xl">
+              <option value="Principal">Principal</option>
+              <option value="Supervisor">Supervisor</option>
+              <option value="Sec. Teacher">Sec. Teacher</option>
+              <option value="Higher Sec. Teacher">Higher Sec. Teacher</option>
+              <option value="Librarian">Librarian</option>
+              <option value="Peon">Peon</option>
+              <option value="Gyan Sahayak">Gyan Sahayak</option>
+              <option value="Support Staff">Support Staff</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Faculty</label>
+            <input type="text" id="newFaculty" class="w-full p-3 border rounded-xl" placeholder="e.g., Maths, Science">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-bold mb-1">Subject</label>
+            <input type="text" id="newSubject" class="w-full p-3 border rounded-xl" placeholder="e.g., Mathematics">
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Qualification</label>
+            <input type="text" id="newQualification" class="w-full p-3 border rounded-xl" placeholder="e.g., M.A., B.Ed.">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-bold mb-1">Joining Date</label>
+            <input type="text" id="newJoining" class="w-full p-3 border rounded-xl" placeholder="e.g., 2024-01">
+          </div>
+          <div>
+            <label class="block font-bold mb-1">Experience</label>
+            <input type="text" id="newExperience" class="w-full p-3 border rounded-xl" placeholder="e.g., 5+ Years">
+          </div>
+        </div>
+        <button onclick="saveStaff()" class="w-full bg-gradient-to-r from-green-500 to-teal-500 text-white py-3 rounded-xl font-bold">Save Staff</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-blue-900 via-purple-900 to-pink-900 text-white text-center py-4 mt-8 rounded-2xl">
+    <p class="font-bold">© 2026 Smt. M.M. Bhakta High School, Netrang | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Staff Data
+    let staffData = {
+      1:{n:"Shri Ratanbhai L. Vasava",p:"Principal",f:"Head of School",s:"-",q:"-",j:"Aug 2023",e:"26+ Years",ph:"staff/principal.jpeg",color:1},
+      2:{n:"Smt. Bhavnaben T. Desai",p:"Supervisor",f:"Secondary",s:"Sanskrit",q:"-",j:"-",e:"-",ph:"",color:6},
+      3:{n:"Shri Kantilal S. Patel",p:"Sec. Teacher",f:"Arts",s:"Arts & Drawing",q:"-",j:"-",e:"-",ph:"",color:2},
+      4:{n:"Shri Sureshbhai D. Vasava",p:"Sec. Teacher",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:3},
+      5:{n:"Shri Rajeshbhai M. Patel",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:4},
+      6:{n:"Shri Prakashbhai D. Chaudhari",p:"Sec. Teacher",f:"Hindi",s:"Hindi",q:"-",j:"-",e:"-",ph:"",color:5},
+      7:{n:"Smt. Rinkalben C. Chaudhari",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6},
+      8:{n:"Smt. Dimpalben G. Vaniya",p:"Sec. Teacher",f:"Social Sci.",s:"Social Science",q:"-",j:"-",e:"-",ph:"",color:6},
+      9:{n:"Smt. Purviben K. Desai",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6},
+      10:{n:"Shri Balvantbhai T. Chaudhari",p:"Sec. Teacher",f:"P.E.",s:"Physical Edu.",q:"B.P.Ed.",j:"-",e:"-",ph:"",color:7},
+      11:{n:"Smt. Nilambhen K. Kher",p:"Sec. Teacher",f:"Social Sci.",s:"Social Science",q:"-",j:"-",e:"-",ph:"",color:6},
+      12:{n:"Shri Nareshkumar R. Bhoi",p:"Sec. Teacher",f:"English",s:"English",q:"-",j:"-",e:"-",ph:"",color:4},
+      13:{n:"Shri Uttambhai A. Patel",p:"Supervisor",f:"English",s:"English",q:"-",j:"-",e:"-",ph:"",color:5},
+      14:{n:"Shri Mahendrapati U. Gosavi",p:"Higher Sec.",f:"Psychology",s:"Psychology",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
+      15:{n:"Shri Jitendrakumar M. Chaudhari",p:"Higher Sec.",f:"Commerce",s:"Accountancy",q:"M.Com., B.Ed.",j:"-",e:"-",ph:"",color:5},
+      16:{n:"Smt. Nirmalaben J. Vasava",p:"Higher Sec.",f:"Geography",s:"Geography",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
+      17:{n:"Smt. Switikumari B. Patel",p:"Higher Sec.",f:"Sanskrit",s:"Sanskrit",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
+      18:{n:"Smt. Urmilaben H. Vasava",p:"Higher Sec.",f:"Psychology",s:"Psychology",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
+      19:{n:"Shri Dilip G. Khasiya",p:"Higher Sec.",f:"Philosophy",s:"Philosophy",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
+      20:{n:"Shri Naginbhai R. Vankar",p:"Higher Sec.",f:"Economics",s:"Economics",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
+      21:{n:"Smt. Rupalben K. Bhardiwala",p:"Higher Sec.",f:"English",s:"English",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
+      22:{n:"Smt. Darshanaben N. Patel",p:"Higher Sec.",f:"Gujarati",s:"Gujarati",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
+      23:{n:"Shri Dilawarhbhai S. Chauhan",p:"Higher Sec.",f:"Hindi",s:"Hindi",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
+      24:{n:"Shri Rakeshbhai H. Patel",p:"Librarian",f:"Library",s:"-",q:"B.Lib.",j:"-",e:"-",ph:"",color:8},
+      25:{n:"Shri Dipakkumar R. Gadiluher",p:"Peon",f:"Office",s:"-",q:"-",j:"-",e:"-",ph:"",color:8},
+      26:{n:"Smt. Rimpalben S. Patel",p:"Gyan Sahayak",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6},
+      27:{n:"Ms. Sobhanaben D. Vasava",p:"Gyan Sahayak",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:6},
+      28:{n:"Ms. Dipikaben C. Vasava",p:"Gyan Sahayak",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:6},
+      29:{n:"Shri Sumersinh D. Rajput",p:"Support",f:"Computer",s:"Computer",q:"BCA, MCA",j:"Dec 2022",e:"3+ Years",ph:"staff/SDR .jpeg",color:4},
+      30:{n:"Smt. Paulomiben D. Gohil",p:"Support",f:"Computer",s:"Computer",q:"-",j:"-",e:"-",ph:"",color:6},
+      31:{n:"Smt. Rekhaben Vasava",p:"Peon",f:"Support",s:"-",q:"-",j:"-",e:"-",ph:"",color:6}
+    };
+
+    let nextId = 32;
+    let editingId = null;
+
+    // Colors array for modal themes
+    const modalColors = [
+      'from-red-500 to-pink-500',
+      'from-yellow-500 to-orange-500', 
+      'from-green-500 to-teal-500',
+      'from-blue-500 to-cyan-500',
+      'from-indigo-500 to-purple-500',
+      'from-pink-500 to-rose-500',
+      'from-purple-500 to-pink-500'
+    ];
+
+    // Render table
+    function renderTable() {
+      const tbody = document.getElementById('staffTable');
+      tbody.innerHTML = '';
+      
+      Object.keys(staffData).forEach(id => {
+        const s = staffData[id];
+        const row = document.createElement('tr');
+        row.className = `row color-${s.color} border-b`;
+        row.onclick = () => viewStaff(id);
+        
+        row.innerHTML = `
+          <td class="p-3 font-bold text-gray-600">${id}</td>
+          <td class="p-3">
+            ${s.ph ? `<img src="${s.ph}" class="w-10 h-10 rounded-full object-cover">` : 
+              `<div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">👤</div>`}
+          </td>
+          <td class="p-3 font-bold text-gray-800">${s.n}</td>
+          <td class="p-3"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-sm font-bold">${s.p}</span></td>
+          <td class="p-3 text-gray-600">${s.f}</td>
+          <td class="p-3 text-gray-600">${s.s}</td>
+          <td class="p-3 text-gray-500">${s.q}</td>
+          <td class="p-3 text-gray-500">${s.j}</td>
+          <td class="p-3 font-bold text-green-600">${s.e}</td>
+          <td class="p-3 text-center">
+            <button onclick="event.stopPropagation(); deleteStaff(${id})" class="btn-del text-white px-3 py-1 rounded-lg text-sm">🗑️</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+      
+      document.getElementById('staffCount').textContent = `Total Staff: ${Object.keys(staffData).length}`;
+    }
+
+    // View staff details
+    function viewStaff(id) {
+      const s = staffData[id];
+      document.getElementById('modalName').textContent = s.n;
+      document.getElementById('modalPosition').textContent = s.p;
+      document.getElementById('modalFaculty').textContent = s.f;
+      document.getElementById('modalSubject').textContent = s.s;
+      document.getElementById('modalQualification').textContent = s.q;
+      document.getElementById('modalJoining').textContent = s.j;
+      document.getElementById('modalExperience').textContent = s.e;
+      
+      // Set modal header color based on staff color
+      const colorClass = modalColors[(s.color - 1) % modalColors.length];
+      document.getElementById('modalHeader').className = `p-6 text-white bg-gradient-to-r ${colorClass}`;
+      
+      const img = document.getElementById('modalPhoto');
+      const placeholder = document.getElementById('modalPhotoPlaceholder');
+      if (s.ph) {
+        img.src = s.ph;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        img.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+      
+      document.getElementById('viewModal').classList.remove('hidden');
+    }
+
+    function closeViewModal() {
+      document.getElementById('viewModal').classList.add('hidden');
+    }
+
+    // Add new staff
+    function openAddModal() {
+      editingId = null;
+      document.getElementById('addModalTitle').textContent = 'Add New Staff';
+      document.getElementById('newName').value = '';
+      document.getElementById('newPosition').value = 'Sec. Teacher';
+      document.getElementById('newFaculty').value = '';
+      document.getElementById('newSubject').value = '';
+      document.getElementById('newQualification').value = '';
+      document.getElementById('newJoining').value = '';
+      document.getElementById('newExperience').value = '';
+      document.getElementById('addModal').classList.remove('hidden');
+    }
+
+    function closeAddModal() {
+      document.getElementById('addModal').classList.add('hidden');
+      editingId = null;
+    }
+
+    function saveStaff() {
+      const name = document.getElementById('newName').value.trim();
+      if (!name) {
+        alert('Please enter staff name');
+        return;
+      }
+      
+      const newStaff = {
+        n: name,
+        p: document.getElementById('newPosition').value,
+        f: document.getElementById('newFaculty').value || '-',
+        s: document.getElementById('newSubject').value || '-',
+        q: document.getElementById('newQualification').value || '-',
+        j: document.getElementById('newJoining').value || '-',
+        e: document.getElementById('newExperience').value || '-',
+        ph: '',
+        color: Math.floor(Math.random() * 8) + 1
+      };
+      
+      if (editingId) {
+        staffData[editingId] = newStaff;
+      } else {
+        staffData[nextId] = newStaff;
+        nextId++;
+      }
+      
+      closeAddModal();
+      renderTable();
+    }
+
+    // Delete staff
+    function deleteStaff(id) {
+      if (confirm('Are you sure you want to remove this staff member?')) {
+        delete staffData[id];
+        renderTable();
+      }
+    }
+
+    // Initialize
+    renderTable();
+
+    // Search staff function
+    function searchStaff() {
+      const input = document.getElementById('staffSearch').value.toLowerCase();
+      const rows = document.querySelectorAll('#staffTable tr');
+      
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+
+    // Close modals on outside click
+    document.getElementById('viewModal').addEventListener('click', (e) => {
+      if (e.target.id === 'viewModal') closeViewModal();
+    });
+    document.getElementById('addModal').addEventListener('click', (e) => {
+      if (e.target.id === 'addModal') closeAddModal();
+    });
+  </script>
 </body>
 </html>

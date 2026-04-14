@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Lab - Smt. M.M. Bhakta High School</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }
+        .gallery { max-width: 1200px; margin: 20px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #4CAF50; }
+        .slider { position: relative; max-width: 100%; margin: auto; overflow: hidden; border-radius: 8px; }
+        .slides { display: flex; transition: transform 0.5s ease; }
+        .slide { min-width: 100%; box-sizing: border-box; }
+        .slide img { width: 100%; height: 400px; object-fit: cover; }
+        .prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer; font-size: 18px; }
+        .prev { left: 0; }
+        .next { right: 0; }
+        .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+        .back-link { display: inline-block; margin-top: 20px; color: #4CAF50; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Science Lab</h1>
+        <p>Equipped with modern tools for hands-on scientific experiments.</p>
+        <a href="school-building-gallery.html" style="color: white; text-decoration: underline;">&larr; Back to Gallery</a>
+    </header>
+    <div class="gallery">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide"><img src="photos/IMG-20230816-WA0009.jpg" alt="Science Lab 1"></div>
+                <div class="slide"><img src="photos/IMG-20230816-WA0008.jpg" alt="Science Lab 2"></div>
+                <div class="slide"><img src="photos/IMG-20230816-WA0007.jpg" alt="Science Lab 3"></div>
+            </div>
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+        <a href="school-building-gallery.html" class="back-link">&larr; Back to Gallery</a>
+    </div>
+    <script>
+        let currentSlide = 0;
+        function changeSlide(n) {
+            let slides = document.querySelector('.slides');
+            let slideList = slides.children;
+            currentSlide += n;
+            if (currentSlide >= slideList.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slideList.length - 1;
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+    </script>
+</body>
+</html>

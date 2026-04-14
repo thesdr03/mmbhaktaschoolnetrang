@@ -10,16 +10,39 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
-        <style>body { box-sizing: border-box; }</style>
+        <style>body { box-sizing: border-box; }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        @keyframes scrollLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scrollRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .achievement-scroll-1 {
+          animation: scrollLeft 20s linear infinite;
+        }
+        .achievement-scroll-2 {
+          animation: scrollRight 20s linear infinite;
+        }
+        </style>
         <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
         <!-- Google Translate Widget -->
         <script type="text/javascript">
         function googleTranslateElementInit() {
           new google.translate.TranslateElement({pageLanguage: 'hi', includedLanguages: 'en,hi,gu,mr,ta,te,ka,ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+          new google.translate.TranslateElement({pageLanguage: 'hi', includedLanguages: 'en,hi,gu,mr,ta,te,ka,ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element_footer');
         }
         </script>
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-      </head>
+        </head>
       <body class="h-full bg-gradient-to-b from-sky-50 to-white overflow-auto"><!-- Top Bar -->
         <div class="bg-sky-700 text-white py-2 px-4">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-sm">
@@ -49,37 +72,334 @@
           </div>
         </div>
         </div><!-- Header -->
-        <header class="bg-gradient-to-br from-sky-100 to-emerald-100 shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-3">
-          <div class="flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-4">
-            <div class="w-32 h-32 bg-white border-4 border-blue-900 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
-              <div style="align-items: center;">
-                <img src="photos/mmb school profile logo.png" alt="School Image" width="210" height="200" class="rounded-full">
+<header class="bg-gradient-to-br from-sky-100 to-emerald-100 shadow-sm sticky top-0 z-50">
+        <div class="max-w-8xl mx-auto px-4 py-4">
+          <div class="flex flex-wrap items-center justify-between gap-6">
+            <!-- Left Side: Logo, School Name, Address -->
+            <div class="flex items-center gap-4">
+              <div class="w-30 h-30 bg-white border-4 border-blue-900 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                <div style="align-items: center;">
+                  <img src="photos/mmb new logo.jpg" alt="School Image" width="180" height="180" class="rounded-full">
+                </div>
+              </div>
+              <div>
+                <p style="font-family: cambria; font-size: large; font-style: italic;" class="bg-white/30 text-red-700 font-bold px-1 py-1 flex items-center justify-center rounded-xl transition">Managed by: Shri Netrang Vibhag Kelavani Mandal, Netrang, Bharuch</p>
+                <h1 style="font-family:cambria;" id="header-school-name" class="text-3xl md:text-4xl font-bold text-blue-800 text-center">Smt. M.M. Bhakta High School, Netrang</h1>
+                <p style="font-size: x-large; font-family:cambria; margin-top: 2px;" class="text-l font-bold text-purple-700 text-center">Ankleshwar Road, Ta.Netrang, Bharuch, Gujarat - 393130</p>
+              </div>
             </div>
+            <!-- Right Side: School Details, Contact, Quick Links -->
+            <div class="flex flex-col items-end gap-3">
+              <div class="bg-purple-100 rounded-xl px-4 py-2 text-right">
+                <p style="font-family: cambria; font-size: medium;" class="text-purple-800 font-semibold">School No. 105 | Udise Code: 24210906407</p>
+              
+              </div>  
+              <div class="bg-sky-100 rounded-xl px-4 py-2 text-right">      
+              <p style="font-family: cambria; font-size: medium;margin-top: 0%;" class="text-blue-600 font-semibold"> Index No. SSC - 61.0094 | HSC - 11.0014</p>
+              </div>
+              <div class="bg-green-100 rounded-xl px-4 py-2 text-center">
+                <p style="font-family: cambria;" class="text-green-700 font-bold">Since 1961 | GSEB Affiliated Granted School <br style="text-center">| Gujarati Medium Std. 9 to 12</p>
+                
+              </div>                         
             </div>
-            <div>
-            <h1 style="font-size: x-large; font-family:Georgia, 'Times New Roman', Times, serif ; id="header-school-name" class="text-xl md:text-2xl font-bold text-blue-800" "space">
-              Smt. M.M. Bhakta High School,Netrang </h1>
-        <p class="space"> </p>
-            <p style="font-size: larger; font-family:Georgia, 'Times New Roman', Times, serif;" class="text-sm font-bold text-purple-700"> 
-              Ta.Netrang, Bharuch, Gujarat</p>
-            </div>
-          </div>
-          <nav class="hidden md:flex items-center gap-6"><a href="#home" class="nav-link text-gray-900 hover:text-sky-700 font-medium">Home</a> <a href="#about" class="nav-link text-gray-900 hover:text-sky-700 font-medium">About</a> <a href="#streams" class="nav-link text-gray-900 hover:text-sky-700 font-medium">Streams</a> <a href="#gallery" class="nav-link text-gray-900 hover:text-sky-700 font-medium">Gallery</a> <a href="alumani/alumni-website.html" class="nav-link text-gray-900 hover:text-sky-700 font-medium">Alumni Website</a> <a href="#contact" class="nav-link text-gray-900 hover:text-sky-700 font-medium">Contact</a>
-          </nav><button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg></button>
-          </div><!-- Mobile Menu -->
-          <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t pt-4">
-          <div class="flex flex-col gap-3" style="font-family: cambria;"> <a href="#home" class="text-gray-400 hover:text-sky-700 font-medium">Home</a> <a href="#about" class="text-gray-700 hover:text-sky-700 font-medium">About</a> <a href="#streams" class="text-gray-700 hover:text-sky-700 font-medium">Streams</a> <a href="#gallery" class="text-gray-700 hover:text-sky-700 font-medium">Gallery</a> <a href="alumani/alumni-website.html" class="text-gray-700 hover:text-sky-700 font-medium">Alumni Website</a> <a href="#contact" class="text-gray-700 hover:text-sky-700 font-medium">Contact</a>
-          </div>
           </div>
         </div>
-        </header><!-- Hero Section -->
-        <section id="home" class="hero-gradient py-16 md:py-24">
+      </header>
+
+      <!-- Navigation Menu Bar (Separate from Header) -->
+      <nav class="bg-purple-800 shadow-md sticky top-0 z-40">
+        <div class="max-w-8xl mx-auto px-3">
+          <div class="hidden md:flex items-center justify-between">
+            <div class="flex items-center gap-2"><a href="#home" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition">Home</a>
+              <div class="relative">
+                <button id="about-dropdown-btn" type="button" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition flex items-center gap-2">
+                  <span>About</span>
+                  <svg id="about-dropdown-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="about-dropdown-menu" class="hidden absolute left-0 top-full mt-0 w-64 bg-white border border-sky-100 rounded-b-2xl shadow-xl overflow-hidden z-50">
+                  <a href="about-school.html" class="block px-5 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-700 font-medium transition">🏫 School</a>
+                  <a href="management.html" class="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 font-medium transition">🏛️ Management</a>
+                  <a href="alumani/alumni-website.html" class="block px-5 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition">👨‍🎓 Alumni</a>
+                </div>
+              </div>
+              <a href="staff.html" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition">Faculties</a>
+              
+              <div class="relative">
+                <button id="streams-dropdown-btn" type="button" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition flex items-center gap-2">
+                  <span>Streams</span>
+                  <svg id="streams-dropdown-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="streams-dropdown-menu" class="hidden absolute left-0 top-full mt-0 w-64 bg-white border border-sky-100 rounded-b-2xl shadow-xl overflow-hidden z-50">
+                  <a href="stream-ssc.html" class="block px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium transition">📖 SSC (Class 9-10)</a>
+                  <a href="stream-arts.html" class="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 font-medium transition">🎨 Arts Stream</a>
+                  <a href="stream-commerce.html" class="block px-5 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-medium transition">💼 Commerce Stream</a>
+                  <a href="stream-science.html" class="block px-5 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-700 font-medium transition">🔬 Science Stream</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="gallery-dropdown-btn" type="button" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition flex items-center gap-2">
+                  <span>Gallery</span>
+                  <svg id="gallery-dropdown-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="gallery-dropdown-menu" class="hidden absolute left-0 top-full mt-0 w-72 bg-white border border-sky-100 rounded-b-2xl shadow-xl overflow-hidden z-50">
+
+                  <a href="sports-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-medium transition">🏆 Sports Gallery</a>
+                  <a href="cultural-events-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 font-medium transition">🎭 Cultural Events</a>
+                  <a href="art-exhibition-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-700 font-medium transition">🎨 Art Exhibition</a>
+                  <a href="annual-day-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition">🎉 Annual Day</a>
+                  <a href="graduation-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 font-medium transition">🎓 Graduation</a>
+                  <a href="360-campus-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-700 font-medium transition">🌐 360° Campus Tour</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="news-dropdown-btn" type="button" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition flex items-center gap-2">
+                  <span>News & Activities</span>
+                  <svg id="news-dropdown-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /> 
+                  </svg>
+                </button>
+                <div id="news-dropdown-menu" class="hidden absolute left-0 top-full mt-0 w-64 bg-white border border-sky-100 rounded-b-2xl shadow-xl overflow-hidden z-50">
+                  <a href="news-events.html" class="block px-5 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-700 font-medium transition">📰 Latest News</a>
+                  <a href="circulars.html" class="block px-5 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition">📋 Circulars</a>
+                  <a href="achievements.html" class="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 font-medium transition">🏆 Achievements</a>
+                  <a href="alumani/activities-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-700 font-medium transition">🎪 Alumni Activities</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="facility-dropdown-btn" type="button" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition flex items-center gap-2">
+                  <span>Infrastructure</span>
+                  <svg id="facility-dropdown-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="facility-dropdown-menu" class="hidden absolute left-0 top-full mt-0 w-72 bg-white border border-sky-100 rounded-b-2xl shadow-xl overflow-hidden z-50">
+                  <a href="school-building-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-700 font-medium transition">🏫 Buildings Overview</a>
+                  <a href="main-building.html" class="block px-5 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-700 font-medium transition">🏢 Main Building</a>
+                  <a href="playground.html" class="block px-5 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-medium transition">🎯 Playground</a>
+                  <a href="auditorium.html" class="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 font-medium transition">🎭 Auditorium</a>
+                  <a href="science-lab.html" class="block px-5 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium transition">🔬 Science Lab</a>
+                  <a href="computer-lab.html" class="block px-5 py-3 text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 font-medium transition">💻 Computer Lab</a>
+                  <a href="library.html" class="block px-5 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition">📚 Library</a>
+                  <a href="class-room.html" class="block px-5 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-700 font-medium transition">🏠 Class Rooms</a>
+                  <a href="staff-room.html" class="block px-5 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-medium transition">👨‍🏫 Staff Room</a>
+                  <a href="360-campus-gallery.html" class="block px-5 py-3 text-gray-700 hover:bg-orange-50 hover:text-orange-700 font-medium transition">🌐 Virtual Tour</a>
+                </div>
+              </div>
+              <div class="relative">
+                <button id="student-dropdown-btn" type="button" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition flex items-center gap-2">
+                  <span>Student Corner</span>
+                  <svg id="student-dropdown-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="student-dropdown-menu" class="hidden absolute left-0 top-full mt-0 w-64 bg-white border border-sky-100 rounded-b-2xl shadow-xl overflow-hidden z-50">
+                  <a href="student-corner.html" class="block px-5 py-3 text-gray-700 hover:bg-sky-50 hover:text-sky-700 font-medium transition">📅 Daily Timetable</a>
+                  <a href="student-corner.html#exam" class="block px-5 py-3 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-medium transition">📝 Exam Timetable</a>
+                  <a href="student-corner.html#holidays" class="block px-5 py-3 text-gray-700 hover:bg-purple-50 hover:text-purple-700 font-medium transition">🌴 Holidays List</a>
+                  <a href="student-corner.html#yearly" class="block px-5 py-3 text-gray-700 hover:bg-amber-50 hover:text-amber-700 font-medium transition">📆 Yearly Plan</a>
+                  <a href="student-corner.html#notices" class="block px-5 py-3 text-gray-700 hover:bg-pink-50 hover:text-pink-700 font-medium transition">📢 Notices</a>
+                  <a href="student-corner.html#ebooks" class="block px-5 py-3 text-gray-700 hover:bg-cyan-50 hover:text-cyan-700 font-medium transition">📚 E-Books Corner</a>
+                </div>
+              </div>
+              <a href="#contact" style="font-family: georgia;" class="nav-link text-white hover:bg-blue-600 font-semibold px-4 py-3 transition">Contact</a>
+              <div class="relative">
+                <input type="text" id="nav-search-input" placeholder="Search..." style="font-family: georgia;" class="bg-purple-900 text-white text-sm px-3 py-1.5 rounded-full border border-purple-600 focus:border-yellow-400 focus:outline-none w-32 focus:w-48 transition-all duration-300" onkeyup="searchPages(event)">
+                <div id="search-results" class="hidden absolute right-0 top-full mt-1 w-64 bg-white border border-purple-300 rounded-lg shadow-xl z-50 max-h-64 overflow-y-auto"></div>
+              </div>
+            </div>
+          </div>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-0 pb-4 border-t border-purple-700 pt-2 px-4">
+          <div class="flex flex-col gap-2" style="font-family: cambria;">
+            <a href="#home" class="text-gray-200 hover:text-white font-medium py-2 border-b border-purple-700">Home</a>
+            <div class="rounded-xl bg-purple-800 overflow-hidden">
+              <button id="mobile-about-toggle" type="button" class="w-full px-4 py-3 text-left text-white hover:text-white font-medium flex items-center justify-between">
+                <span>About</span>
+                <svg id="mobile-about-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="mobile-about-submenu" class="hidden px-4 pb-3 space-y-2 bg-purple-900">
+                <a href="about-school.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏫 School</a>
+                <a href="management.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏛️ Management</a>
+                <a href="alumani/alumni-website.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">👨‍🎓 Alumni</a>
+              </div>
+            </div>
+              <a href="staff.html" class="text-gray-200 hover:text-white font-medium py-2">Faculties</a>
+          
+            <div class="rounded-xl bg-purple-800 overflow-hidden">
+              <button id="mobile-streams-toggle" type="button" class="w-full px-4 py-3 text-left text-white hover:text-white font-medium flex items-center justify-between">
+                <span>Streams</span>
+                <svg id="mobile-streams-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="mobile-streams-submenu" class="hidden px-4 pb-3 space-y-2 bg-purple-900">
+                <a href="stream-ssc.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📖 SSC (Class 9-10)</a>
+                <a href="stream-arts.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎨 Arts Stream</a>
+                <a href="stream-commerce.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">💼 Commerce Stream</a>
+                <a href="stream-science.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🔬 Science Stream</a>
+              </div>
+            </div>
+            <a href="#achievements" class="text-gray-200 hover:text-white font-medium py-2 border-b border-purple-700">Achievements</a>
+            <div class="rounded-xl bg-purple-800 overflow-hidden">
+              <button id="mobile-gallery-toggle" type="button" class="w-full px-4 py-3 text-left text-white hover:text-white font-medium flex items-center justify-between">
+                <span>Gallery</span>
+                <svg id="mobile-gallery-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="mobile-gallery-submenu" class="hidden px-4 pb-3 space-y-2 bg-purple-900">
+                <a href="school-building-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏫 School Building</a>
+                <a href="sports-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏆 Sports Gallery</a>
+                <a href="cultural-events-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎭 Cultural Events</a>
+                <a href="art-exhibition-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎨 Art Exhibition</a>
+                <a href="annual-day-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎉 Annual Day</a>
+                <a href="graduation-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎓 Graduation</a>
+                <a href="library-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📚 Library</a>
+                <a href="computer-lab-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">💻 Computer Lab</a>
+                <a href="alumni-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">👥 Alumni Gallery</a>
+                <a href="360-campus-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🌐 360° Campus Tour</a>
+              </div>
+            </div>
+            <div class="rounded-xl bg-purple-800 overflow-hidden">
+              <button id="mobile-news-toggle" type="button" class="w-full px-4 py-3 text-left text-white hover:text-white font-medium flex items-center justify-between">
+                <span>News & Activities</span>
+                <svg id="mobile-news-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="mobile-news-submenu" class="hidden px-4 pb-3 space-y-2 bg-purple-900">
+                <a href="news-events.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📰 Latest News</a>
+                <a href="circulars.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📋 Circulars</a>
+                <a href="achievements.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏆 Achievements</a>
+                <a href="alumani/activities-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎪 Alumni Activities</a>
+              </div>
+            </div>
+            <div class="rounded-xl bg-purple-800 overflow-hidden">
+              <button id="mobile-facility-toggle" type="button" class="w-full px-4 py-3 text-left text-white hover:text-white font-medium flex items-center justify-between">
+                <span>Infrastructure</span>
+                <svg id="mobile-facility-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="mobile-facility-submenu" class="hidden px-4 pb-3 space-y-2 bg-purple-900">
+                <a href="school-building-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏫 Buildings Overview</a>
+                <a href="main-building.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏢 Main Building</a>
+                <a href="playground.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎯 Playground</a>
+                <a href="auditorium.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🎭 Auditorium</a>
+                <a href="science-lab.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🔬 Science Lab</a>
+                <a href="computer-lab.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">💻 Computer Lab</a>
+                <a href="library.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📚 Library</a>
+                <a href="class-room.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🏠 Class Rooms</a>
+                <a href="staff-room.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">👨‍🏫 Staff Room</a>
+                <a href="360-campus-gallery.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🌐 Virtual Tour</a>
+              </div>
+            </div>
+            <div class="rounded-xl bg-purple-800 overflow-hidden">
+              <button id="mobile-student-toggle" type="button" class="w-full px-4 py-3 text-left text-white hover:text-white font-medium flex items-center justify-between">
+                <span>Student Corner</span>
+                <svg id="mobile-student-icon" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div id="mobile-student-submenu" class="hidden px-4 pb-3 space-y-2 bg-purple-900">
+                <a href="student-corner.html" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📅 Daily Timetable</a>
+                <a href="student-corner.html#exam" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📝 Exam Timetable</a>
+                <a href="student-corner.html#holidays" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">🌴 Holidays List</a>
+                <a href="student-corner.html#yearly" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📆 Yearly Plan</a>
+                <a href="student-corner.html#notices" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📢 Notices</a>
+                <a href="student-corner.html#ebooks" class="block rounded-lg bg-purple-700 px-3 py-2 text-sm text-white">📚 E-Books Corner</a>
+              </div>
+            </div>
+            <a href="#contact" class="text-gray-200 hover:text-white font-medium py-2">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+<section id="home" class="py-8 md:py-12 bg-gradient-to-b from-sky-50 to-white">
+          
+          <div class="max-w-8xl mx-auto px-6">
+            <div class="relative overflow-hidden rounded-[2rem] shadow-2xl">
+              <div class="relative h-[280px] sm:h-[360px] md:h-[520px]">
+                <img id="slide-1" src="photos/school new pic.jpg" alt="School campus" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-100" />
+                <img id="slide-2" src="photos/school gallary/Cultural Events.jpg" alt="Cultural events" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-0" />
+                <img id="slide-3" src="photos/school gallary/Sports Day.jpg" alt="Sports day" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-0" />
+                <img id="slide-4" src="photos/school gallary/Annual Day.jpg" alt="Annual day" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-0" />
+                <img id="slide-5" src="photos/school old pic.jpg" alt="Art exhibition" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-0" />
+                <img id="slide-6" src="photos/school gallary/Building & Facilities.jpg" alt="Building" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-0" />
+                <img id="slide-7" src="photos/IMG-20230820-WA0000.jpg" alt="Students" class="slide-image w-full h-full object-cover absolute inset-0 transition-opacity duration-700 opacity-0" />
+                <div class="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-900/35 to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 p-6 md:p-10 text-white">
+                  <div class="max-w-2xl">
+                    <p class="inline-block slide-label rounded-full bg-white/20 px-4 py-2 text-m font-bold backdrop-blur" style="font-family: cambria;"> 
+                      Smt. M.M. Bhakta High School, Netrang</p>
+                    <h2 class="mt-4 text-3xl md:text-5xl font-bold leading-tight slide-quote" style="font-family: cambria;">Learning, values, and growth under one roof</h2>
+                    <p class="mt-3 text-sm md:text-lg text-white/90 slide-subquote" style="font-family: cambria;">A vibrant campus where academics, discipline, culture, and confidence grow together.</p>
+                  </div>
+                </div>
+                <button onclick="slidePrev()" class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-3 shadow-lg transition hover:bg-white z-10">
+                  <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="slideNext()" class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-3 shadow-lg transition hover:bg-white z-10">
+                  <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+                <button id="playPauseBtn" onclick="toggleAutoSlide()" class="absolute top-4 right-4 z-10 rounded-full bg-white/80 p-3 shadow-lg transition hover:bg-white">
+                  <svg id="playIcon" class="w-6 h-6 text-gray-800 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <svg id="pauseIcon" class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </button>
+              </div>
+              <div class="bg-white px-6 py-4 md:px-8 md:py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="goToSlide(1)" class="slide-dot w-3 h-3 bg-blue-500 rounded-full transition-all hover:w-8"></button>
+                  <button onclick="goToSlide(2)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+                  <button onclick="goToSlide(3)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+                  <button onclick="goToSlide(4)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+                  <button onclick="goToSlide(5)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+                  <button onclick="goToSlide(6)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+                  <button onclick="goToSlide(7)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+                </div>
+                <span id="slide-counter" class="text-gray-500 text-sm"></span>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+<section id="home" class="hero-gradient py-16 md:py-12">
+  
         <div class="max-w-7xl mx-auto px-4">
+          
+          <!-- Social Media Floating Column -->
+          <div class="absolute -right-9 -translate-y-1/2 flex flex-col gap-3" style="z-index:10;">
+            <a href="https://www.facebook.com/smtmmbhakta1961" target="_blank" class="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110" title="Facebook">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/smtmmbhakta1961" target="_blank" class="w-12 h-12 bg-pink-600 hover:bg-pink-700 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110" title="Instagram">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110" title="YouTube">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="w-12 h-12 bg-sky-500 hover:bg-sky-600 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110" title="Twitter">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </a>
+            </a> <a href="https://wa.me/6351738499" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-green-100 hover:bg-green-200 rounded-full flex items-center justify-center text-green-600 transition-colors">
+              <svg class="w-12 h-12 text-green-600" fill="currentColor" viewbox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg></a>
+          </div>
           <div class="grid md:grid-cols-2 gap-12 items-center">
           <div class="fade-in">
             <div class="inline-block bg-amber-100 font-bold text-amber-800 px-7 py-2 rounded-full text-sm font-medium mb-4">
@@ -89,16 +409,17 @@
             <p id="hero-tagline" class="text-xl font-bold text-purple-600 mb-6">Education leads to culture and success</p>
             <p class="text-blue-900 font-bold mb-8 text-lg" style="text-align: justify; font-family: times New Roman;"> 
               Providing quality education from standard 9 to 12, our school is dedicated to the all-round development of students. In standard 11 and 12, modern knowledge and life values ??are guided through the common stream. Discipline, culture and progress are the main pillars of our education. Our goal is to empower students for a bright future.</p>
-              <div class="flex flex-wrap gap-4"><a href="#streams" class="bg-sky-600 hover:bg-sky-700 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-xl"> Explore Streams </a> <a href="#contact" class="bg-white hover:bg-gray-50 text-sky-700 border-2 border-sky-600 px-8 py-3 rounded-full font-medium transition-all"> Contact Us </a>
+              <div class="flex flex-wrap gap-4"><a href="about-school.html" class="bg-sky-600 hover:bg-sky-700 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-xl"> About School  </a> <a href="#contact" class="bg-white hover:bg-gray-50 text-sky-700 border-2 border-sky-600 px-8 py-3 rounded-full font-medium transition-all"> Contact Us </a>
             </div>
           
           </div>
+          
           <div class="relative">
+      
             <div class="bg-white rounded-3xl shadow-2xl p-8 transform rotate-2 hover:rotate-0 transition-transform duration-500">
             <div class="bg-gradient-to-br from-sky-100 to-emerald-100 rounded-2xl p-8 text-center">
               <div class="text-6xl mb-4">
-                🏫
-              </div>
+                <img src="photos/school.jpg"  alt="School Image" class="rounded-full w-32 h-30 mx-auto mb-2 object-cover shadow-lg mx-auto"> </div>
               <h3 class="text-2xl font-bold text-gray-800 mb-2">Welcome to Our School</h3>
               <p class="text-gray-600"> Where Dreams Take Flight </p>
               <div class="mt-6 grid grid-cols-3 gap-4 text-center">
@@ -130,8 +451,8 @@
             </div>
             </div><!-- Science Stream Badge -->
             <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-lg pulse-badge"><span class="font-semibold">?? Science Stream - Coming June 2026!</span>
-            </div>
-          </div>
+            </div>           
+          </div>         
           </div>
         </div>
         </section><!-- Announcement Banner -->
@@ -187,382 +508,143 @@
             showAnnouncement(currentAnnouncement);
           }
           showAnnouncement(currentAnnouncement);
-        </script><!-- Notice Board Section -->
-        <section class="py-12 bg-gradient-to-r from-amber-50 to-orange-50 border-b-4 border-orange-400">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="backdrop-blur-sm bg-white bg-opacity-90 rounded-2xl shadow-2xl border-4 border-orange-300 p-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-orange-800 mb-2" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">📢 NOTICE BOARD 📢</h2>
-            <div class="border-b-4 border-orange-400 mb-6 pb-4"></div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <a href="exam-calendar.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white p-6 rounded-xl text-center font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                <p class="text-3xl mb-2">📋</p>
-                <p>Exam Calendar</p>
+          setInterval(nextAnnouncement, 3000);
+        </script>
+        <section id="streams" class="py-16 bg-gradient-to-b from-gray-50 to-white">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+              <h2 class="text-4xl font-bold text-gray-800">Academic Streams</h2>
+              <p class="mt-3 text-gray-600 max-w-3xl mx-auto">Choose the right path with our structured programs for secondary and higher secondary students.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <a href="stream-ssc.html" class="bg-gradient-to-br from-blue-900 to-emerald-500 hover:from-blue-950 hover:to-emerald-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center transition-all cursor-pointer">
+                <p class="text-6xl mb-4">📚</p>
+                <h3 class="text-3xl font-bold">SSC</h3>
+                <p class="mt-3 text-sm text-white/90">Class 9-10 foundation learning</p>
               </a>
-              <a href="year-plan.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white p-6 rounded-xl text-center font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                <p class="text-3xl mb-2">📅</p>
-                <p>Year Plan</p>
+              <a href="stream-arts.html" class="bg-gradient-to-br from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center transition-all cursor-pointer">
+                <p class="text-6xl mb-4">🎨</p>
+                <h3 class="text-3xl font-bold">ARTS</h3>
+                <p class="mt-3 text-sm text-white/90">Creative and humanities-focused growth</p>
               </a>
-              <a href="holiday-list.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700 text-white p-6 rounded-xl text-center font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                <p class="text-3xl mb-2">🎉</p>
-                <p>Holiday List</p>
+              <a href="stream-commerce.html" class="bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center transition-all cursor-pointer">
+                <p class="text-6xl mb-4">💼</p>
+                <h3 class="text-3xl font-bold">COMMERCE</h3>
+                <p class="mt-3 text-sm text-white/90">Business, accounts, and practical learning</p>
               </a>
-              <a href="circulars.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-red-400 to-red-600 hover:from-red-500 hover:to-red-700 text-white p-6 rounded-xl text-center font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                <p class="text-3xl mb-2">📣</p>
-                <p>Circulars</p>
+              <a href="stream-science.html" class="bg-gradient-to-br from-orange-400 to-pink-500 hover:from-orange-500 hover:to-pink-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center transition-all cursor-pointer">
+                <p class="text-6xl mb-4">🔬</p>
+                <h3 class="text-3xl font-bold">SCIENCE</h3>
+                <p class="mt-3 text-sm text-white/90">Launching in June 2026</p>
               </a>
             </div>
           </div>
-        </div>
-        </section><!-- Photo Slideshow Section -->
-        <section class="py-16 bg-gradient-to-b from-blue-50 to-white">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="text-center mb-12">
-          </div>
-          <div class="relative w-full">
-            <div class="overflow-x-auto rounded-3xl shadow-2xl bg-gray-300 relative" style="height: 500px;">
-              <div id="photo-slideshow" class="absolute inset-0">
-                <img id="slide-1" src="photos/school gallary/Building & Facilities.jpg" alt=" Photo 1" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" />
-                <img id="slide-2" src="photos/school gallary/Cultural Events.jpg" alt=" Photo 2" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-3" src="photos/school gallary/Sports Day.jpg" alt=" Photo 3" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-4" src="photos/school gallary/Annual Day.jpg" alt=" Photo 4" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-5" src="photos/school gallary/Art Exhibition.jpg" alt=" Photo 5" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-6" src="photos/school gallary/Building & Facilities.jpg" alt=" Photo 6" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-7" src="photos/school gallary/Cultural Events.jpg" alt=" Photo 7" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-8" src="photos/school gallary/Art Exhibition.jpg" alt=" Photo 8" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-9" src="photos/school gallary/Sports Day.jpg" alt=" Photo 9" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
-                <img id="slide-10" src="photos/school gallary/Annual Day.jpg" alt=" Photo 10" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" />
+        </section>
+
+        <section class="py-16 bg-gradient-to-br from-sky-50 via-purple-50 to-amber-50">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+              <h2 class="text-4xl font-bold text-gray-800">Leadership Messages</h2>
+              <p class="mt-3 text-gray-600 font-medium">Words of guidance from the people leading our school community.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white rounded-3xl shadow-lg border border-sky-100 p-7">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-sky-500 to-blue-700 text-white flex items-center justify-center text-xl font-bold mx-auto mb-4">CB</div>
+                <h4 class="text-xl font-bold text-gray-800 text-center">Shri Hasmukhbhai N. Bhakta</h4>
+                <p class="text-sky-600 font-semibold text-center mb-4">Chairman's Message</p>
+                <p class="text-gray-600 leading-7 text-justify">Our aim is to provide an educational environment where students grow in knowledge, discipline, and values. We are committed to giving every child the opportunity to build confidence, character, and a bright future through quality education.</p>
               </div>
-              <!-- Navigation Arrows -->
-              <button onclick="slidePrev()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all z-10">
+              <div class="bg-white rounded-3xl shadow-lg border border-emerald-100 p-7">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 text-white flex items-center justify-center text-xl font-bold mx-auto mb-4">SB</div>
+                <h4 class="text-xl font-bold text-gray-800 text-center">Shri Samirbhai S. Bhakta</h4>
+                <p class="text-emerald-600 font-semibold text-center mb-4">Secretary's Message</p>
+                <p class="text-gray-600 leading-7 text-justify">We believe that a school becomes strong when learning is supported by care, planning, and opportunity. Our focus is to maintain excellent academic standards while creating a safe, modern, and inspiring space for all students.</p>
+              </div>
+              <div class="bg-white rounded-3xl shadow-lg border border-amber-100 p-7">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-white flex items-center justify-center text-xl font-bold mx-auto mb-4">RV</div>
+                <h4 class="text-xl font-bold text-gray-800 text-center">Shri Ratanbhai L. Vasava</h4>
+                <p class="text-amber-600 font-semibold text-center mb-4">Principal's Message</p>
+                <p class="text-gray-600 leading-7 text-justify">At our school, we work to develop students academically, morally, and socially. With the support of dedicated teachers and parents, we encourage each learner to stay curious, work hard, and move ahead with confidence and responsibility.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="py-12 bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-8">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Photo Gallery</h2>
+              <p class="mt-2 text-gray-600 font-medium">Click on any photo to view larger</p>
+            </div>
+            <div class="relative">
+              <button onclick="galleryPrev()" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all">
                 <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
               </button>
-              <button onclick="slideNext()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-3 rounded-full shadow-lg transition-all z-10">
+              <div class="overflow-hidden rounded-2xl">
+                <div id="gallery-container" class="flex transition-transform duration-500" style="transform: translateX(0);">
+                  <div class="gallery-slide w-full flex-shrink-0 p-2">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/school gallary/Building & Facilities.jpg" alt="Building" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/school gallary/Cultural Events.jpg" alt="Cultural" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/school gallary/Sports Day.jpg" alt="Sports" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/school gallary/Annual Day.jpg" alt="Annual" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/school gallary/Art Exhibition.jpg" alt="Art" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230820-WA0000.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230819-WA0005.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230818-WA0008.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                    </div>
+                  </div>
+                  <div class="gallery-slide w-full flex-shrink-0 p-2 hidden">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230817-WA0002.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230816-WA0010.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230816-WA0009.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                      <div class="aspect-square rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform" onclick="openLightbox(this)"><img src="photos/IMG-20230816-WA0008.jpg" alt="Event" class="w-full h-full object-cover"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button onclick="galleryNext()" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all">
                 <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
               </button>
             </div>
-            <!-- Slide Indicators -->
-            <div class="flex justify-center gap-2 mt-6">
-              <span id="slide-counter" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full font-semibold text-lg">1 / 10</span>
-            </div>
-            <!-- Dot Indicators -->
-            <div class="flex justify-center gap-2 mt-4 flex-wrap">
-              <button onclick="goToSlide(1)" class="slide-dot w-3 h-3 bg-blue-500 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(2)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(3)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(4)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(5)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(6)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(7)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(8)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(9)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
-              <button onclick="goToSlide(10)" class="slide-dot w-3 h-3 bg-gray-400 rounded-full transition-all hover:w-8"></button>
+            <div class="flex justify-center gap-2 mt-4">
+              <button onclick="goToSlide(1)" class="gallery-dot w-3 h-3 bg-purple-500 rounded-full"></button>
+              <button onclick="goToSlide(2)" class="gallery-dot w-3 h-3 bg-gray-400 rounded-full"></button>
             </div>
           </div>
-        </div>
-        </section><!-- Streams Section -->
-        <section id="streams" class="py-16 bg-gradient-to-b from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Academic Streams</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto">Choose your path to success with our comprehensive academic programs for classes 9 to 12. Students in standards 9 and 10 follow a well-rounded, foundational curriculum that covers science, mathematics, social science, languages, and arts to prepare for higher secondary streams.</p>
-          </div>
-        
-          <div class="grid md:grid-cols-4 gap-8"> 
-            
-            <!-- SSC Stream - Clickable -->
-            <a href="stream-ssc.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-blue-900 to-emerald-500 hover:from-blue-950 hover:to-emerald-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all cursor-pointer">
-              <p class="text-6xl mb-4">📚</p>
-              <h3 class="text-3xl font-bold">S.S.C STREAM</h3>
-            </a>
-
-            <!-- Arts Stream - Clickable -->
-            <a href="stream-arts.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all cursor-pointer">
-              <p class="text-6xl mb-4">🎨</p>
-              <h3 class="text-3xl font-bold">ARTS STREAM</h3>
-            </a>
-
-            <!-- Commerce Stream - Clickable -->
-            <a href="stream-commerce.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all cursor-pointer">
-              <p class="text-6xl mb-4">💼</p>
-              <h3 class="text-3xl font-bold">COMMERCE STREAM</h3>
-            </a>
-
-            <!-- Science Stream - Clickable -->
-            <a href="stream-science.html" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-br from-orange-400 to-pink-500 hover:from-orange-500 hover:to-pink-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all cursor-pointer">
-              <p class="text-6xl mb-4">🔬</p>
-              <h3 class="text-3xl font-bold">SCIENCE STREAM</h3>
-            </a>
-          </div>
-            </div>
-        </div>
-        </section><!-- Gallery Section -->
-        <section id="gallery" class="py-20 bg-gradient-to-br from-purple-100 via-blue-100 to-green-100">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="text-center mb-16">
-          <div class="mb-6">
-            <h2 class="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 mb-4" style="font-family: times new roman; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);"> SCHOOL GALLERY </h2>
-          </div>
-          <p class="text-lg font-semibold text-gray-700" style="font-family: 'Times New Roman', Times, serif;">🏫 Explore Our School's Best Moments & Facilities 📸</p>
-          <p class="text-black mt-2" style="font-family: 'Times New Roman', Times, serif; font-size: larger;">Click on any category to view full size images of our amazing events and facilities</p>
-          </div>
-          <!-- Gallery Grid -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <!-- School Building -->
-            <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all">
-              <p class="text-6xl mb-4">🏢</p>
-              <h3 class="text-3xl font-bold">SCHOOL BUILDING</h3>
-            </div>
-            <!-- Cultural Events -->
-            <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all">
-              <p class="text-6xl mb-4">🎭</p>
-              <h3 class="text-3xl font-bold">CULTURAL EVENTS</h3>
-            </div>
-            <!-- Sports Day -->
-            <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all">
-              <p class="text-6xl mb-4">⚽</p>
-              <h3 class="text-3xl font-bold">SPORTS DAY</h3>
-            </div>
-            <!-- Annual Day -->
-            <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all">
-              <p class="text-6xl mb-4">🎊</p>
-              <h3 class="text-3xl font-bold">ANNUAL DAY</h3>
-            </div>
-            <!-- Art Exhibition -->
-            <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all">
-              <p class="text-6xl mb-4">🖼️</p>
-              <h3 class="text-3xl font-bold">ART EXHIBITION</h3>
-            </div>
-            <!-- 360� Campus Tour -->
-            <div class="bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-3xl p-8 text-white shadow-2xl text-center min-h-48 flex flex-col items-center justify-center hover:shadow-3xl transition-all">
-              <p class="text-6xl mb-4">🌍</p>
-              <h3 class="text-3xl font-bold">360° CAMPUS TOUR</h3>
-            </div>
-          </div>
-        </div>
-        </section><!-- About Section with Tabs -->
-        <section id="about" class="py-16 bg-gradient-to-br from-sky-50 via-purple-50 to-emerald-50">
-        <div class="max-w-7xl mx-auto px-4">
-          <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-purple-600 to-emerald-600 mb-4">About Us</h2>
-          <p class="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-emerald-700">Learn more about our school, dedicated staff, management, and proud alumni</p>
-          </div><!-- Tab Navigation -->
-          <div class="flex flex-wrap justify-center gap-2 mb-8" id="about-tabs"><button class="tab-btn active bg-gradient-to-r from-sky-600 to-sky-500 text-white px-6 py-3 rounded-full font-medium transition-all shadow-lg hover:shadow-xl" data-tab="school"> 🏫 Our School </button> <button class="tab-btn bg-gradient-to-r from-purple-100 to-purple-50 text-purple-700 hover:from-purple-200 hover:to-purple-100 px-6 py-3 rounded-full font-medium transition-all shadow-md" data-tab="management"> 👔 Management </button> <button class="tab-btn bg-gradient-to-r from-emerald-100 to-emerald-50 text-emerald-700 hover:from-emerald-200 hover:to-emerald-100 px-6 py-3 rounded-full font-medium transition-all shadow-md" data-tab="staff"> 👨‍🏫 Staff </button> <button class="tab-btn bg-gradient-to-r from-amber-100 to-amber-50 text-amber-700 hover:from-amber-200 hover:to-amber-100 px-6 py-3 rounded-full font-medium transition-all shadow-md" data-tab="alumni"> 🎓 Alumni </button>
-          </div><!-- Tab Content -->
-          <div id="tab-content" class="fade-in"><!-- School Tab -->
-          <div id="school-content" class="tab-panel">
-            <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div class="bg-gradient-to-br from-sky-50 to-emerald-50 rounded-2xl p-8">
-              <div class="text-6xl mb-4 text-center">
-              🏛️
-              </div>
-              <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Our Vision &amp; Mission</h3>
-              <div class="space-y-4">
-              <div class="bg-white rounded-xl p-4 shadow-sm">
-                <h4 class="font-semibold text-sky-700 mb-2">👁️ Vision</h4>
-                <p class="text-gray-600" style="text-align: justify;" align="justify"> Our dream is to shape every student into a successful and responsible citizen in life through quality education, culture, and modern knowledge.
-                  </p>
-                </div>
-              <div class="bg-white rounded-xl p-4 shadow-sm">
-                <h4 class="font-semibold text-emerald-700 mb-2">🎯 Mission</h4>
-                <pre><p class="text-gray-600" style= "font-family:TimesNewRoman; text-align: justify;">??To provide excellent education for all-round development from standard 9 to 12.
-      ??To provide quality guidance in the general stream of standard 11 and 12.
-      ??To foster discipline, culture and moral values.
-      ??To prepare students for competitive and professional fields.
-      ??To use technology and modern teaching methods.
-                  </pre>
-                </p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-2xl font-bold text-gray-800 mb-4">About Our School</h3>
-              <p class="text-gray-600" style=" font-family: cambria;font-weight: bold; text-align: justify;" align="justify">Smt. M.M. Bhakta High School, Netrang is a prestigious educational institution, which provides quality education from standard 9 to 12. In our school, special emphasis is placed on culture, discipline and moral values ??along with the academic development of the students. In standard 11 and 12, students are guided by modern knowledge and life values ??through common stream.
-      Our goal is to develop every student in an all-round way and prepare them for a bright future. Through experienced teachers, positive educational environment and modern teaching methods, we are committed to taking students towards success.
-                </p>
-              <p class="text-gray-600" style=" font-family: cambria;font-weight: bold; text-align: justify;" align="justify">We believe in holistic development - nurturing not just academic excellence but also character, creativity, and leadership qualities in our students.</p>
-              <div class="grid grid-cols-2 gap-4">
-              <div class="bg-sky-50 rounded-xl p-4 text-center">
-                <div class="text-3xl mb-2">
-                📚
-                </div>
-                <div class="font-semibold text-gray-800">
-                Well-Equipped Library
-                </div>
-              </div>
-              <div class="bg-emerald-50 rounded-xl p-4 text-center">
-                <div class="text-3xl mb-2">
-                💻
-                </div>
-                <div class="font-semibold text-gray-800">
-                Computer Lab
-                </div>
-              </div>
-              <div class="bg-amber-50 rounded-xl p-4 text-center">
-                <div class="text-3xl mb-2">
-                🏆
-                </div>
-                <div class="font-semibold text-gray-800">
-                Sports Facilities
-                </div>
-              </div>
-              <div class="bg-purple-50 rounded-xl p-4 text-center">
-                <div class="text-3xl mb-2">
-                🎭
-                </div>
-                <div class="font-semibold text-gray-800">
-                Cultural Activities
-                </div>
-              </div>
-              </div>
-            </div>
-            </div>
-          </div><!-- Management Tab -->
-          <div id="management-content" class="tab-panel hidden">
-            <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-gradient-to-br from-sky-50 to-sky-100 rounded-2xl p-6 text-center card-hover">
-              <img src="management-hasmukhbhai.jpg" alt="Shri Hasmukhbhai N. Bhakta" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-xl font-bold text-gray-800 mb-2"> Shri Hasmukhbhai N. Bhakta </h4>
-              <p class="text-sky-600 font-medium mb-3">Chairman</p>
-              <p class="text-gray-600 text-sm">Leading our institution with vision and dedication for over 15 years.</p>
-            </div>
-            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl p-6 text-center card-hover">
-              <img src="management-samirbhai.jpg" alt="Shri Samirbhai S. Bhakta" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-xl font-bold text-gray-800 mb-2">Shri Samirbhai S. Bhakta </h4>
-              <p class="text-emerald-600 font-medium mb-3">Secretary</p>
-              <p class="text-gray-600 text-sm">Dedicated to administrative excellence and student welfare.</p>
-            </div>
-            <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-6 text-center card-hover">
-              <img src="management-sanmukhbhai.jpg" alt="Shri Sanmukhbhai Bhakta" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-xl font-bold text-gray-800 mb-2">Shri Sanmukhbhai Bhakta</h4>
-              <p class="text-amber-600 font-medium mb-3">Trustee</p>
-              <p class="text-gray-600 text-sm">Building bright futures through learning.</p>
-            </div>
-            </div>
-            <div class="mt-8 bg-gray-50 rounded-2xl p-6">
-            <h4 class="text-xl font-bold text-gray-800 mb-4 text-center">Our Commitment</h4>
-            <p class="text-gray-600 text-center max-w-3xl mx-auto">The management committee is committed to providing the best educational facilities and opportunities for our students. We continuously work towards improving infrastructure, introducing new programs, and maintaining high educational standards.</p>
-            </div>
-            <div class="mt-4 text-center">
-              <a href="management.html" target="_blank" class="text-sky-600 font-medium underline">View full management directory</a>
-            </div> 
-          </div><!-- Staff Tab -->
-          <div id="staff-content" class="tab-panel hidden">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover border border-sky-100">
-              <img src="staff-ratanbhai.jpg" alt="Shri Ratanbhai L.Vasava" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-lg font-bold text-gray-800 mb-1">Shri Ratanbhai L.Vasava</h4>
-              <p class="text-sky-600 font-medium text-sm mb-2">Principal</p>
-              <p class="text-gray-500 text-xs">BSC, B.Ed. | 30+ Years Exp.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover border border-emerald-100">
-              <img src="staff-bhavnaben.jpg" alt="Smt. Bhavnaben T.Desai" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-lg font-bold text-gray-800 mb-1">Smt. Bhavnaben T.Desai </h4>
-              <p class="text-emerald-600 font-medium text-sm mb-2">Secondary Sec. Supervisor </p>
-              <p class="text-gray-500 text-xs">B.A., Sikshashatri | 32+ Years Exp.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover border border-purple-100">
-              <img src="staff-hiteshbhai.jpg" alt="Shri Hiteshbhai Patel" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-lg font-bold text-gray-800 mb-1">Shri Hiteshbhai Patel</h4>
-              <p class="text-purple-600 font-medium text-sm mb-2">HOD - Commerce</p>
-              <p class="text-gray-500 text-xs">M.Com., M.Phil. | 12+ Years Exp.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover border border-amber-100">
-              <img src="staff-rekhaben.jpg" alt="Smt. Rekhaben Shah" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover">
-              <h4 class="text-lg font-bold text-gray-800 mb-1">Smt. Rekhaben Shah</h4>
-              <p class="text-amber-600 font-medium text-sm mb-2">HOD - Arts</p>
-              <p class="text-gray-500 text-xs">M.A., B.Ed. | 10+ Years Exp.</p>
-            </div>
-            </div>
-            <div class="mt-8 grid md:grid-cols-3 gap-4">
-            <div class="bg-sky-50 rounded-xl p-4 text-center">
-              <div class="text-2xl font-bold text-sky-600">
-              25+
-              </div>
-              <div class="text-gray-600">
-              Teaching Staff
-              </div>
-            </div>
-            <div class="bg-emerald-50 rounded-xl p-4 text-center">
-              <div class="text-2xl font-bold text-emerald-600">
-              10+
-              </div>
-              <div class="text-gray-600">
-              Support Staff
-              </div>
-            </div>
-            <div class="bg-amber-50 rounded-xl p-4 text-center">
-              <div class="text-2xl font-bold text-amber-600">
-              100%
-              </div>
-              <div class="text-gray-600">
-              Qualified Teachers
-              </div>
-            </div>
-            </div>
-            <div class="mt-4 text-center">
-              <a href="staff.html" target="_blank" class="text-emerald-600 font-medium underline">See complete staff directory</a>
-            </div>
-          </div><!-- Alumni Tab -->
-          <div id="alumni-content" class="tab-panel hidden">
-            <div class="text-center mb-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-2">Our Proud Alumni</h3>
-            <p class="text-gray-600">Our alumni have excelled in various fields and continue to make us proud</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-gradient-to-br from-sky-50 to-white rounded-2xl p-6 shadow-lg card-hover">
-              <div class="flex items-center gap-4 mb-4">
-              <img src="alumni-rajesh.jpg" alt="Dr. Rajesh Sharma" class="w-16 h-16 rounded-full object-cover">
-              <div>
-                <h4 class="font-bold text-gray-800">Dr. Rajesh Sharma</h4>
-                <p class="text-sky-600 text-sm">Batch of 2005</p>
-              </div>
-              </div>
-              <p class="text-gray-600 text-sm">Currently serving as Senior Doctor at Civil Hospital, Surat. Specialization in Internal Medicine.</p>
-            </div>
-            <div class="bg-gradient-to-br from-emerald-50 to-white rounded-2xl p-6 shadow-lg card-hover">
-              <div class="flex items-center gap-4 mb-4">
-              <img src="alumni-priya.jpg" alt="CA Priya Mehta" class="w-16 h-16 rounded-full object-cover">
-              <div>
-                <h4 class="font-bold text-gray-800">CA Priya Mehta</h4>
-                <p class="text-emerald-600 text-sm">Batch of 2008</p>
-              </div>
-              </div>
-              <p class="text-gray-600 text-sm">Chartered Accountant running her own firm in Ahmedabad. Gold Medalist in CA Final.</p>
-            </div>
-            <div class="bg-gradient-to-br from-amber-50 to-white rounded-2xl p-6 shadow-lg card-hover">
-              <div class="flex items-center gap-4 mb-4">
-              <img src="alumni-amit.jpg" alt="Prof. Amit Patel" class="w-16 h-16 rounded-full object-cover">
-              <div>
-                <h4 class="font-bold text-gray-800">Prof. Amit Patel</h4>
-                <p class="text-amber-600 text-sm">Batch of 2003</p>
-              </div>
-              </div>
-              <p class="text-gray-600 text-sm">Professor at Gujarat University, Department of Economics. Published researcher.</p>
-            </div>
-            </div>
-            <div class="mt-8 bg-gradient-to-r from-sky-100 to-emerald-100 rounded-2xl p-6 text-center">
-            <h4 class="text-xl font-bold text-gray-800 mb-2">Alumni Network</h4>
-            <p class="text-gray-600 mb-4">Join our growing alumni community and stay connected with your alma mater</p>
-            <div class="flex justify-center gap-4 flex-wrap">
-              <div class="bg-white rounded-full px-6 py-2 shadow-sm"><span class="font-semibold text-sky-600">1000+</span> Alumni Members
-              </div>
-              <div class="bg-white rounded-full px-6 py-2 shadow-sm"><span class="font-semibold text-emerald-600">50+</span> Cities Worldwide
-              </div>
-            </div>
-            <div class="mt-4">
-              <a href="alumni-directory.html" target="_blank" class="text-amber-600 font-medium underline">Browse full alumni directory</a>
-            </div>
-            </div>
-          </div>
-          </div>
-        </div>
         </section>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4" onclick="closeLightbox()">
+          <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">&times;</button>
+          <img id="lightbox-img" src="" class="max-w-full max-h-full rounded-lg shadow-2xl">
+        </div>
+
+        <script>
+          let currentGallerySlide = 1;
+          const totalGallerySlides = 2;
+          function showGallerySlide(n) {
+            if (n > totalGallerySlides) currentGallerySlide = 1;
+            if (n < 1) currentGallerySlide = totalGallerySlides;
+            document.querySelectorAll('.gallery-slide').forEach((el, idx) => { el.classList.toggle('hidden', idx + 1 !== currentGallerySlide); });
+            document.querySelectorAll('.gallery-dot').forEach((dot, idx) => { dot.classList.toggle('bg-purple-500', idx + 1 === currentGallerySlide); dot.classList.toggle('bg-gray-400', idx + 1 !== currentGallerySlide); });
+          }
+          function galleryNext() { currentGallerySlide++; showGallerySlide(currentGallerySlide); }
+          function galleryPrev() { currentGallerySlide--; showGallerySlide(currentGallerySlide); }
+          function goToSlide(n) { currentGallerySlide = n; showGallerySlide(currentGallerySlide); }
+          function openLightbox(el) { document.getElementById('lightbox-img').src = el.querySelector('img').src; document.getElementById('lightbox').classList.remove('hidden'); }
+          function closeLightbox() { document.getElementById('lightbox').classList.add('hidden'); }
+          function openAchievementLightbox(el) { document.getElementById('lightbox-img').src = el.querySelector('img').src; document.getElementById('lightbox').classList.remove('hidden'); }
+          setInterval(() => { galleryNext(); }, 6000);
+        </script>
 
         <!-- Get in Touch Section (Combined Information Gateway + Contact) -->
         <section id="contact" class="py-16 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
           <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">💬 Get in Touch</h2>
+            <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">Get in Touch</h2>
             <p class="text-gray-700 font-semibold">Have a question? Send us a message or contact us directly!</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
@@ -623,7 +705,7 @@
                     <input type="email" id="form-email" placeholder="Email" required class="p-4 rounded-xl border-2 border-purple-300 focus:border-purple-600 focus:outline-none bg-white shadow-sm" />
                     <input type="text" id="form-phone" placeholder="Phone (optional)" class="md:col-span-2 p-4 rounded-xl border-2 border-pink-300 focus:border-pink-600 focus:outline-none bg-white shadow-sm" />
                     <textarea id="form-message" placeholder="Your message" required class="md:col-span-2 p-4 rounded-xl border-2 border-indigo-300 focus:border-indigo-600 focus:outline-none bg-white shadow-sm h-32"></textarea>
-                    <button type="submit" class="md:col-span-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-4 rounded-xl font-bold text-lg shadow-lg transform hover:scale-105 transition-all">Send Message ??</button>
+                    <button type="submit" class="md:col-span-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-4 rounded-xl font-bold text-lg shadow-lg transform hover:scale-105 transition-all">Send Message</button>
                   </form>
                 </div>
               </div>
@@ -631,98 +713,138 @@
           </div>
         </section><!-- Footer -->
         <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-8xl mx-auto px-4">
           <div class="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div class="flex items-center gap-3 mb-4">
-            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-white font-bold flex-shrink-0 overflow-hidden">
-                <img src="photos/mmb school profile logo.png" alt="School Logo" class="w-full h-full object-cover rounded-full">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-white font-bold flex-shrink-0 overflow-hidden">
+                <img src="photos/mmb new logo.jpg" alt="School Logo" class="w-full h-full object-cover rounded-full">
             </div>
             <div>
               <h3 id="footer-school-name" class="font-bold"> Smt. M.M. Bhakta High School</h3>
               <p class="text-gray-400 text-sm">Netrang</p>
             </div>
             </div>
-            <p class="text-gray-400 text-sm">Empowering students through quality education since establishment.</p>
+            <p class="text-gray-400 text-sm mb-4">Empowering students through quality education since establishment.</p>
+            
           </div>
           <div>
             <h4 class="font-semibold mb-4">Quick Links</h4>
-            <ul class="space-y-2 text-gray-400">
-            <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
-            <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
-            <li><a href="#streams" class="hover:text-white transition-colors">Academic Streams</a></li>
-            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-4">Streams</h4>
-            <ul class="space-y-2 text-gray-400">
-               
-            <li> SSC (Class 9-10)</li> 
-            <li> Arts (Class 11-12)</li>
-            <li> Commerce (Class 11-12)</li>
-            <li> Science (Coming June 2026)</li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-semibold mb-4">Contact Info</h4>
             <ul class="space-y-2 text-gray-400 text-sm">
-            <li class="flex items-center gap-2"><span>📍</span> <span>Netrang, Bharuch, Gujarat</span></li>
-            <li class="flex items-center gap-2"><span>📞</span> <span id="footer-phone">02643 282247</span></li>
-            <li class="flex items-center gap-2"><span>✉️</span> <span id="footer-email">mmbhaktaschoolnet1961@gmail.com</span></li>
+            <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="about-school.html" class="hover:text-white transition-colors">About School</a></li>
+            <li><a href="management.html" class="hover:text-white transition-colors">Management</a></li>
+            <li><a href="staff.html" class="hover:text-white transition-colors">Faculties</a></li>
+            <li><a href="news-events.html" class="hover:text-white transition-colors">News & Events</a></li>
+            <li><a href="achievements.html" class="hover:text-white transition-colors">Achievements</a></li>
             </ul>
           </div>
+          <div>
+            <h4 class="font-semibold mb-4">Academics</h4>
+            <ul class="space-y-2 text-gray-400 text-sm">
+            <li><a href="stream-ssc.html" class="hover:text-white transition-colors">SSC (Class 9-10)</a></li>
+            <li><a href="stream-arts.html" class="hover:text-white transition-colors">Arts Stream</a></li>
+            <li><a href="stream-commerce.html" class="hover:text-white transition-colors">Commerce Stream</a></li>
+            <li><a href="stream-science.html" class="hover:text-white transition-colors">Science Stream</a></li>
+            <li><a href="student-corner.html" class="hover:text-white transition-colors">Student Corner</a></li>
+            <li><a href="circulars.html" class="hover:text-white transition-colors">Circulars</a></li>
+            </ul>
           </div>
-          <!-- Social Media Section -->
-          <div class="border-t border-gray-700 pt-8 mb-8">
-            <h4 class="font-semibold mb-6 text-center text-lg">Follow Us On Social Media</h4>
-            <div class="flex justify-center items-center gap-6 flex-wrap">
-              <a href="https://www.facebook.com/smtmmbhakta1961" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" title="Facebook">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
+          <div>
+            <h4 class="font-semibold mb-4">Get In Touch</h4>
+            <ul class="space-y-2 text-gray-400 text-sm mb-4">
+            <li class="flex items-center gap-2"><span>Address</span> <span>Netrang, Bharuch, Gujarat</span></li>
+            <li class="flex items-center gap-2"><span>Phone</span> <span id="footer-phone">02643 282247</span></li>
+            <li class="flex items-center gap-2"><span>Email</span> <span id="footer-email">mmbhaktaschoolnet1961@gmail.com</span></li>
+            </ul>
+            <div class="flex gap-3">
+              <a href="https://www.facebook.com/smtmmbhakta1961" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-colors" title="Facebook">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </a>
-              <a href="https://www.instagram.com/smtmmbhakta1961" target="_blank" rel="noopener noreferrer" class="hover:text-pink-400 transition-colors" title="Instagram">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
+              <a href="https://www.instagram.com/smtmmbhakta1961" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-pink-400 transition-colors" title="Instagram">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-red-400 transition-colors" title="YouTube">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 transition-colors" title="YouTube">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               </a>
-
-              <a href="https://wa.me/916351738499" target="_blank" rel="noopener noreferrer" class="hover:text-green-400 transition-colors" title="WhatsApp">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            
-                </svg>
+              <a href="https://wa.me/916351738499" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green-400 transition-colors" title="WhatsApp">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               </a>
-              <a href="alumani/alumni-website.html" class="hover:text-amber-400 transition-colors" title="Alumni Website">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                </svg>
+              <a href="alumani/alumni-website.html" class="text-gray-400 hover:text-amber-400 transition-colors" title="Alumni">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
               </a>
             </div>
+            <div class="mt-4">
+              <p class="text-gray-400 text-sm mb-2">Subscribe for Updates</p>
+              <form onsubmit="event.preventDefault(); alert('Thank you for subscribing! We will keep you updated.');" class="flex gap-2">
+                <input type="email" placeholder="Your email" required class="flex-1 p-2 rounded bg-gray-700 text-white text-sm border border-gray-600 focus:border-sky-500 focus:outline-none">
+                <button type="submit" class="bg-sky-600 hover:bg-sky-500 text-white px-3 py-2 rounded text-sm font-semibold">Subscribe</button>
+              </form>
+            </div>
+            <div class="mt-4">
+              <p class="text-gray-400 text-sm mb-2">Translate</p>
+              <div id="google_translate_element_footer" class="bg-gray-700 p-1 rounded"></div>
+            </div>
+            
+           </div>
           </div>
-          <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm">
-          <p>@ 2026 Smt. M.M. Bhakta High School, Netrang. All Rights Reserved.</p>
+          <div class="border-t border-gray-700 pt-8 text-center text-gray-400 text-sm mb-4">
+          <p class="mb-2">@ 2026 Smt. M.M. Bhakta High School, Netrang. All Rights Reserved.</p>
+          <p class="text-m"> Since 1961 | Affiliated to GSEB | Gujarati Medium School </p>
+          </div>
           </div>
         </div>
         </footer>
         <script>
-        // Photo Slideshow Script
+        // Enhanced Photo Slideshow Script with Motivational Quotes
         let currentSlide = 1;
-        const totalSlides = 10;
+        const totalSlides = 7;
+        let autoSlideInterval = null;
+        let isAutoSlidePaused = false;
+        
+        const slideQuotes = [
+          { quote: "Learning, values, and growth under one roof", subquote: "A vibrant campus where academics, discipline, culture, and confidence grow together." },
+          { quote: "Education is the most powerful weapon", subquote: "Which you can use to change the world. Join us and make a difference." },
+          { quote: "Success is not final, failure is not fatal", subquote: "It is the courage to continue that counts. Keep moving forward!" },
+          { quote: "The future belongs to those who believe", subquote: "In the beauty of their dreams. Dream big and achieve bigger!" },
+          { quote: "Dream, Believe, Achieve", subquote: "Every expert was once a beginner. Start your journey with us today." },
+          { quote: "Excellence is not a destination", subquote: "But a continuous journey. Be part of our journey of excellence." },
+          { quote: "Your education is your superpower", subquote: "Empower yourself with knowledge, character, and confidence." }
+        ];
         
         function showSlide(n) {
           if (n > totalSlides) currentSlide = 1;
           if (n < 1) currentSlide = totalSlides;
           
+          const quoteData = slideQuotes[currentSlide - 1];
+          const quoteEl = document.querySelector('.slide-quote');
+          const subquoteEl = document.querySelector('.slide-subquote');
+          
           for (let i = 1; i <= totalSlides; i++) {
             const slide = document.getElementById('slide-' + i);
-            if (slide) slide.style.opacity = i === currentSlide ? '1' : '0';
+            if (slide) {
+              slide.style.opacity = i === currentSlide ? '1' : '0';
+              slide.style.transform = i === currentSlide ? 'scale(1)' : 'scale(1.05)';
+              slide.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            }
+          }
+          
+          if (quoteEl && subquoteEl && quoteData) {
+            quoteEl.style.opacity = '0';
+            quoteEl.style.transform = 'translateY(20px)';
+            subquoteEl.style.opacity = '0';
+            subquoteEl.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+              quoteEl.textContent = quoteData.quote;
+              subquoteEl.textContent = quoteData.subquote;
+              quoteEl.style.opacity = '1';
+              quoteEl.style.transform = 'translateY(0)';
+              subquoteEl.style.opacity = '1';
+              subquoteEl.style.transform = 'translateY(0)';
+              quoteEl.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+              subquoteEl.style.transition = 'opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s';
+            }, 150);
           }
           
           document.querySelectorAll('.slide-dot').forEach((dot, idx) => {
@@ -730,34 +852,174 @@
             dot.classList.toggle('bg-gray-400', idx + 1 !== currentSlide);
           });
           
-          document.getElementById('slide-counter').innerText = currentSlide + ' / ' + totalSlides;
+          const counterEl = document.getElementById('slide-counter');
+          if (counterEl) counterEl.innerText = currentSlide + ' / ' + totalSlides;
         }
         
         function slideNext() {
           currentSlide++;
           showSlide(currentSlide);
+          resetAutoSlide();
         }
         
         function slidePrev() {
           currentSlide--;
           showSlide(currentSlide);
+          resetAutoSlide();
         }
         
         function goToSlide(n) {
           currentSlide = n;
           showSlide(currentSlide);
+          resetAutoSlide();
         }
         
-        // Auto advance slides every 5 seconds
-        setInterval(() => {
-          currentSlide++;
-          if (currentSlide > totalSlides) currentSlide = 1;
-          showSlide(currentSlide);
-        }, 5000);
+        function toggleAutoSlide() {
+          isAutoSlidePaused = !isAutoSlidePaused;
+          const playIcon = document.getElementById('playIcon');
+          const pauseIcon = document.getElementById('pauseIcon');
+          
+          if (isAutoSlidePaused) {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+          } else {
+            startAutoSlide();
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+          }
+        }
         
+        function startAutoSlide() {
+          if (autoSlideInterval) clearInterval(autoSlideInterval);
+          autoSlideInterval = setInterval(() => {
+            currentSlide++;
+            if (currentSlide > totalSlides) currentSlide = 1;
+            showSlide(currentSlide);
+          }, 5000);
+        }
+        
+        function resetAutoSlide() {
+          if (!isAutoSlidePaused) {
+            startAutoSlide();
+          }
+        }
+        
+        // Initialize
         showSlide(currentSlide);
+        startAutoSlide();
         </script>
         <script src="script.js"></script>
-        <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce6d061c344ff64',t:'MTc3MTE3OTU3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+        <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce6d061c344ff64',t:'MTc3MTE3OTU3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+        <style>
+          #scrollUpBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            border: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+          }
+          #scrollUpBtn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+          }
+          #scrollUpBtn svg {
+            width: 30px;
+            height: 30px;
+          }
+          #scrollUpBtn span {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+          }
+        </style>
+        <button id="scrollUpBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Tap to top">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/>
+          </svg>
+          <span>Tap to top</span>
+        </button>
+        <script>
+          window.onscroll = function() {
+            var btn = document.getElementById("scrollUpBtn");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+              btn.style.display = "block";
+            } else {
+              btn.style.display = "none";
+            }
+          };
+        </script>
+        <script>
+          const pages = [
+            {name: "Home", url: "#home"},
+            {name: "About School", url: "about-school.html"},
+            {name: "Management", url: "management.html"},
+            {name: "Faculties / Staff", url: "staff.html"},
+            {name: "SSC Stream", url: "stream-ssc.html"},
+            {name: "Arts Stream", url: "stream-arts.html"},
+            {name: "Commerce Stream", url: "stream-commerce.html"},
+            {name: "Science Stream", url: "stream-science.html"},
+            {name: "Student Corner", url: "student-corner.html"},
+            {name: "News & Events", url: "news-events.html"},
+            {name: "Circulars", url: "circulars.html"},
+            {name: "Achievements", url: "achievements.html"},
+            {name: "Sports Gallery", url: "sports-gallery.html"},
+            {name: "Cultural Events", url: "cultural-events-gallery.html"},
+            {name: "Art Exhibition", url: "art-exhibition-gallery.html"},
+            {name: "Annual Day", url: "annual-day-gallery.html"},
+            {name: "Graduation", url: "graduation-gallery.html"},
+            {name: "Campus Tour", url: "360-campus-gallery.html"},
+            {name: "Alumni", url: "alumani/alumni-website.html"},
+            {name: "Contact", url: "#contact"},
+            {name: "School Building", url: "school-building-gallery.html"},
+            {name: "Playground", url: "playground.html"},
+            {name: "Auditorium", url: "auditorium.html"},
+            {name: "Science Lab", url: "science-lab.html"},
+            {name: "Computer Lab", url: "computer-lab.html"},
+            {name: "Library", url: "library.html"},
+            {name: "Class Rooms", url: "class-room.html"},
+            {name: "Staff Room", url: "staff-room.html"},
+            {name: "Main Building", url: "main-building.html"}
+          ];
+          function searchPages(e) {
+            const input = e.target.value.toLowerCase();
+            const results = document.getElementById("search-results");
+            if (input.length < 2) {
+              results.classList.add("hidden");
+              return;
+            }
+            const matches = pages.filter(p => p.name.toLowerCase().includes(input));
+            if (matches.length === 0) {
+              results.innerHTML = '<div class="p-3 text-gray-500 text-sm">No results found</div>';
+            } else {
+              results.innerHTML = matches.map(p => '<a href="' + p.url + '" class="block px-4 py-2 text-gray-700 hover:bg-purple-50 hover:text-purple-700 text-sm border-b border-gray-100">' + p.name + '</a>').join('');
+            }
+            results.classList.remove("hidden");
+          }
+          document.addEventListener("click", function(e) {
+            if (!e.target.closest("#nav-search-input") && !e.target.closest("#search-results")) {
+              document.getElementById("search-results").classList.add("hidden");
+            }
+          });
+        </script>
+      </body>
       </html>
+
 
