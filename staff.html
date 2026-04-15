@@ -40,7 +40,9 @@
       </div>
     </div>
     <div class="flex gap-2">
-      <button onclick="openAddModal()" class="btn-add text-white px-4 py-2 rounded-xl font-bold shadow-lg">+ Add Staff</button>
+      <button onclick="openAddModal()" class="btn-add text-white px-4 py-2 rounded-xl font-bold shadow-lg hidden">+ Add Staff</button>
+      <button id="adminLoginBtn" onclick="toggleAdminLogin()" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">🔐 Admin Login</button>
+      <button id="adminLogoutBtn" onclick="adminLogout()" class="bg-red-600 text-white px-4 py-2 rounded-xl font-bold hidden">🔓 Logout</button>
       <a href="index main.html" class="bg-blue-600 text-white px-4 py-2 rounded-xl">← Back</a>
     </div>
   </header>
@@ -104,6 +106,26 @@
           <div class="bg-gray-100 p-3 rounded-lg"><b class="text-gray-600">Experience:</b><br><span id="modalExperience" class="font-bold text-green-600"></span></div>
         </div>
         <button onclick="closeViewModal()" class="w-full mt-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-xl font-bold">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Login Modal -->
+  <div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-sm w-full">
+      <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 text-white rounded-t-2xl">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-bold">🔐 Admin Login</h3>
+          <button onclick="toggleAdminLogin()" class="text-2xl">&times;</button>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="mb-4">
+          <label class="block font-bold mb-2">Admin Password</label>
+          <input type="password" id="adminPassword" class="w-full p-3 border rounded-xl" placeholder="Enter admin password" onkeypress="if(event.key=='Enter') adminLogin()">
+        </div>
+        <button onclick="adminLogin()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-xl font-bold">Login</button>
+        <p class="text-gray-500 text-sm text-center mt-3">Only administrator can add/remove staff</p>
       </div>
     </div>
   </div>
@@ -172,43 +194,134 @@
   </footer>
 
   <script>
-    // Staff Data
+    // Staff Data - WITH SOFT DELETE SUPPORT
     let staffData = {
-      1:{n:"Shri Ratanbhai L. Vasava",p:"Principal",f:"Head of School",s:"-",q:"-",j:"Aug 2023",e:"26+ Years",ph:"staff/principal.jpeg",color:1},
-      2:{n:"Smt. Bhavnaben T. Desai",p:"Supervisor",f:"Secondary",s:"Sanskrit",q:"-",j:"-",e:"-",ph:"",color:6},
-      3:{n:"Shri Kantilal S. Patel",p:"Sec. Teacher",f:"Arts",s:"Arts & Drawing",q:"-",j:"-",e:"-",ph:"",color:2},
-      4:{n:"Shri Sureshbhai D. Vasava",p:"Sec. Teacher",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:3},
-      5:{n:"Shri Rajeshbhai M. Patel",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:4},
-      6:{n:"Shri Prakashbhai D. Chaudhari",p:"Sec. Teacher",f:"Hindi",s:"Hindi",q:"-",j:"-",e:"-",ph:"",color:5},
-      7:{n:"Smt. Rinkalben C. Chaudhari",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6},
-      8:{n:"Smt. Dimpalben G. Vaniya",p:"Sec. Teacher",f:"Social Sci.",s:"Social Science",q:"-",j:"-",e:"-",ph:"",color:6},
-      9:{n:"Smt. Purviben K. Desai",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6},
-      10:{n:"Shri Balvantbhai T. Chaudhari",p:"Sec. Teacher",f:"P.E.",s:"Physical Edu.",q:"B.P.Ed.",j:"-",e:"-",ph:"",color:7},
-      11:{n:"Smt. Nilambhen K. Kher",p:"Sec. Teacher",f:"Social Sci.",s:"Social Science",q:"-",j:"-",e:"-",ph:"",color:6},
-      12:{n:"Shri Nareshkumar R. Bhoi",p:"Sec. Teacher",f:"English",s:"English",q:"-",j:"-",e:"-",ph:"",color:4},
-      13:{n:"Shri Uttambhai A. Patel",p:"Supervisor",f:"English",s:"English",q:"-",j:"-",e:"-",ph:"",color:5},
-      14:{n:"Shri Mahendrapati U. Gosavi",p:"Higher Sec.",f:"Psychology",s:"Psychology",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
-      15:{n:"Shri Jitendrakumar M. Chaudhari",p:"Higher Sec.",f:"Commerce",s:"Accountancy",q:"M.Com., B.Ed.",j:"-",e:"-",ph:"",color:5},
-      16:{n:"Smt. Nirmalaben J. Vasava",p:"Higher Sec.",f:"Geography",s:"Geography",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
-      17:{n:"Smt. Switikumari B. Patel",p:"Higher Sec.",f:"Sanskrit",s:"Sanskrit",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
-      18:{n:"Smt. Urmilaben H. Vasava",p:"Higher Sec.",f:"Psychology",s:"Psychology",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
-      19:{n:"Shri Dilip G. Khasiya",p:"Higher Sec.",f:"Philosophy",s:"Philosophy",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
-      20:{n:"Shri Naginbhai R. Vankar",p:"Higher Sec.",f:"Economics",s:"Economics",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
-      21:{n:"Smt. Rupalben K. Bhardiwala",p:"Higher Sec.",f:"English",s:"English",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
-      22:{n:"Smt. Darshanaben N. Patel",p:"Higher Sec.",f:"Gujarati",s:"Gujarati",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6},
-      23:{n:"Shri Dilawarhbhai S. Chauhan",p:"Higher Sec.",f:"Hindi",s:"Hindi",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5},
-      24:{n:"Shri Rakeshbhai H. Patel",p:"Librarian",f:"Library",s:"-",q:"B.Lib.",j:"-",e:"-",ph:"",color:8},
-      25:{n:"Shri Dipakkumar R. Gadiluher",p:"Peon",f:"Office",s:"-",q:"-",j:"-",e:"-",ph:"",color:8},
-      26:{n:"Smt. Rimpalben S. Patel",p:"Gyan Sahayak",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6},
-      27:{n:"Ms. Sobhanaben D. Vasava",p:"Gyan Sahayak",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:6},
-      28:{n:"Ms. Dipikaben C. Vasava",p:"Gyan Sahayak",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:6},
-      29:{n:"Shri Sumersinh D. Rajput",p:"Support",f:"Computer",s:"Computer",q:"BCA, MCA",j:"Dec 2022",e:"3+ Years",ph:"staff/SDR .jpeg",color:4},
-      30:{n:"Smt. Paulomiben D. Gohil",p:"Support",f:"Computer",s:"Computer",q:"-",j:"-",e:"-",ph:"",color:6},
-      31:{n:"Smt. Rekhaben Vasava",p:"Peon",f:"Support",s:"-",q:"-",j:"-",e:"-",ph:"",color:6}
+      1:{n:"Shri Ratanbhai L. Vasava",p:"Principal",f:"Head of School",s:"-",q:"-",j:"Aug 2023",e:"26+ Years",ph:"staff/principal.jpeg",color:1, isDeleted: false, createdAt: "2023-08-01"},
+      2:{n:"Smt. Bhavnaben T. Desai",p:"Supervisor",f:"Secondary",s:"Sanskrit",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2020-01-01"},
+      3:{n:"Shri Kantilal S. Patel",p:"Sec. Teacher",f:"Arts",s:"Arts & Drawing",q:"-",j:"-",e:"-",ph:"",color:2, isDeleted: false, createdAt: "2019-01-01"},
+      4:{n:"Shri Sureshbhai D. Vasava",p:"Sec. Teacher",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:3, isDeleted: false, createdAt: "2018-01-01"},
+      5:{n:"Shri Rajeshbhai M. Patel",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:4, isDeleted: false, createdAt: "2017-01-01"},
+      6:{n:"Shri Prakashbhai D. Chaudhari",p:"Sec. Teacher",f:"Hindi",s:"Hindi",q:"-",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "2016-01-01"},
+      7:{n:"Smt. Rinkalben C. Chaudhari",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2015-01-01"},
+      8:{n:"Smt. Dimpalben G. Vaniya",p:"Sec. Teacher",f:"Social Sci.",s:"Social Science",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2014-01-01"},
+      9:{n:"Smt. Purviben K. Desai",p:"Sec. Teacher",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2013-01-01"},
+      10:{n:"Shri Balvantbhai T. Chaudhari",p:"Sec. Teacher",f:"P.E.",s:"Physical Edu.",q:"B.P.Ed.",j:"-",e:"-",ph:"",color:7, isDeleted: false, createdAt: "2012-01-01"},
+      11:{n:"Smt. Nilambhen K. Kher",p:"Sec. Teacher",f:"Social Sci.",s:"Social Science",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2011-01-01"},
+      12:{n:"Shri Nareshkumar R. Bhoi",p:"Sec. Teacher",f:"English",s:"English",q:"-",j:"-",e:"-",ph:"",color:4, isDeleted: false, createdAt: "2010-01-01"},
+      13:{n:"Shri Uttambhai A. Patel",p:"Supervisor",f:"English",s:"English",q:"-",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "2009-01-01"},
+      14:{n:"Shri Mahendrapati U. Gosavi",p:"Higher Sec.",f:"Psychology",s:"Psychology",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "2008-01-01"},
+      15:{n:"Shri Jitendrakumar M. Chaudhari",p:"Higher Sec.",f:"Commerce",s:"Accountancy",q:"M.Com., B.Ed.",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "2007-01-01"},
+      16:{n:"Smt. Nirmalaben J. Vasava",p:"Higher Sec.",f:"Geography",s:"Geography",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2006-01-01"},
+      17:{n:"Smt. Switikumari B. Patel",p:"Higher Sec.",f:"Sanskrit",s:"Sanskrit",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2005-01-01"},
+      18:{n:"Smt. Urmilaben H. Vasava",p:"Higher Sec.",f:"Psychology",s:"Psychology",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2004-01-01"},
+      19:{n:"Shri Dilip G. Khasiya",p:"Higher Sec.",f:"Philosophy",s:"Philosophy",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "2003-01-01"},
+      20:{n:"Shri Naginbhai R. Vankar",p:"Higher Sec.",f:"Economics",s:"Economics",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "2002-01-01"},
+      21:{n:"Smt. Rupalben K. Bhardiwala",p:"Higher Sec.",f:"English",s:"English",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2001-01-01"},
+      22:{n:"Smt. Darshanaben N. Patel",p:"Higher Sec.",f:"Gujarati",s:"Gujarati",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2000-01-01"},
+      23:{n:"Shri Dilawarhbhai S. Chauhan",p:"Higher Sec.",f:"Hindi",s:"Hindi",q:"M.A., B.Ed.",j:"-",e:"-",ph:"",color:5, isDeleted: false, createdAt: "1999-01-01"},
+      24:{n:"Shri Rakeshbhai H. Patel",p:"Librarian",f:"Library",s:"-",q:"B.Lib.",j:"-",e:"-",ph:"",color:8, isDeleted: false, createdAt: "1998-01-01"},
+      25:{n:"Shri Dipakkumar R. Gadiluher",p:"Peon",f:"Office",s:"-",q:"-",j:"-",e:"-",ph:"",color:8, isDeleted: false, createdAt: "1997-01-01"},
+      26:{n:"Smt. Rimpalben S. Patel",p:"Gyan Sahayak",f:"Maths",s:"Maths & Science",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "1996-01-01"},
+      27:{n:"Ms. Sobhanaben D. Vasava",p:"Gyan Sahayak",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "1995-01-01"},
+      28:{n:"Ms. Dipikaben C. Vasava",p:"Gyan Sahayak",f:"Gujarati",s:"Gujarati",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "1994-01-01"},
+      29:{n:"Shri Sumersinh D. Rajput",p:"Support",f:"Computer",s:"Computer",q:"BCA, MCA",j:"Dec 2022",e:"3+ Years",ph:"staff/SDR .jpeg",color:4, isDeleted: false, createdAt: "2022-12-01"},
+      30:{n:"Smt. Paulomiben D. Gohil",p:"Support",f:"Computer",s:"Computer",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2021-01-01"},
+      31:{n:"Smt. Rekhaben Vasava",p:"Peon",f:"Support",s:"-",q:"-",j:"-",e:"-",ph:"",color:6, isDeleted: false, createdAt: "2020-01-01"}
     };
 
     let nextId = 32;
     let editingId = null;
+    
+    // Audit Trail System
+    let auditLog = [];
+    
+    // 🔐 Admin Login System
+    let currentUser = {
+      role: 'guest',
+      name: 'Guest User',
+      isLoggedIn: false
+    };
+    
+    // Admin credentials
+    const ADMIN_PASSWORD = 'admin123';
+    
+    // Check login state on page load
+    function checkLoginState() {
+      const savedLogin = localStorage.getItem('staffAdminLoggedIn');
+      if (savedLogin === 'true') {
+        currentUser = { role: 'admin', name: 'Admin', isLoggedIn: true };
+        updateUIBasedOnRole();
+      }
+    }
+    
+    // Update UI as per user role
+    function updateUIBasedOnRole() {
+      const addButton = document.querySelector('.btn-add');
+      const loginBtn = document.getElementById('adminLoginBtn');
+      const logoutBtn = document.getElementById('adminLogoutBtn');
+      const deleteButtons = document.querySelectorAll('.btn-del');
+      
+      if (currentUser.role === 'admin') {
+        if (addButton) addButton.classList.remove('hidden');
+        if (loginBtn) loginBtn.classList.add('hidden');
+        if (logoutBtn) logoutBtn.classList.remove('hidden');
+        deleteButtons.forEach(btn => btn.classList.remove('hidden'));
+      } else {
+        if (addButton) addButton.classList.add('hidden');
+        if (loginBtn) loginBtn.classList.remove('hidden');
+        if (logoutBtn) logoutBtn.classList.add('hidden');
+        deleteButtons.forEach(btn => btn.classList.add('hidden'));
+      }
+    }
+    
+    // Admin Login Modal Toggle
+    function toggleAdminLogin() {
+      document.getElementById('adminLoginModal').classList.toggle('hidden');
+      document.getElementById('adminPassword').value = '';
+    }
+    
+    // Admin Login Handler
+    function adminLogin() {
+      const password = document.getElementById('adminPassword').value;
+      
+      if (password === ADMIN_PASSWORD) {
+        currentUser = { role: 'admin', name: 'Admin', isLoggedIn: true };
+        localStorage.setItem('staffAdminLoggedIn', 'true');
+        document.getElementById('adminLoginModal').classList.add('hidden');
+        showToast('✅ Admin Logged In Successfully', 'success');
+        renderTable();
+        updateUIBasedOnRole();
+      } else {
+        showToast('❌ Wrong Password', 'error');
+      }
+    }
+    
+    // Admin Logout
+    function adminLogout() {
+      currentUser = { role: 'guest', name: 'Guest User', isLoggedIn: false };
+      localStorage.removeItem('staffAdminLoggedIn');
+      showToast('👋 Logged Out', 'success');
+      renderTable();
+      updateUIBasedOnRole();
+    }
+    
+    // Toast Notification System
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `fixed top-4 right-4 px-6 py-3 rounded-xl shadow-xl z-50 font-bold transition-all transform translate-x-full ${
+        type === 'success' ? 'bg-green-500 text-white' : 
+        type === 'error' ? 'bg-red-500 text-white' : 
+        type === 'warning' ? 'bg-yellow-500 text-black' : 'bg-blue-500 text-white'
+      }`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => toast.classList.remove('translate-x-full'), 100);
+      setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
 
     // Colors array for modal themes
     const modalColors = [
@@ -221,12 +334,15 @@
       'from-purple-500 to-pink-500'
     ];
 
-    // Render table
+    // Render table - ONLY ACTIVE STAFF (isDeleted = false)
     function renderTable() {
       const tbody = document.getElementById('staffTable');
       tbody.innerHTML = '';
       
-      Object.keys(staffData).forEach(id => {
+      // Filter out deleted staff
+      const activeStaff = Object.keys(staffData).filter(id => !staffData[id].isDeleted);
+      
+      activeStaff.forEach(id => {
         const s = staffData[id];
         const row = document.createElement('tr');
         row.className = `row color-${s.color} border-b`;
@@ -246,13 +362,16 @@
           <td class="p-3 text-gray-500">${s.j}</td>
           <td class="p-3 font-bold text-green-600">${s.e}</td>
           <td class="p-3 text-center">
-            <button onclick="event.stopPropagation(); deleteStaff(${id})" class="btn-del text-white px-3 py-1 rounded-lg text-sm">🗑️</button>
+            ${currentUser.role === 'admin' ? 
+              `<button onclick="event.stopPropagation(); softDeleteStaff(${id})" class="btn-del text-white px-3 py-1 rounded-lg text-sm" title="Mark as Inactive">🗑️</button>` : 
+              `<span class="text-gray-400 text-sm">🔒</span>`
+            }
           </td>
         `;
         tbody.appendChild(row);
       });
       
-      document.getElementById('staffCount').textContent = `Total Staff: ${Object.keys(staffData).length}`;
+      document.getElementById('staffCount').textContent = `Total Staff: ${activeStaff.length}`;
     }
 
     // View staff details
@@ -308,9 +427,15 @@
     }
 
     function saveStaff() {
+      // Role check
+      if (currentUser.role !== 'admin') {
+        showToast('❌ Unauthorized: Only admin can add staff', 'error');
+        return;
+      }
+      
       const name = document.getElementById('newName').value.trim();
       if (!name) {
-        alert('Please enter staff name');
+        showToast('⚠️ Please enter staff name', 'warning');
         return;
       }
       
@@ -323,26 +448,76 @@
         j: document.getElementById('newJoining').value || '-',
         e: document.getElementById('newExperience').value || '-',
         ph: '',
-        color: Math.floor(Math.random() * 8) + 1
+        color: Math.floor(Math.random() * 8) + 1,
+        isDeleted: false,
+        createdAt: new Date().toISOString(),
+        createdBy: currentUser.name
       };
       
       if (editingId) {
-        staffData[editingId] = newStaff;
+        staffData[editingId] = {...staffData[editingId], ...newStaff};
+        auditLog.push({
+          action: 'STAFF_UPDATED',
+          staffId: editingId,
+          staffName: newStaff.n,
+          performedBy: currentUser.name,
+          timestamp: new Date().toISOString()
+        });
       } else {
         staffData[nextId] = newStaff;
+        auditLog.push({
+          action: 'STAFF_CREATED',
+          staffId: nextId,
+          staffName: newStaff.n,
+          performedBy: currentUser.name,
+          timestamp: new Date().toISOString()
+        });
         nextId++;
       }
       
       closeAddModal();
+      showToast(`✅ ${newStaff.n} added successfully`, 'success');
       renderTable();
     }
 
-    // Delete staff
-    function deleteStaff(id) {
-      if (confirm('Are you sure you want to remove this staff member?')) {
-        delete staffData[id];
-        renderTable();
+    // 🔒 SOFT DELETE ONLY - NO HARD DELETE ALLOWED
+    function softDeleteStaff(id) {
+      // Role check
+      if (currentUser.role !== 'admin') {
+        showToast('❌ Unauthorized: Only admin can remove staff', 'error');
+        return;
       }
+      
+      const staff = staffData[id];
+      
+      if (!confirm(`⚠️ Are you sure you want to mark ${staff.n} as INACTIVE?\n\nThis will NOT delete their data permanently.`)) {
+        return;
+      }
+      
+      // Soft delete only - NEVER use delete operator
+      staffData[id].isDeleted = true;
+      staffData[id].deletedAt = new Date().toISOString();
+      staffData[id].deletedBy = currentUser.name;
+      
+      // Log to audit trail
+      auditLog.push({
+        action: 'STAFF_SOFT_DELETED',
+        staffId: id,
+        staffName: staff.n,
+        performedBy: currentUser.name,
+        timestamp: new Date().toISOString()
+      });
+      
+      console.log('Audit Log Entry:', auditLog[auditLog.length - 1]);
+      
+      showToast(`✅ ${staff.n} marked as inactive`, 'success');
+      renderTable();
+    }
+    
+    // ⛔ PERMANENT DELETE - COMPLETELY BLOCKED
+    function deleteStaff(id) {
+      showToast('❌ PERMANENT DELETE IS DISABLED FOR DATA SAFETY', 'error');
+      console.warn('Hard delete attempt blocked for staff id:', id);
     }
 
     // Initialize
@@ -366,6 +541,12 @@
     document.getElementById('addModal').addEventListener('click', (e) => {
       if (e.target.id === 'addModal') closeAddModal();
     });
+    document.getElementById('adminLoginModal').addEventListener('click', (e) => {
+      if (e.target.id === 'adminLoginModal') toggleAdminLogin();
+    });
+
+    // Initialize Login State
+    checkLoginState();
   </script>
 </body>
 </html>

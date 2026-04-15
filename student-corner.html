@@ -66,100 +66,64 @@
       </div>
     </div>
 
-    <!-- Daily Timetable Tab -->
-    <div id="timetable" class="tab-content bg-white rounded-2xl shadow-lg p-6">
-      <h3 class="text-2xl font-bold text-gray-800 mb-6">📅 Daily Class Timetable (Std. 9-12)</h3>
-      
-      <!-- Class Selection -->
-      <div class="flex flex-wrap gap-4 mb-6">
-        <select id="timetable-class" onchange="filterTimetable()" class="px-4 py-2 border-2 border-blue-300 rounded-lg focus:border-blue-600 focus:outline-none">
-          <option value="9">Std. 9</option>
-          <option value="10">Std. 10</option>
-          <option value="11-arts">Std. 11 Arts</option>
-          <option value="11-commerce">Std. 11 Commerce</option>
-          <option value="12-arts">Std. 12 Arts</option>
-          <option value="12-commerce">Std. 12 Commerce</option>
-        </select>
-      </div>
+      <!-- Daily Timetable Tab -->
+      <div id="timetable" class="tab-content bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="text-2xl font-bold text-gray-800 mb-6">📅 Official Daily Timetable</h3>
+        
+        <!-- Day Selection Tabs -->
+        <div class="flex flex-wrap gap-2 mb-6 overflow-x-auto pb-2">
+          <button class="day-tab px-4 py-2 font-semibold rounded-lg bg-blue-600 text-white" data-day="mon" onclick="selectDay('mon')">Mon</button>
+          <button class="day-tab px-4 py-2 font-semibold rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300" data-day="tue" onclick="selectDay('tue')">Tue</button>
+          <button class="day-tab px-4 py-2 font-semibold rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300" data-day="wed" onclick="selectDay('wed')">Wed</button>
+          <button class="day-tab px-4 py-2 font-semibold rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300" data-day="thu" onclick="selectDay('thu')">Thu</button>
+          <button class="day-tab px-4 py-2 font-semibold rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300" data-day="fri" onclick="selectDay('fri')">Fri</button>
+          <button class="day-tab px-4 py-2 font-semibold rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300" data-day="sat" onclick="selectDay('sat')">Sat</button>
+        </div>
 
-      <!-- Timetable Grid -->
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-blue-600 text-white">
-              <th class="p-3 rounded-tl-lg">Period</th>
-              <th class="p-3">Monday</th>
-              <th class="p-3">Tuesday</th>
-              <th class="p-3">Wednesday</th>
-              <th class="p-3">Thursday</th>
-              <th class="p-3">Friday</th>
-              <th class="p-3 rounded-tr-lg">Saturday</th>
-            </tr>
-          </thead>
-          <tbody id="timetable-body">
-            <!-- Std 9-10 Timetable -->
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-gray-50">1<br><span class="text-xs text-gray-500">8:30-9:15</span></td>
-              <td class="p-3 border timetable-cell">Gujarati</td>
-              <td class="p-3 border timetable-cell">English</td>
-              <td class="p-3 border timetable-cell">Hindi</td>
-              <td class="p-3 border timetable-cell">Sanskrit</td>
-              <td class="p-3 border timetable-cell">Math</td>
-              <td class="p-3 border timetable-cell">Science</td>
-            </tr>
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-gray-50">2<br><span class="text-xs text-gray-500">9:15-10:00</span></td>
-              <td class="p-3 border timetable-cell">English</td>
-              <td class="p-3 border timetable-cell">Math</td>
-              <td class="p-3 border timetable-cell">Science</td>
-              <td class="p-3 border timetable-cell">Gujarati</td>
-              <td class="p-3 border timetable-cell">Social Science</td>
-              <td class="p-3 border timetable-cell">Math</td>
-            </tr>
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-gray-50">3<br><span class="text-xs text-gray-500">10:00-10:45</span></td>
-              <td class="p-3 border timetable-cell">Science</td>
-              <td class="p-3 border timetable-cell">Social Science</td>
-              <td class="p-3 border timetable-cell">Math</td>
-              <td class="p-3 border timetable-cell">English</td>
-              <td class="p-3 border timetable-cell">Gujarati</td>
-              <td class="p-3 border timetable-cell">English</td>
-            </tr>
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-amber-50" colspan="7">🍽️ Lunch Break (10:45-11:15)</td>
-            </tr>
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-gray-50">4<br><span class="text-xs text-gray-500">11:15-12:00</span></td>
-              <td class="p-3 border timetable-cell">Social Science</td>
-              <td class="p-3 border timetable-cell">Science</td>
-              <td class="p-3 border timetable-cell">English</td>
-              <td class="p-3 border timetable-cell">Math</td>
-              <td class="p-3 border timetable-cell">Science</td>
-              <td class="p-3 border timetable-cell">Gujarati</td>
-            </tr>
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-gray-50">5<br><span class="text-xs text-gray-500">12:00-12:45</span></td>
-              <td class="p-3 border timetable-cell">Math</td>
-              <td class="p-3 border timetable-cell">Gujarati</td>
-              <td class="p-3 border timetable-cell">Social Science</td>
-              <td class="p-3 border timetable-cell">Science</td>
-              <td class="p-3 border timetable-cell">Hindi</td>
-              <td class="p-3 border timetable-cell">Social Science</td>
-            </tr>
-            <tr class="timetable-row" data-class="9,10">
-              <td class="p-3 border font-semibold bg-gray-50">6<br><span class="text-xs text-gray-500">12:45-1:30</span></td>
-              <td class="p-3 border timetable-cell">Hindi</td>
-              <td class="p-3 border timetable-cell">Sanskrit</td>
-              <td class="p-3 border timetable-cell">Gujarati</td>
-              <td class="p-3 border timetable-cell">PE/Art</td>
-              <td class="p-3 border timetable-cell">Computer</td>
-              <td class="p-3 border timetable-cell">Library</td>
-            </tr>
-          </tbody>
-        </table>
+        <!-- Timetable Display -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-blue-600 text-white">
+                <th class="p-3 rounded-tl-lg w-32">Period</th>
+                <th class="p-3 rounded-tr-lg">Subject</th>
+              </tr>
+            </thead>
+            <tbody id="timetable-display">
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Official Timing Summary -->
+        <div class="mt-6 grid md:grid-cols-2 gap-4">
+          <div class="bg-blue-50 rounded-xl p-4">
+            <h4 class="font-bold text-blue-800 mb-3">📅 Monday to Friday</h4>
+            <div class="space-y-2 text-sm">
+              <p>✅ <b>08 Periods</b> × 45 minutes each</p>
+              <p>🍽️ <b>Lunch Break</b>: 30 min after 2nd period</p>
+              <p>☕ <b>Short Break 1</b>: 15 min after 4th period</p>
+              <p>☕ <b>Short Break 2</b>: 15 min after 6th period</p>
+              <p class="font-semibold text-blue-700 mt-2">⏰ 11:00 AM to 04:45 PM</p>
+            </div>
+          </div>
+          <div class="bg-green-50 rounded-xl p-4">
+            <h4 class="font-bold text-green-800 mb-3">📅 Saturday</h4>
+            <div class="space-y-2 text-sm">
+              <p>✅ <b>05 Periods</b> × 45 minutes each</p>
+              <p>☕ <b>Short Break</b>: 15 min after 2nd period</p>
+              <p class="font-semibold text-green-700 mt-2">⏰ 08:00 AM to 11:15 AM</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-gray-500 text-sm mt-4">* Official timetable as per school academic calendar 2026-27</p>
+        
+        <!-- Export Buttons -->
+        <div class="mt-4 flex gap-3">
+          <button onclick="printTimetable()" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-sm">🖨️ Print Timetable</button>
+          <button onclick="exportTimetable()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm">📥 Download PDF</button>
+        </div>
       </div>
-      <p class="text-gray-500 text-sm mt-4">* Timetable may change during exams and special events. Check notices regularly.</p>
-    </div>
 
     <!-- Exam Timetable Tab -->
     <div id="exam" class="tab-content hidden bg-white rounded-2xl shadow-lg p-6">
@@ -796,6 +760,90 @@
   </footer>
 
   <script>
+    // STUDENT CORNER - READ ONLY MODE
+    // All data loaded from LocalStorage, edited only via Admin Panel
+    
+    function getSchoolData(key) {
+      const defaultData = {
+        timetable: {
+          weekdays: {
+            periods: [
+              { time: "11:00 - 11:45", subject: "First Period", type: "class" },
+              { time: "11:45 - 12:30", subject: "Second Period", type: "class" },
+              { time: "12:30 - 13:00", subject: "🍽️ Lunch Break", type: "break" },
+              { time: "13:00 - 13:45", subject: "Third Period", type: "class" },
+              { time: "13:45 - 14:30", subject: "Fourth Period", type: "class" },
+              { time: "14:30 - 14:45", subject: "☕ Short Break", type: "break" },
+              { time: "14:45 - 15:30", subject: "Fifth Period", type: "class" },
+              { time: "15:30 - 16:15", subject: "Sixth Period", type: "class" },
+              { time: "16:15 - 16:30", subject: "☕ Short Break", type: "break" },
+              { time: "16:30 - 17:15", subject: "Seventh Period", type: "class" },
+              { time: "17:15 - 18:00", subject: "Eighth Period", type: "class" }
+            ],
+            note: "Ends at 04:45 PM"
+          },
+          saturday: {
+            periods: [
+              { time: "08:00 - 08:45", subject: "First Period", type: "class" },
+              { time: "08:45 - 09:30", subject: "Second Period", type: "class" },
+              { time: "09:30 - 09:45", subject: "☕ Short Break", type: "break" },
+              { time: "09:45 - 10:30", subject: "Third Period", type: "class" },
+              { time: "10:30 - 11:15", subject: "Fourth Period", type: "class" },
+              { time: "11:15 - 12:00", subject: "Fifth Period", type: "class" }
+            ],
+            note: "Ends at 11:15 AM"
+          }
+        },
+        exams: [],
+        holidays: [],
+        notices: []
+      };
+      
+      const saved = localStorage.getItem(`mmb_${key}`);
+      return saved ? JSON.parse(saved) : defaultData[key];
+    }
+    
+    const timetableData = getSchoolData('timetable');
+
+    // TIMETABLE FUNCTIONS
+    function selectDay(day) {
+      document.querySelectorAll('.day-tab').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+        if (btn.dataset.day === day) {
+          btn.classList.add('bg-blue-600', 'text-white');
+          btn.classList.remove('bg-gray-200', 'text-gray-700');
+        }
+      });
+
+      const timetable = day === 'sat' ? timetableData.saturday : timetableData.weekdays;
+      renderTimetable(timetable);
+    }
+
+    function renderTimetable(data) {
+      const tbody = document.getElementById('timetable-display');
+      tbody.innerHTML = data.periods.map(p => `
+        <tr ${p.type === 'break' ? 'class="bg-amber-50"' : 'class="hover:bg-blue-50"'}>
+          <td class="p-3 border font-semibold">
+            ${p.time}
+            ${p.type === 'break' ? '<span class="ml-2 text-xs text-amber-700">BREAK</span>' : ''}
+          </td>
+          <td class="p-3 border ${p.type === 'break' ? 'font-medium text-amber-800' : ''}">
+            ${p.subject}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function printTimetable() {
+      window.print();
+    }
+
+    function exportTimetable() {
+      alert('Timetable PDF download will be available soon');
+    }
+
+    // EXISTING TAB FUNCTIONS
     function showTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.getElementById(tabId).classList.remove('hidden');
@@ -803,17 +851,6 @@
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('tab-active');
         if (btn.dataset.tab === tabId) btn.classList.add('tab-active');
-      });
-    }
-
-    function filterTimetable() {
-      const selectedClass = document.getElementById('timetable-class').value;
-      document.querySelectorAll('.timetable-row').forEach(row => {
-        if (selectedClass === '9' || selectedClass === '10') {
-          row.style.display = row.dataset.class.includes(selectedClass) ? '' : 'none';
-        } else {
-          row.style.display = 'none';
-        }
       });
     }
 
@@ -840,8 +877,9 @@
       });
     }
 
-    // Initialize first tab
+    // Initialize page
     showTab('timetable');
+    selectDay('mon');
   </script>
 
 </body>

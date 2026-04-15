@@ -425,6 +425,62 @@ function showAlert(message, type) {
   }, 3000);
 }
 
+// Add new data keys
+Object.assign(DATA_KEYS, {
+  timetable: 'mmb_timetable',
+  exams: 'mmb_exams',
+  holidays: 'mmb_holidays'
+});
+
+// Timetable Management
+function editTimetable() {
+  alert('Timetable editor will open here. Changes will auto reflect on student corner page.');
+}
+
+function syncTimetable() {
+  // Force data sync across tabs
+  localStorage.setItem('mmb_data_updated', Date.now());
+  showAlert('✅ Timetable synced successfully! Students will see changes on page refresh.', 'success');
+}
+
+// Load admin dashboard data
+function loadExams() {
+  const data = getData(DATA_KEYS.exams);
+  const tbody = document.getElementById('exams-table-body');
+  if (!tbody) return;
+  
+  tbody.innerHTML = data.map(item => `
+    <tr>
+      <td>${item.date}</td>
+      <td>${item.class}</td>
+      <td>${item.subject}</td>
+      <td><span class="status-badge ${item.active ? 'status-active' : 'status-inactive'}">${item.active ? 'Active' : 'Inactive'}</span></td>
+      <td class="actions">
+        <button class="btn-edit" onclick="editItem('exams', ${item.id})">Edit</button>
+        <button class="btn-delete" onclick="deleteItemConfirm('exams', ${item.id})">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function loadHolidays() {
+  const data = getData(DATA_KEYS.holidays);
+  const tbody = document.getElementById('holidays-table-body');
+  if (!tbody) return;
+  
+  tbody.innerHTML = data.map(item => `
+    <tr>
+      <td>${item.date}</td>
+      <td>${item.day}</td>
+      <td>${item.name}</td>
+      <td class="actions">
+        <button class="btn-edit" onclick="editItem('holidays', ${item.id})">Edit</button>
+        <button class="btn-delete" onclick="deleteItemConfirm('holidays', ${item.id})">Delete</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
   initializeData();
@@ -443,4 +499,11 @@ document.addEventListener('DOMContentLoaded', function() {
     totalElements[2].textContent = achievementsCount;
     totalElements[3].textContent = eventsCount;
   }
+  
+  // Listen for data changes from other tabs
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'mmb_data_updated') {
+      location.reload();
+    }
+  });
 });
