@@ -1,0 +1,184 @@
+{
+  "schoolName": "Smt. M.M. Bhakta High School",
+  "schoolLocation": "Ta. Netrang, Bharuch, Gujarat",
+  "websiteUrl": "[ADD YOUR WEBSITE URL HERE]",
+  "contactEmail": "mmbhaktaschoolnet1961@gmail.com",
+  "statistics": {
+    "totalAlumni": 500,
+    "batchesRepresented": 20,
+    "citiesCovered": 50
+  },
+  "batches": [
+    {
+      "batchId": 1,
+      "batchName": "2020-2023",
+      "isRecent": true,
+      "alumni": [
+        {
+          "id": 101,
+          "name": "Aarav Sharma",
+          "photo": "alumni/student-1.jpg",
+          "currentStatus": "Engineering Student",
+          "city": "Netrang",
+          "email": "aarav@example.com",
+          "phone": null
+        },
+        {
+          "id": 102,
+          "name": "Priya Patel",
+          "photo": "alumni/student-2.jpg",
+          "currentStatus": "Medical Aspirant",
+          "city": "Bharuch",
+          "email": "priya@example.com",
+          "phone": null
+        },
+        {
+          "id": 103,
+          "name": "Rajesh Kumar",
+          "photo": "alumni/student-3.jpg",
+          "currentStatus": "IT Professional",
+          "city": "Bangalore",
+          "email": "rajesh@example.com",
+          "phone": null
+        }
+      ]
+    },
+    {
+      "batchId": 2,
+      "batchName": "2018-2021",
+      "isRecent": false,
+      "alumni": [
+        {
+          "id": 201,
+          "name": "Sonal Kaur",
+          "photo": "alumni/student-4.jpg",
+          "currentStatus": "MBA Graduate",
+          "city": "Mumbai",
+          "email": "sonal@example.com",
+          "phone": null,
+          "company": "TCS"
+        },
+        {
+          "id": 202,
+          "name": "Vikram Singh",
+          "photo": "alumni/student-5.jpg",
+          "currentStatus": "Software Engineer",
+          "city": "Bangalore",
+          "email": "vikram@example.com",
+          "phone": null,
+          "company": "Google"
+        },
+        {
+          "id": 203,
+          "name": "Neha Desai",
+          "photo": "alumni/student-6.jpg",
+          "currentStatus": "Architect",
+          "city": "Ahmedabad",
+          "email": "neha@example.com",
+          "phone": null,
+          "company": "Design Studio"
+        }
+      ]
+    },
+    {
+      "batchId": 3,
+      "batchName": "2015-2018",
+      "isRecent": false,
+      "alumni": [
+        {
+          "id": 301,
+          "name": "Akshay Verma",
+          "photo": "alumni/student-7.jpg",
+          "currentStatus": "Business Owner",
+          "city": "Delhi",
+          "email": "akshay@example.com",
+          "phone": null,
+          "company": "Verma Enterprises"
+        },
+        {
+          "id": 302,
+          "name": "Divya Nair",
+          "photo": "alumni/student-8.jpg",
+          "currentStatus": "Doctor",
+          "city": "Chennai",
+          "email": "divya@example.com",
+          "phone": null,
+          "specialization": "General Medicine"
+        },
+        {
+          "id": 303,
+          "name": "Rohan Patel",
+          "photo": "alumni/student-9.jpg",
+          "currentStatus": "Lawyer",
+          "city": "Ahmedabad",
+          "email": "rohan@example.com",
+          "phone": null,
+          "specialization": "Corporate Law"
+        }
+      ]
+    },
+    {
+      "batchId": 4,
+      "batchName": "2012-2015",
+      "isRecent": false,
+      "alumni": [
+        {
+          "id": 401,
+          "name": "Anjali Sharma",
+          "photo": "alumni/student-10.jpg",
+          "currentStatus": "Teacher",
+          "city": "Vadodara",
+          "email": "anjali@example.com",
+          "phone": null,
+          "subject": "Mathematics"
+        },
+        {
+          "id": 402,
+          "name": "Arjun Menon",
+          "photo": "alumni/student-11.jpg",
+          "currentStatus": "Entrepreneur",
+          "city": "Pune",
+          "email": "arjun@example.com",
+          "phone": null,
+          "company": "Tech Startup"
+        },
+        {
+          "id": 403,
+          "name": "Zara Khan",
+          "photo": "alumni/student-12.jpg",
+          "currentStatus": "Journalist",
+          "city": "Mumbai",
+          "email": "zara@example.com",
+          "phone": null,
+          "organization": "News Channel"
+        }
+      ]
+    }
+  ],
+  "successStories": [
+    {
+      "id": 1,
+      "title": "From Student to CEO",
+      "alumniName": "Anil Desai",
+      "batch": "2008",
+      "story": "Anil Desai (Batch 2008) is now CEO of a leading IT company in Bangalore with 500+ employees. His journey from a regular student to a successful entrepreneur inspires many.",
+      "achievement": "Founded and runs a successful IT company"
+    },
+    {
+      "id": 2,
+      "title": "Medical Professional",
+      "alumniName": "Dr. Priyanka Sharma",
+      "batch": "2010",
+      "story": "Dr. Priyanka Sharma (Batch 2010) is a renowned doctor and runs a charitable clinic providing free medical services to underprivileged communities.",
+      "achievement": "Established a healthcare clinic with social impact"
+    },
+    {
+      "id": 3,
+      "title": "Social Activist",
+      "alumniName": "Rajesh Kumar",
+      "batch": "2014",
+      "story": "Rajesh Kumar (Batch 2014) founded an NGO serving rural communities in Gujarat, focusing on education and women empowerment.",
+      "achievement": "Founded NGO serving 10,000+ people"
+    }
+  ]
+}
